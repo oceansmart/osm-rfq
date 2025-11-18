@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>일기 Mock 데이터 설정</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      padding: 40px;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    button {
+      padding: 16px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .btn-secondary {
+      background: #f0f0f0;
+      color: #333;
+    }
+
+    .btn-danger {
+      background: #ff4757;
+      color: white;
+    }
+
+    .output {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 20px;
+      border-radius: 12px;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      line-height: 1.6;
+      max-height: 400px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .output:empty::before {
+      content: '출력 결과가 여기에 표시됩니다...';
+      color: #666;
+      font-style: italic;
+    }
+
+    .emoji {
+      font-size: 20px;
+    }
+
+    .info-box {
+      background: #f8f9fa;
+      border-left: 4px solid #667eea;
+      padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .info-box h3 {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .info-box ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .info-box li {
+      color: #666;
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+
+    .info-box li::before {
+      content: '✓ ';
+      color: #667eea;
+      font-weight: bold;
+      margin-right: 8px;
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 24px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      button {
+        padding: 14px 20px;
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🗓️ 일기 Mock 데이터 설정</h1>
+    <p class="subtitle">로컬스토리지에 테스트용 일기 데이터를 생성합니다</p>
+
+    <div class="info-box">
+      <h3>📊 생성 정보</h3>
+      <ul>
+        <li>총 데이터 수: 36개</li>
+        <li>페이지당 표시: 12개</li>
+        <li>예상 페이지 수: 3페이지</li>
+        <li>감정 타입: HAPPY, SAD, ANGRY, SURPRISE (순환)</li>
+      </ul>
+    </div>
+
+    <div class="button-group">
+      <button class="btn-primary" onclick="handleSetupMockData()">
+        <span class="emoji">🚀</span>
+        <span>Mock 데이터 생성 및 저장</span>
+      </button>
+      <button class="btn-secondary" onclick="handleGetDiaries()">
+        <span class="emoji">📖</span>
+        <span>현재 데이터 조회</span>
+      </button>
+      <button class="btn-danger" onclick="handleClearDiaries()">
+        <span class="emoji">🗑️</span>
+        <span>데이터 삭제</span>
+      </button>
+    </div>
+
+    <div id="output" class="output"></div>
+  </div>
+
+  <script>
+    // Emotion Enum
+    const Emotion = {
+      HAPPY: 'HAPPY',
+      SAD: 'SAD',
+      ANGRY: 'ANGRY',
+      SURPRISE: 'SURPRISE',
+      ETC: 'ETC',
+    };
+
+    // Mock 데이터 생성 함수
+    function generateMockDiaries(count = 36) {
+      const emotions = [Emotion.HAPPY, Emotion.SAD, Emotion.ANGRY, Emotion.SURPRISE];
+      const titles = {
+        HAPPY: [
+          '행복한 하루', '즐거운 주말', '기쁜 소식', '행복한 순간', '웃음 가득한 날',
+          '즐거운 여행', '행복한 만남', '기분 좋은 아침', '즐거운 저녁',
+        ],
+        SAD: [
+          '슬픈 하루', '우울한 날', '슬픈 이야기', '눈물의 기록', '아쉬운 순간',
+          '슬픈 추억', '우울한 저녁', '슬픈 기억', '아픈 마음',
+        ],
+        ANGRY: [
+          '화나는 일', '짜증나는 하루', '분노의 기록', '화가 난 순간', '억울한 일',
+          '짜증나는 상황', '화난 하루', '분한 마음', '속상한 일',
+        ],
+        SURPRISE: [
+          '놀라운 발견', '깜짝 놀란 일', '예상치 못한 일', '놀라운 소식', '깜짝 이벤트',
+          '놀라운 순간', '예기치 않은 만남', '놀라운 경험', '깜짝 선물',
+        ],
+      };
+
+      const contents = {
+        HAPPY: [
+          '오늘은 정말 행복한 날이었다', '좋은 일이 가득한 하루였다', '기분이 너무 좋았다',
+          '행복한 시간을 보냈다', '즐거운 경험을 했다',
+        ],
+        SAD: [
+          '슬픈 일이 있었다', '우울한 기분이었다', '마음이 아팠다',
+          '슬픈 일을 겪었다', '눈물이 났다',
+        ],
+        ANGRY: [
+          '오늘 화가 났다', '짜증나는 일이 있었다', '화가 나서 참기 힘들었다',
+          '분한 일을 겪었다', '속상한 일이 있었다',
+        ],
+        SURPRISE: [
+          '놀라운 일이 생겼다', '깜짝 놀랐다', '예상치 못한 일이 일어났다',
+          '놀라운 경험을 했다', '정말 놀라웠다',
+        ],
+      };
+
+      const diaries = [];
+      const today = new Date();
+
+      for (let i = 1; i <= count; i++) {
+        const emotion = emotions[(i - 1) % emotions.length];
+        const titleList = titles[emotion];
+        const contentList = contents[emotion];
+        const title = titleList[(i - 1) % titleList.length];
+        const content = contentList[(i - 1) % contentList.length];
+
+        const createdDate = new Date(today);
+        createdDate.setDate(today.getDate() - (i - 1));
+
+        diaries.push({
+          id: i,
+          title: `${title} ${i}`,
+          content: `${content} (일기 번호: ${i})`,
+          emotion: emotion,
+          createdAt: createdDate.toISOString(),
+        });
+      }
+
+      return diaries;
+    }
+
+    // 출력 함수
+    function output(message, type = 'info') {
+      const outputEl = document.getElementById('output');
+      const timestamp = new Date().toLocaleTimeString('ko-KR');
+      const prefix = {
+        info: 'ℹ️',
+        success: '✅',
+        error: '❌',
+        warning: '⚠️',
+      }[type] || 'ℹ️';
+
+      outputEl.textContent += `[${timestamp}] ${prefix} ${message}\n`;
+      outputEl.scrollTop = outputEl.scrollHeight;
+    }
+
+    function clearOutput() {
+      document.getElementById('output').textContent = '';
+    }
+
+    // Mock 데이터 생성 및 저장
+    function handleSetupMockData() {
+      clearOutput();
+      output('Mock 데이터 생성 시작...', 'info');
+
+      try {
+        const mockDiaries = generateMockDiaries(36);
+        localStorage.setItem('diaries', JSON.stringify(mockDiaries));
+
+        output(`${mockDiaries.length}개의 일기 데이터가 생성되었습니다.`, 'success');
+        output('', 'info');
+        output('📊 페이지네이션 정보:', 'info');
+        output(`   - 총 데이터 수: ${mockDiaries.length}개`, 'info');
+        output(`   - 페이지당 표시: 12개`, 'info');
+        output(`   - 예상 페이지 수: ${Math.ceil(mockDiaries.length / 12)}페이지`, 'info');
+        output('', 'info');
+        output('📄 데이터 미리보기 (최근 5개):', 'info');
+        mockDiaries.slice(0, 5).forEach((diary, index) => {
+          output(`   ${index + 1}. [${diary.emotion}] ${diary.title}`, 'info');
+        });
+        output('', 'info');
+        output('✨ localhost:3000/diaries 페이지를 새로고침하세요!', 'success');
+      } catch (error) {
+        output(`데이터 생성 실패: ${error.message}`, 'error');
+      }
+    }
+
+    // 현재 데이터 조회
+    function handleGetDiaries() {
+      clearOutput();
+      output('로컬스토리지 데이터 조회 중...', 'info');
+
+      try {
+        const data = localStorage.getItem('diaries');
+        if (data) {
+          const diaries = JSON.parse(data);
+          output(`📖 현재 저장된 일기 개수: ${diaries.length}개`, 'success');
+          output('', 'info');
+          output('📄 데이터 미리보기 (최근 10개):', 'info');
+          diaries.slice(0, 10).forEach((diary, index) => {
+            const date = new Date(diary.createdAt).toLocaleDateString('ko-KR');
+            output(`   ${index + 1}. [${diary.emotion}] ${diary.title} (${date})`, 'info');
+          });
+
+          if (diaries.length > 10) {
+            output(`   ... 외 ${diaries.length - 10}개`, 'info');
+          }
+        } else {
+          output('📭 저장된 일기 데이터가 없습니다.', 'warning');
+        }
+      } catch (error) {
+        output(`데이터 조회 실패: ${error.message}`, 'error');
+      }
+    }
+
+    // 데이터 삭제
+    function handleClearDiaries() {
+      clearOutput();
+
+      const confirm = window.confirm('정말로 모든 일기 데이터를 삭제하시겠습니까?');
+      if (confirm) {
+        try {
+          localStorage.removeItem('diaries');
+          output('🗑️ 로컬스토리지의 일기 데이터가 삭제되었습니다.', 'success');
+          output('', 'info');
+          output('페이지를 새로고침하면 빈 목록이 표시됩니다.', 'info');
+        } catch (error) {
+          output(`데이터 삭제 실패: ${error.message}`, 'error');
+        }
+      } else {
+        output('삭제가 취소되었습니다.', 'warning');
+      }
+    }
+
+    // 페이지 로드 시 초기 메시지
+    window.addEventListener('DOMContentLoaded', () => {
+      output('일기 Mock 데이터 설정 도구가 준비되었습니다.', 'success');
+      output('위의 버튼을 클릭하여 작업을 시작하세요.', 'info');
+    });
+  </script>
+</body>
+</html>

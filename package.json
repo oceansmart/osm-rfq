@@ -1,0 +1,15 @@
+{
+  "name": "osm-rfq-docs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "OSM RFQ Documentation",
+  "scripts": {
+    "docs:serve": "mkdocs serve",
+    "docs:build": "mkdocs build",
+    "docs:deploy": "mkdocs gh-deploy",
+    "docs:validate": "node scripts/validate-docs.js"
+  },
+  "devDependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}

@@ -1,0 +1,132 @@
+site_name: OSM RFQ Documentation
+site_description: OSM RFQ Backend & Frontend Documentation
+site_author: OSM RFQ Team
+site_url: https://osm-rfq.github.io/docs
+
+# Repository
+repo_name: osm-rfq/osm-rfq
+repo_url: https://github.com/yourusername/osm-rfq
+edit_uri: edit/main/docs/
+
+# Copyright
+copyright: Copyright &copy; 2025 OSM RFQ Team
+
+# Theme Configuration
+theme:
+  name: material
+  language: ko
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: 다크 모드로 전환
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: 라이트 모드로 전환
+
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.tracking
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - search.share
+    - toc.follow
+    - content.code.copy
+    - content.code.annotate
+
+  icon:
+    repo: fontawesome/brands/github
+
+# Plugins
+plugins:
+  - search:
+      lang:
+        - ko
+        - en
+      separator: '[\s\-\.]+'
+  - tags
+
+# Extensions
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - admonition
+  - pymdownx.details
+  - attr_list
+  - md_in_html
+  - def_list
+  - tables
+  - footnotes
+  - toc:
+      permalink: true
+      toc_depth: 3
+
+# Navigation
+nav:
+  - 홈: index.md
+
+  - Frontend:
+      - 개요: frontend/index.md
+      - 시작하기: frontend/getting-started.md
+      - 컴포넌트:
+          - 개요: frontend/components/index.md
+      - 디자인 시스템:
+          - 개요: frontend/design-system/index.md
+          - 컬러 토큰: frontend/design-system/colors.md
+          - 타이포그래피: frontend/design-system/typography.md
+      - API: frontend/api/index.md
+
+  - Backend:
+      - 개요: backend/index.md
+      - 시작하기: backend/getting-started.md
+      - API 문서: backend/api/index.md
+      - 데이터베이스: backend/database/index.md
+
+# Extra
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/yourusername/osm-rfq
+    - icon: fontawesome/brands/figma
+      link: https://www.figma.com/
+
+  version:
+    provider: mike
+    default: stable
+
+# Custom CSS
+extra_css:
+  - stylesheets/extra.css
+
+# Custom JavaScript
+extra_javascript:
+  - javascripts/extra.js

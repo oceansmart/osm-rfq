@@ -1,0 +1,10 @@
+{
+  "tokenSetOrder": [
+    "primitive",
+    "alias-light",
+    "spacing",
+    "margin-padding",
+    "typography",
+    "typography-styles"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "margin-xs": {
+    "value": "{spacing-1}",
+    "type": "spacing",
+    "description": "Extra small margin - 4px"
+  },
+  "margin-s": {
+    "value": "{spacing-2}",
+    "type": "spacing",
+    "description": "Small margin - 8px"
+  },
+  "margin-m": {
+    "value": "{spacing-4}",
+    "type": "spacing",
+    "description": "Medium margin - 16px"
+  },
+  "margin-l": {
+    "value": "{spacing-6}",
+    "type": "spacing",
+    "description": "Large margin - 24px"
+  },
+  "margin-xl": {
+    "value": "{spacing-10}",
+    "type": "spacing",
+    "description": "Extra large margin - 40px"
+  },
+  "margin-xxl": {
+    "value": "{spacing-20}",
+    "type": "spacing",
+    "description": "Extra extra large margin - 80px"
+  },
+  "padding-xxs": {
+    "value": "{spacing-1}",
+    "type": "spacing",
+    "description": "Extra extra small padding - 4px"
+  },
+  "padding-xs": {
+    "value": "{spacing-2}",
+    "type": "spacing",
+    "description": "Extra small padding - 8px"
+  },
+  "padding-s": {
+    "value": "{spacing-3}",
+    "type": "spacing",
+    "description": "Small padding - 12px"
+  },
+  "padding-m": {
+    "value": "{spacing-4}",
+    "type": "spacing",
+    "description": "Medium padding - 16px"
+  },
+  "padding-l": {
+    "value": "{spacing-6}",
+    "type": "spacing",
+    "description": "Large padding - 24px"
+  },
+  "padding-xl": {
+    "value": "{spacing-8}",
+    "type": "spacing",
+    "description": "Extra large padding - 32px"
+  }
+}

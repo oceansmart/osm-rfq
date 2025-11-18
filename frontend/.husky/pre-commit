@@ -1,0 +1,6 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# 문서 규칙 검증
+echo "📚 문서 규칙 검증 중..."
+npm run docs:validate || exit 1
