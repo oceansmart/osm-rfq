@@ -1,16 +1,1 @@
-[
-  {
-    "id": "light",
-    "name": "Light",
-    "group": "mode",
-    "selectedTokenSets": {
-      "primitive": "source",
-      "alias-light": "enabled",
-      "spacing": "source",
-      "margin-padding": "enabled",
-      "typography": "source",
-      "typography-styles": "enabled"
-    },
-    "$figmaStyleReferences": {}
-  }
-]
+[]

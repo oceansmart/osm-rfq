@@ -1,0 +1,70 @@
+{
+  "spacing-none": {
+    "$type": "dimension",
+    "$value": "{Spacing.0 (0px)}"
+  },
+  "spacing-xxs": {
+    "$type": "dimension",
+    "$value": "{Spacing.0․5 (2px)}"
+  },
+  "spacing-xs": {
+    "$type": "dimension",
+    "$value": "{Spacing.1 (4px)}"
+  },
+  "spacing-md": {
+    "$type": "dimension",
+    "$value": "{Spacing.2 (8px)}"
+  },
+  "spacing-lg": {
+    "$type": "dimension",
+    "$value": "{Spacing.3 (12px)}"
+  },
+  "spacing-xl": {
+    "$type": "dimension",
+    "$value": "{Spacing.4 (16px)}"
+  },
+  "spacing-2xl": {
+    "$type": "dimension",
+    "$value": "{Spacing.5 (20px)}"
+  },
+  "spacing-3xl": {
+    "$type": "dimension",
+    "$value": "{Spacing.6 (24px)}"
+  },
+  "spacing-4xl": {
+    "$type": "dimension",
+    "$value": "{Spacing.8 (32px)}"
+  },
+  "spacing-6xl": {
+    "$type": "dimension",
+    "$value": "{Spacing.12 (48px)}"
+  },
+  "spacing-7xl": {
+    "$type": "dimension",
+    "$value": "{Spacing.16 (64px)}"
+  },
+  "spacing-8xl": {
+    "$type": "dimension",
+    "$value": "{Spacing.20 (80px)}"
+  },
+  "spacing-9xl": {
+    "$type": "dimension",
+    "$value": "{Spacing.24 (96px)}"
+  },
+  "spacing-10xl": {
+    "$type": "dimension",
+    "$value": "{Spacing.32 (128px)}"
+  },
+  "spacing-11xl": {
+    "$type": "dimension",
+    "$value": "{Spacing.40 (160px)}"
+  },
+  "spacing-sm": {
+    "$type": "dimension",
+    "$value": "{Spacing.1․5 (6px)}"
+  },
+  "spacing-5xl": {
+    "$type": "dimension",
+    "$value": "{Spacing.10 (40px)}"
+  }
+}

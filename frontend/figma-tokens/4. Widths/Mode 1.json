@@ -1,0 +1,50 @@
+{
+  "width-xxs": {
+    "$type": "dimension",
+    "$value": "{Spacing.80 (320px)}"
+  },
+  "width-sm": {
+    "$type": "dimension",
+    "$value": "{Spacing.120 (480px)}"
+  },
+  "width-lg": {
+    "$type": "dimension",
+    "$value": "{Spacing.160 (640px)}"
+  },
+  "width-xl": {
+    "$type": "dimension",
+    "$value": "{Spacing.192 (768px)}"
+  },
+  "width-2xl": {
+    "$type": "dimension",
+    "$value": "{Spacing.256 (1,024px)}"
+  },
+  "width-3xl": {
+    "$type": "dimension",
+    "$value": "{Spacing.320 (1,280px)}"
+  },
+  "width-4xl": {
+    "$type": "dimension",
+    "$value": "{Spacing.360 (1,440px)}"
+  },
+  "width-5xl": {
+    "$type": "dimension",
+    "$value": "{Spacing.400 (1,600px)}"
+  },
+  "width-6xl": {
+    "$type": "dimension",
+    "$value": "{Spacing.480 (1,920px)}"
+  },
+  "width-md": {
+    "$type": "dimension",
+    "$value": "{Spacing.140 (560px)}"
+  },
+  "paragraph-max-width": {
+    "$type": "dimension",
+    "$value": "{Spacing.180 (720px)}"
+  },
+  "width-xs": {
+    "$type": "dimension",
+    "$value": "{Spacing.96 (384px)}"
+  }
+}
