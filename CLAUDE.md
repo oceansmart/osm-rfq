@@ -156,6 +156,7 @@ Responsive variants exist for mobile (`typo-mobile-*`). Use these instead of cus
 - **Skills Guide**: [docs/frontend/claude-skills-guide.md](/docs/frontend/claude-skills-guide.md)
 - **TDD Commands**: [.claude/commands/tdd.*.md](/.claude/commands/) (TDD Slash 명령어)
 - **Feature Specs**: `specs/` (생성될 디렉토리)
+- **Naming Convention**: [.claude/rules/osm-naming-convention.md](/.claude/rules/osm-naming-convention.md) (OSM 네이밍 표준)
 
 ## Development Workflow
 
