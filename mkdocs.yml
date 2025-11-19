@@ -110,7 +110,6 @@ nav:
           - Figma to React 워크플로우: frontend/figma-to-react-optimal-workflow.md
       - Untitled UI:
           - PRO 컴포넌트 공통화 전략: frontend/untitled-ui-pro-commons-guide.md
-          - 토큰 통합 전략: frontend/untitled-ui-token-integration-strategy.md
           - Foundation 토큰 오버라이드 가이드: frontend/foundation-token-override-guide.md
       # 향후 구현 예정:
       # - 컴포넌트:
