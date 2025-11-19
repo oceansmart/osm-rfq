@@ -28,6 +28,23 @@
 - 각 컴포넌트는 독립적으로 동작
 - 조합 가능한 구조로 구현
 
+### 1.4 OSM 네이밍 표준을 준수할 것
+
+- **[.claude/rules/osm-naming-convention.md](osm-naming-convention.md) 필수 준수**
+- 모든 파일, 디렉토리, 변수, 함수, 컴포넌트 네이밍 시 표준 규칙 적용
+- 프로젝트 레벨 명명에는 `osm-` prefix 필수
+- 코드 리뷰 시 네이밍 표준 위반 여부 확인
+
+**주요 규칙:**
+- 디렉토리: kebab-case (`rfq-list`, `bidding-draft`)
+- 컴포넌트 파일: `index.tsx` (디렉토리 기반)
+- Hook 파일: `index.[purpose].hook.ts` (예: `index.binding.hook.ts`)
+- Test 파일: `index.[purpose].spec.ts`
+- 변수/함수: camelCase (`rfqList`, `getRfqById`)
+- 타입/인터페이스: PascalCase (`RfqItem`, `RfqStatus`)
+- 컴포넌트: PascalCase (`RfqList`, `BiddingDraft`)
+- 약어: 첫 글자만 대문자 (`Rfq` ✅, `RFQ` ❌)
+
 ---
 
 ## 2. 최종 주의사항
