@@ -1,12 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './index';
-
-// Mock Icon Component for demonstrations
-const MockIcon = ({ className }: { className?: string }) => (
-  <svg className={className} width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15.5L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z" fill="currentColor" />
-  </svg>
-);
+import {
+  ArrowRight,
+  Plus,
+  Download,
+  Trash,
+  Star,
+  Check,
+  Send,
+  Edit,
+} from '@/commons/components/icons';
 
 const meta: Meta<typeof Button> = {
   title: 'Commons/Components/Button',
@@ -142,28 +145,41 @@ export const WithIcons: Story = {
     <div className="flex flex-col gap-4">
       <div>
         <h3 className="text-sm font-semibold mb-3">Icon Leading</h3>
-        <Button iconLeading={MockIcon}>With Leading Icon</Button>
+        <div className="flex gap-3">
+          <Button iconLeading={ArrowRight}>Continue</Button>
+          <Button iconLeading={Plus} color="secondary">
+            Add New
+          </Button>
+          <Button iconLeading={Download} color="tertiary">
+            Download
+          </Button>
+        </div>
       </div>
 
       <div>
         <h3 className="text-sm font-semibold mb-3">Icon Trailing</h3>
-        <Button iconTrailing={MockIcon}>With Trailing Icon</Button>
+        <div className="flex gap-3">
+          <Button iconTrailing={Send}>Send Message</Button>
+          <Button iconTrailing={ArrowRight} color="link-color">
+            Learn More
+          </Button>
+        </div>
       </div>
 
       <div>
         <h3 className="text-sm font-semibold mb-3">Icon Only</h3>
         <div className="flex gap-3">
-          <Button iconLeading={MockIcon} size="sm" />
-          <Button iconLeading={MockIcon} size="md" />
-          <Button iconLeading={MockIcon} size="lg" />
-          <Button iconLeading={MockIcon} size="xl" />
+          <Button iconLeading={Edit} size="sm" />
+          <Button iconLeading={Star} size="md" />
+          <Button iconLeading={Check} size="lg" color="secondary" />
+          <Button iconLeading={Trash} size="xl" color="primary-destructive" />
         </div>
       </div>
 
       <div>
         <h3 className="text-sm font-semibold mb-3">Both Icons</h3>
-        <Button iconLeading={MockIcon} iconTrailing={MockIcon}>
-          Both Icons
+        <Button iconLeading={Download} iconTrailing={ArrowRight}>
+          Download Report
         </Button>
       </div>
     </div>
@@ -321,10 +337,10 @@ export const DestructiveVariants: Story = {
       <div>
         <h3 className="text-sm font-semibold mb-3">With Icons</h3>
         <div className="flex gap-3">
-          <Button color="primary-destructive" iconLeading={MockIcon}>
+          <Button color="primary-destructive" iconLeading={Trash}>
             Delete
           </Button>
-          <Button color="secondary-destructive" iconTrailing={MockIcon}>
+          <Button color="secondary-destructive" iconTrailing={Trash}>
             Remove
           </Button>
         </div>
