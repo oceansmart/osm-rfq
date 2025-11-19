@@ -97,13 +97,27 @@ nav:
   - Frontend:
       - 개요: frontend/index.md
       - 시작하기: frontend/getting-started.md
-      - 컴포넌트:
-          - 개요: frontend/components/index.md
-      - 디자인 시스템:
-          - 개요: frontend/design-system/index.md
-          - 컬러 토큰: frontend/design-system/colors.md
-          - 타이포그래피: frontend/design-system/typography.md
-      - API: frontend/api/index.md
+      - 개발 가이드:
+          - Spec + TDD 통합 워크플로우: frontend/spec-tdd-workflow.md
+          - TDD 가이드: frontend/tdd-guide.md
+          - Spec Kit 가이드: frontend/speckit-guide.md
+          - Claude Skills 가이드: frontend/claude-skills-guide.md
+          - 기능 명세 작성 가이드: frontend/기능 명세 작성 완벽 가이드.md
+      - Figma 디자인 시스템:
+          - Figma Tokens Plugin 가이드: frontend/FIGMA_TOKENS_PLUGIN_GUIDE.md
+          - Figma API 자동화 가이드: frontend/figma-api-automation-guide.md
+          - Figma Collection (Primitive) 가이드: frontend/figma-collection-primitive-guide.md
+          - Figma to React 워크플로우: frontend/figma-to-react-optimal-workflow.md
+      - Untitled UI:
+          - PRO 컴포넌트 공통화 전략: frontend/untitled-ui-pro-commons-guide.md
+      # 향후 구현 예정:
+      # - 컴포넌트:
+      #     - 개요: frontend/components/index.md
+      # - 디자인 시스템:
+      #     - 개요: frontend/design-system/index.md
+      #     - 컬러 토큰: frontend/design-system/colors.md
+      #     - 타이포그래피: frontend/design-system/typography.md
+      # - API: frontend/api/index.md
 
   - Backend:
       - 개요: backend/index.md

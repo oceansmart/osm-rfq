@@ -25,12 +25,17 @@
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
     "@tanstack/react-query": "^5.90.5",
+    "clsx": "^2.1.1",
+    "glob": "^10.5.0",
     "next": "14.2.33",
     "next-themes": "^0.4.6",
     "react": "^18",
+    "react-aria-components": "^1.13.0",
     "react-dom": "^18",
     "react-hook-form": "^7.65.0",
     "storybook": "^9.1.13",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss-animate": "^1.0.7",
     "zod": "^4.1.12"
   },
   "devDependencies": {
@@ -44,14 +49,18 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "autoprefixer": "^10.4.22",
     "eslint": "^8",
     "eslint-config-next": "14.2.33",
     "eslint-plugin-storybook": "^9.1.13",
     "husky": "^9.1.7",
     "js-yaml": "^4.1.0",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.18",
     "ts-node": "^10.9.2",
     "typescript": "^5"
+  },
+  "overrides": {
+    "glob": "^10.5.0"
   }
 }

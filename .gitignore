@@ -95,3 +95,15 @@ logs
 
 # Reference projects
 reference/
+
+# Spec Kit
+.specify/memory/constitution-backup.md
+.claude/prompts/
+*.spec-backup.md
+
+# Claude Skills
+.claude/skills/**/node_modules/
+.claude/skills/**/.venv/
+.claude/skills/**/__pycache__/
+.claude/skills/**/dist/
+.claude/skills/**/*.pyc
