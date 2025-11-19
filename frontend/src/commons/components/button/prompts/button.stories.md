@@ -5,39 +5,41 @@
 
 ---
 
-## 📋 프로젝트 컨텍스트
+## 📋 조건-프로젝트
 
-### OSM RFQ 프로젝트 표준
-- **Design System**: Untitled UI PRO 기반 (1,325+ components)
-- **Styling**: Tailwind CSS v4 + CSS Variables (`@theme`)
-- **Component Library**: React Aria Components (Accessibility-first)
-- **Documentation**: Storybook 9.1.13 + MDX 지원
-- **TypeScript**: Strict mode enabled
+### OSM RFQ 프로젝트 표준을 준수할 것
+
+- **Design System**: Untitled UI PRO 기반
+- **Styling**: Tailwind CSS v4 + CSS Variables
+- **Component Library**: React Aria Components
+- **Documentation**: Storybook 9.1.13
 
 ---
 
-## 📂 파일 경로
+## 📂 조건-파일경로
 
 ```
-frontend/src/commons/components/button/
-├── index.tsx                 ← 참고할 Button 컴포넌트 (272 lines)
-├── index.stories.tsx         ← 구현 대상 (새로 생성)
-└── prompts/
-    ├── button.stories.txt    ← 이 문서
-    └── button.stories.md     ← 상세 가이드
+참고할 TSX 파일경로: frontend/src/commons/components/button/index.tsx
+구현될 STORIES 파일경로: frontend/src/commons/components/button/index.stories.tsx
 ```
 
 ---
 
-## 🎯 핵심 요구사항
+## 🎯 핵심요구사항
 
-### Button 컴포넌트의 **모든 variants**를 Storybook Stories로 구현할 것
+### Button 컴포넌트의 모든 variants를 Storybook Stories로 구현할 것
 
 ---
 
 ## 📊 구현 범위
 
 ### 1. Size Variants (4가지)
+
+- sm
+- md
+- lg
+- xl
+
 | Size | Padding | Font | Use Case |
 |------|---------|------|----------|
 | `sm` | `px-3 py-2` | `text-sm` | Compact UI, Inline actions |
@@ -47,37 +49,44 @@ frontend/src/commons/components/button/
 
 ### 2. Color Variants (10가지)
 
-#### Primary Group
-- `primary` - Brand solid background (`--color-brand-600`)
-- `secondary` - Outlined style with border
-- `tertiary` - Ghost style, no background
+**Primary Group:**
+- primary
+- secondary
+- tertiary
 
-#### Link Group
-- `link-gray` - Text link with gray color
-- `link-color` - Text link with brand color
+**Link Group:**
+- link-gray
+- link-color
 
-#### Destructive Group
-- `primary-destructive` - Red solid background
-- `secondary-destructive` - Red outlined style
-- `tertiary-destructive` - Red ghost style
-- `link-destructive` - Red text link
+**Destructive Group:**
+- primary-destructive
+- secondary-destructive
+- tertiary-destructive
+- link-destructive
 
 ### 3. State Variants
 
-#### Interactive States
-- **Default** - 기본 상태
-- **Hover** - `hover:bg-brand-solid_hover`
-- **Disabled** - `disabled:bg-disabled` + `cursor-not-allowed`
-- **Loading** - Spinning icon + `data-loading` attribute
+- Default
+- Hover
+- Disabled
+- Loading
+- Icon Leading
+- Icon Trailing
+- Icon Only
 
-#### Icon States
-- **Icon Leading** - `iconLeading` prop
-- **Icon Trailing** - `iconTrailing` prop
-- **Icon Only** - Icon without text (`data-icon-only`)
+### 4. Interactive Controls
 
-### 4. Link vs Button Behavior
-- **Button** - `<button>` element, `type="button"`
-- **Link** - `<a>` element, `href` prop 제공 시 자동 전환
+- Storybook Controls로 모든 props 조작 가능
+- Args 기반 스토리 구성
+
+---
+
+## ⚙️ 기술 요구사항
+
+- TypeScript strict mode 준수
+- React Aria Components 통합 검증
+- Untitled UI 디자인 토큰 활용 (--color-brand-*, --font-*, etc.)
+- 접근성 (a11y) 검증 포함
 
 ---
 
