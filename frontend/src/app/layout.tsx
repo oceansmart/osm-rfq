@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import ReactQueryProvider from "@/commons/providers/react-query/react-query.provider";
+import NextThemesProvider from "@/commons/providers/next-themes/next-themes.provider";
+import ModalProvider from "@/commons/providers/modal/modal.provider";
 
 export const metadata: Metadata = {
   title: "OSM RFQ Frontend",
@@ -13,7 +16,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body>
+        <ReactQueryProvider>
+          <NextThemesProvider>
+            <ModalProvider>
+              {children}
+            </ModalProvider>
+          </NextThemesProvider>
+        </ReactQueryProvider>
+      </body>
     </html>
   );
 }
