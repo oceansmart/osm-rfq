@@ -1341,10 +1341,16 @@
    Mapping:
    - OSM brand.600 (#6941c6) → --color-brand-600 (Primary brand color)
    - OSM brand.700 (#53389e) → --color-brand-700 (Hover state)
+   - DM Sans → --font-display (Display/Headline text)
+   - Poppins → --font-body (Body text and UI elements)
    ============================================================================ */
 
 @theme {
     /* OSM Primary Brand Colors */
     --color-brand-600: rgb(105 65 198);  /* OSM brand.600 = #6941c6 */
     --color-brand-700: rgb(83 56 158);   /* OSM brand.700 = #53389e */
+
+    /* OSM Typography - Font Families */
+    --font-display: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
