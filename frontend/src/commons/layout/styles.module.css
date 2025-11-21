@@ -1,0 +1,50 @@
+/*
+ * Layout Wireframe - Hybrid Architecture (CSS Modules)
+ * Version: 1.1.0
+ * Figma Channel: 0cy4goa3
+ * Architecture: CSS Modules for Layout Layer
+ */
+
+/* Layout Container: Full viewport with Flexbox column */
+.layout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Header: 1640 * 64 (Figma Node: 157:9253) */
+.header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1640px;
+  height: 64px;
+  margin: 0 auto;
+}
+
+/* Content Wrapper: Sidebar + Main Content */
+.contentWrapper {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  max-width: 1640px;
+  margin: 0 auto;
+}
+
+/* Sidebar: 280 * 1079 (Figma Node: 157:9252) */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  min-height: 1079px;
+  flex-shrink: 0;
+}
+
+/* Main Content: 1640 * auto (Figma Node: 157:9648) */
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 100%;
+}

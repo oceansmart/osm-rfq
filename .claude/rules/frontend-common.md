@@ -2,6 +2,38 @@
 
 > OSM RFQ 프론트엔드 개발 공통 규칙
 > 아래의 조건 및 주의사항을 모두 적용하여 코드를 작성할 것.
+>
+> **Version**: 1.1.0
+> **Last Updated**: 2025-11-22
+> **Status**: ✅ Active
+
+---
+
+## 0. CSS 스타일링 방법론 (하이브리드 아키텍처)
+
+OSM RFQ 프로젝트는 **레이어별로 최적화된 CSS 방법론**을 사용합니다:
+
+### Layout & Page 레이어 → CSS Modules (PRIMARY)
+
+**적용 대상:**
+- `commons/layout/` - 전체 레이아웃 구조
+- `app/**/page.tsx` - 페이지 컴포넌트
+- 복수 프레임으로 구성된 섹션
+
+**이유:** 구조적 명확성, Flexbox 중첩 구조 표현, 정확한 픽셀 수치 반영
+
+### Component 레이어 → Tailwind CSS (PRIMARY)
+
+**적용 대상:**
+- `commons/components/**` - 공통 컴포넌트 (Button, Input, Badge 등)
+- 재사용 가능한 UI 조각
+- Variant 기반 동적 스타일링
+
+**이유:** 기존 50+ 컴포넌트 유지, Variant 기반 스타일링, 빠른 프로토타이핑
+
+### 상세 규칙
+
+자세한 내용은 [@.claude/rules/osm-css-styling-rules.md](osm-css-styling-rules.md)를 참조하세요.
 
 ---
 
@@ -107,5 +139,6 @@ Step 4: 승인 후 수정
 ---
 
 **작성일**: 2025-11-18
-**버전**: 1.0.0
+**버전**: 1.1.0 (하이브리드 아키텍처 반영)
+**최종 수정**: 2025-11-22
 **기반**: Reference challenge-02/01-common.mdc

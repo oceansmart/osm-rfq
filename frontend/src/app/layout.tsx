@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import ReactQueryProvider from "@/commons/providers/react-query/react-query.provider";
 import NextThemesProvider from "@/commons/providers/next-themes/next-themes.provider";
 import ModalProvider from "@/commons/providers/modal/modal.provider";
+import Layout from "@/commons/layout";
 
 export const metadata: Metadata = {
   title: "OSM RFQ Frontend",
@@ -20,7 +21,9 @@ export default function RootLayout({
         <ReactQueryProvider>
           <NextThemesProvider>
             <ModalProvider>
-              {children}
+              <Layout>
+                {children}
+              </Layout>
             </ModalProvider>
           </NextThemesProvider>
         </ReactQueryProvider>
