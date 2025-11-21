@@ -59,22 +59,25 @@ osm-rfq/
 ```
 src/
 ├── app/                # Next.js App Router 페이지
-├── components/         # Feature-specific 컴포넌트
-├── commons/            # 공통 리소스
+├── commons/            # 공통 리소스 (통합됨)
 │   ├── components/     # 재사용 가능한 공통 컴포넌트
 │   ├── constants/      # 상수 정의
 │   ├── hooks/          # 커스텀 훅
 │   ├── providers/      # Context Providers
-│   ├── utils/          # 유틸리티 함수
-│   ├── types/          # TypeScript 타입
-│   └── layout/         # 레이아웃 컴포넌트
-└── lib/                # 외부 라이브러리 래퍼
+│   └── utils/          # 유틸리티 함수
+└── styles/             # 글로벌 스타일
 ```
 
 **규칙:**
+
 - 단수형보다 **복수형** 선호 (`component` ❌ → `components` ✅)
 - kebab-case 사용 (`userProfile` ❌ → `user-profile` ✅)
 - 영문 소문자만 사용
+- **모든 공통 코드는 `src/commons/` 하위에 배치**
+  - ✅ `src/commons/hooks/use-breakpoint.ts`
+  - ✅ `src/commons/utils/cx.ts`
+  - ❌ `src/hooks/` (삭제됨)
+  - ❌ `src/utils/` (삭제됨)
 
 ---
 
@@ -88,59 +91,79 @@ commons/components/
 ├── button/
 │   ├── index.tsx              # 컴포넌트 구현
 │   ├── index.stories.tsx      # Storybook 스토리
-│   ├── index.types.ts         # 타입 정의
-│   └── index.styles.ts        # 스타일 (CSS-in-JS 사용 시)
-├── input/
-│   └── index.tsx
-└── modal/
+│   └── prompts/               # AI 가이드 (선택)
+│       └── button.stories.md
+├── pagination/
+│   ├── index.tsx
+│   ├── index.stories.tsx
+│   └── prompts/
+│       └── pagination.stories.md
+└── input/
     └── index.tsx
 ```
 
 **규칙:**
-- 디렉토리명: **kebab-case** (`user-card`, `rfq-list`)
+
+- 디렉토리명: **kebab-case** (`user-card`, `rfq-list`, `button-group`)
 - 파일명: **index.tsx** (디렉토리 기반 구조)
 - Stories: `index.stories.tsx`
-- Types: `index.types.ts` (복잡한 타입 분리 시)
+- Prompts: `prompts/[component-name].stories.md` (AI 가이드)
 
-#### Feature Components
-```
-components/
-├── rfq-list/
-│   ├── index.tsx
-│   ├── hooks/
-│   │   ├── index.binding.hook.ts      # 데이터 바인딩
-│   │   ├── index.pagination.hook.ts   # 페이지네이션
-│   │   └── index.filter.hook.ts       # 필터링
-│   └── tests/
-│       ├── index.binding.hook.spec.ts
-│       └── index.filter.hook.spec.ts
-├── rfq-detail/
-│   └── index.tsx
-└── bidding-draft/
-    └── index.tsx
+#### Feature Components (향후 사용)
+
+```plaintext
+src/app/rfq/
+├── page.tsx                    # RFQ 목록 페이지
+├── [id]/
+│   └── page.tsx                # RFQ 상세 페이지
+└── components/                 # 페이지별 컴포넌트
+    ├── rfq-filter.tsx
+    └── rfq-table.tsx
 ```
 
 **규칙:**
-- Feature 디렉토리: **kebab-case**
-- Hook 파일: `index.[purpose].hook.ts`
-- Test 파일: `index.[purpose].hook.spec.ts`
+
+- Feature 컴포넌트는 App Router 디렉토리 내부에 배치
+- 재사용 가능하면 `commons/components/`로 이동
 
 ### 2. Hook 파일 네이밍
 
-```typescript
-// ✅ 올바른 Hook 네이밍
-hooks/
+#### 현재 프로젝트 표준
+
+```plaintext
+// ✅ 올바른 Hook 네이밍 (현재 사용 중)
+commons/hooks/
+└── use-breakpoint.ts             // Tailwind breakpoint 감지
+
+// ✅ 향후 Hook 추가 시 패턴
+commons/hooks/
+├── use-breakpoint.ts
+├── use-pagination.ts             // 페이지네이션
+├── use-filter.ts                 // 필터링
+└── use-auth.ts                   // 인증
+```
+
+#### Feature별 Hook (참고용 - 현재 미사용)
+
+```plaintext
+// 📝 Reference 프로젝트 패턴 (향후 필요시 참고)
+src/app/rfq/hooks/
 ├── index.binding.hook.ts         // 데이터 바인딩
 ├── index.pagination.hook.ts      // 페이지네이션
-├── index.filter.hook.ts          // 필터링
-├── index.search.hook.ts          // 검색
-├── index.link.routing.hook.ts    // 라우팅
-├── index.link.modal.hook.ts      // 모달 연동
-└── index.auth.hook.ts            // 인증
+└── index.filter.hook.ts          // 필터링
+```
 
+**규칙:**
+
+- **공통 Hook**: `commons/hooks/use-[purpose].ts`
+- **Feature Hook** (향후): `src/app/[feature]/hooks/index.[purpose].hook.ts`
+- 파일명에 `use-` prefix 필수 (공통 Hook)
+- 함수명에도 `use` prefix 필수 (예: `useBreakpoint`)
+
+```typescript
 // ❌ 잘못된 Hook 네이밍
-useRfqList.ts                     // 'use' prefix 파일명 사용 금지
-rfqListHook.ts                    // 명확한 목적 없음
+useRfqList.ts                     // camelCase 파일명 금지
+rfqListHook.ts                    // 'use-' prefix 없음
 hooks.ts                          // 너무 일반적
 ```
 
@@ -192,53 +215,104 @@ components/rfq-list/index.stories.tsx
 └── manager.ts
 ```
 
-### 5. Constants 파일 네이밍
+### 5. Utils 파일 네이밍
+
+**현재 프로젝트 표준:**
+
+```plaintext
+// ✅ 올바른 Utils 네이밍 (현재 사용 중)
+commons/utils/
+├── cx.ts                      # Tailwind class merging (clsx + tw-merge)
+├── is-react-component.ts      # React component 타입 체크
+└── index.ts                   # 재export
+
+// ✅ 향후 Utils 추가 시 패턴
+commons/utils/
+├── cx.ts
+├── is-react-component.ts
+├── format-date.ts             # 날짜 포맷팅
+├── parse-currency.ts          # 통화 파싱
+└── validate-email.ts          # 이메일 검증
+```
+
+**규칙:**
+
+- 파일명: **kebab-case** (`format-date.ts`, `parse-currency.ts`)
+- 함수명: **camelCase** (`formatDate`, `parseCurrency`)
+- 단일 목적 함수는 파일명과 동일한 함수명 사용
+- 여러 관련 함수는 하나의 파일에 그룹화
 
 ```typescript
-// ✅ 올바른 Constants 네이밍
+// ✅ 올바른 Utils 파일 구조
+// commons/utils/cx.ts
+export function cx(...inputs: ClassValue[]) { ... }
+export function sortCx<T>(...) { ... }
+
+// ❌ 잘못된 Utils 네이밍
+CX.ts                     // 대문자 파일명 금지
+cx-utils.ts               // 불필요한 접미사
+utils.ts                  // 너무 일반적
+```
+
+### 6. Constants 파일 네이밍
+
+**현재 프로젝트 표준:**
+
+```plaintext
+// ✅ 올바른 Constants 네이밍 (현재 사용 중)
 commons/constants/
 ├── color.ts              // Design Token - Color
 ├── typography.ts         // Design Token - Typography
 ├── spacing.ts            // Design Token - Spacing
 ├── radius.ts             // Design Token - Radius
 ├── widths.ts             // Design Token - Widths
-├── containers.ts         // Design Token - Containers
-├── enum.ts               // Enum 상수
-├── url.ts                // URL/Route 상수
-└── prompts/
-    ├── prompt.101.color.md
-    ├── prompt.102.typography.md
-    └── prompt.103.radius.md
+├── containers.ts         // Design Token - Containers (타입 정의)
+└── prompts/              # AI 가이드
+    ├── color.md
+    ├── typography.md
+    └── spacing.md
+```
 
+**규칙:**
+
+- 파일명: **kebab-case** (단수형: `color.ts`, `spacing.ts`)
+- Design Token은 Figma 네이밍 유지 (camelCase 객체)
+- Enum 상수는 별도 파일로 분리
+
+```typescript
 // ❌ 잘못된 Constants 네이밍
 COLOR_CONSTANTS.ts        // 대문자 사용 금지
 colorConstants.ts         // camelCase 금지
 color-constants.ts        // 불필요한 접미사
 ```
 
-### 6. Provider 파일 네이밍
+### 7. Provider 파일 네이밍
 
-```typescript
-// ✅ Provider 네이밍 패턴
+**현재 프로젝트 표준:**
+
+```plaintext
+// ✅ 올바른 Provider 네이밍 (현재 사용 중)
 commons/providers/
-├── auth/
-│   ├── auth.provider.tsx       // Provider 구현
-│   ├── auth.guard.tsx          // Guard 구현
-│   └── auth.guard.hook.tsx     // Guard Hook
 ├── modal/
-│   └── modal.provider.tsx
+│   └── index.tsx               # Modal Provider
 ├── react-query/
-│   └── react-query.provider.tsx
+│   └── index.tsx               # React Query Provider
 └── next-themes/
-    └── next-themes.provider.tsx
+    └── index.tsx               # Theme Provider
+
+// 📝 Reference 프로젝트 패턴 (향후 필요시 참고)
+commons/providers/auth/
+├── auth.provider.tsx           # Provider 구현
+├── auth.guard.tsx              # Guard 구현
+└── auth.guard.hook.tsx         # Guard Hook
 ```
 
 **규칙:**
-- Provider 파일: `[name].provider.tsx`
-- Guard 파일: `[name].guard.tsx`
-- Guard Hook: `[name].guard.hook.tsx`
 
-### 7. API/Service 파일 네이밍
+- 현재: 각 Provider는 디렉토리별로 `index.tsx`
+- 향후 복잡한 Provider: `[name].provider.tsx`, `[name].guard.tsx` 패턴 사용 가능
+
+### 8. API/Service 파일 네이밍
 
 ```typescript
 // ✅ API 관련 파일 네이밍

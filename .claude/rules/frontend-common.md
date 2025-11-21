@@ -38,8 +38,9 @@
 **주요 규칙:**
 - 디렉토리: kebab-case (`rfq-list`, `bidding-draft`)
 - 컴포넌트 파일: `index.tsx` (디렉토리 기반)
-- Hook 파일: `index.[purpose].hook.ts` (예: `index.binding.hook.ts`)
-- Test 파일: `index.[purpose].spec.ts`
+- Hook 파일: `use-[purpose].ts` (예: `use-breakpoint.ts`)
+  - **주의**: `index.[purpose].hook.ts` 형식은 현재 사용하지 않음
+- Test 파일: `index.spec.ts` 또는 `[name].spec.ts`
 - 변수/함수: camelCase (`rfqList`, `getRfqById`)
 - 타입/인터페이스: PascalCase (`RfqItem`, `RfqStatus`)
 - 컴포넌트: PascalCase (`RfqList`, `BiddingDraft`)
