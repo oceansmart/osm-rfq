@@ -1,9 +1,9 @@
 # Layout Wireframe Implementation Guide
 
-> **Version**: 1.1.0
+> **Version**: 1.3.0
 > **Last Updated**: 2025-11-22
-> **Figma Channel**: 0cy4goa3
-> **Architecture**: Hybrid (CSS Modules for Layout)
+> **Figma Channel**: xpin8e0d
+> **Architecture**: Tailwind CSS Only (Due to @theme compatibility)
 
 아래의 조건을 모두 적용하여, 아래의 요구사항을 모두 구현할 것.
 구현 결과를 체크리스트로 반환할 것.
@@ -22,7 +22,8 @@
 ## 조건-파일경로
 
 - **구현될 TSX 파일경로**: `frontend/src/commons/layout/index.tsx`
-- **구현될 CSS 파일경로**: `frontend/src/commons/layout/styles.module.css`
+- **구현될 CSS 파일경로**: ~~`frontend/src/commons/layout/styles.module.css`~~ (v1.2.0부터 사용 안 함)
+- **스타일링 방식**: Tailwind CSS 인라인 클래스
 
 ---
 
@@ -38,9 +39,13 @@
 
 HTML과 flexbox를 활용한 와이어프레임 구조만 만들어낼 것.
 
-- **CSS Modules 사용 (PRIMARY)**
-- **Tailwind CSS는 보조적으로만 사용 (SECONDARY)**
+- **Tailwind CSS 사용 (PRIMARY)** ⚠️ Architecture Change (v1.2.0)
+- **CSS Modules 사용 불가** (Tailwind v4 @theme 블록과 비호환)
 - **position: absolute 절대 금지 (Flexbox만 사용)**
+
+**Architecture Change 사유:**
+- Tailwind CSS v4의 `@theme` 지시자는 CSS Modules에서 CSS Variables 접근 불가
+- Design Tokens (theme.css)를 사용하려면 Tailwind CSS 필수
 
 ### 3. 영역별 수치값 (Figma 노드 기반)
 
@@ -48,11 +53,11 @@ HTML과 flexbox를 활용한 와이어프레임 구조만 만들어낼 것.
 
 | Figma 노드 ID | 영역 이름 | 수치값 (width * height) | 설명 |
 |--------------|----------|------------------------|------|
-| 157:9253 | Header | 1640 * 64 | 상단 헤더 영역 |
+| 166:9842 | Header | 1640 * 64 | 상단 헤더 영역 |
 | 157:9648 | Main Content | 1640 * auto | 메인 콘텐츠 (children) |
 | 157:9252 | Sidebar | 280 * 1079 | 좌측 사이드바 |
 
-**Figma Channel**: 0cy4goa3
+**Figma Channel**: xpin8e0d
 
 **레이아웃 구조:**
 ```
@@ -70,12 +75,12 @@ HTML과 flexbox를 활용한 와이어프레임 구조만 만들어낼 것.
 
 ## 필수 준수사항
 
-### 1. CSS Modules 규칙
+### 1. ~~CSS Modules 규칙~~ Tailwind CSS 규칙 (v1.2.0)
 
-- **파일명**: `styles.module.css` (필수)
-- **클래스명**: camelCase (예: `.header`, `.logoText`, `.tabContainer`)
-- **BEM 표기법 금지** (예: `.layout__header` ❌)
-- **kebab-case 금지** (예: `.layout-header` ❌)
+- **스타일링**: Tailwind CSS 인라인 클래스 사용
+- **Design Tokens**: `@theme` 블록 변수 활용 (예: `bg-white`, `border-border-primary`)
+- **Arbitrary Values**: CSS Variables 직접 사용 (예: `px-[var(--spacing-lg)]`)
+- **금지 사항**: CSS Modules 사용 금지 (@theme 비호환)
 
 ### 2. CSS 절대 금지 사항
 
@@ -94,11 +99,13 @@ HTML과 flexbox를 활용한 와이어프레임 구조만 만들어낼 것.
 ### 4. TypeScript 규칙
 
 ```typescript
-import styles from './styles.module.css'
+// CSS Modules import 제거 (v1.2.0)
+// Tailwind CSS 인라인 클래스 사용
 ```
 
 - `data-testid` 속성 추가 (테스트 가능성)
 - `interface` 정의 (LayoutProps)
+- `className` prop으로 Tailwind 클래스 전달
 
 ### 5. 네이밍 규칙 (OSM 표준)
 
@@ -119,25 +126,25 @@ import styles from './styles.module.css'
 - [ ] 폴더/라우터 구조 분석 완료
 - [ ] HTML/CSS 레이아웃 뼈대 분석 완료
 
-### CSS Modules 작성
+### Tailwind CSS 스타일링 (v1.2.0)
 
-- [ ] styles.module.css 파일명 사용
-- [ ] camelCase 클래스명 사용
+- [ ] Tailwind CSS 인라인 클래스 사용
+- [ ] @theme 블록 Design Tokens 활용
 - [ ] Flexbox 레이아웃 구현
-- [ ] :global, :root, !important 미사용
 - [ ] position: absolute 미사용
+- [ ] Arbitrary values로 CSS Variables 사용 (예: `px-[var(--spacing-lg)]`)
 - [ ] 주석으로 영역 설명 추가
 
 ### TypeScript 컴포넌트 작성
 
-- [ ] import styles from './styles.module.css'
+- [ ] CSS Modules import 제거
 - [ ] data-testid 속성 추가
 - [ ] LayoutProps 인터페이스 정의
 - [ ] children prop 처리
 
 ### 레이아웃 구조
 
-- [ ] Header: 1640 * 64 반영 (Figma Node: 157:9253)
+- [ ] Header: 1640 * 64 반영 (Figma Node: 166:9842)
 - [ ] Sidebar: 280 * 1079 반영 (Figma Node: 157:9252)
 - [ ] Main Content: 1640 * auto 반영 (Figma Node: 157:9648)
 - [ ] Flexbox 부모-자식 관계 명확히 구현
