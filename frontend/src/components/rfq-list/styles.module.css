@@ -1,0 +1,373 @@
+/* RFQ List Wireframe Styles */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Gap 1: 2px */
+.gap1 {
+  width: 100%;
+  max-width: 1609px;
+  height: var(--spacing-xxs);
+}
+
+/* Title Area: 1609px * 72px */
+.title {
+  width: 100%;
+  max-width: 1609px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 0 var(--spacing-xl);
+  background-color: var(--color-white);
+}
+
+/* Title Container: 320x32px */
+.titleContainer {
+  width: 320px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.titleText {
+  font-family: var(--font-display);
+  font-size: var(--text-display-xs);
+  font-weight: 600;
+  line-height: var(--text-display-xs--line-height);
+  color: rgb(24 29 39);
+  margin: 0;
+}
+
+.supportingText {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  font-weight: 400;
+  line-height: var(--text-md--line-height);
+  color: rgb(83 88 98);
+  margin: 0;
+  display: none;
+}
+
+/* Input with label: 410x40px */
+.inputWithLabel {
+  width: 410px;
+  height: 40px;
+  position: relative;
+}
+
+.labelWrapper {
+  display: none;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  line-height: var(--text-sm--line-height);
+  color: rgb(65 70 81);
+}
+
+.asterisk {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  line-height: var(--text-sm--line-height);
+  color: rgb(71 77 105);
+}
+
+.helpIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.inputBox {
+  width: 410px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+  padding: 0 var(--spacing-lg);
+  background-color: var(--color-white);
+  border: 1px solid rgb(213 215 218);
+  border-radius: var(--radius-md);
+}
+
+.inputContent {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex: 1;
+}
+
+.searchIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.inputText {
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  font-weight: 400;
+  line-height: var(--text-md--line-height);
+  color: rgb(113 118 128);
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.inputText::placeholder {
+  color: rgb(113 118 128);
+}
+
+.shortcutWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1px 4px;
+  border: 1px solid rgb(233 234 235);
+  border-radius: 4px;
+  height: 20px;
+}
+
+.shortcut {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  line-height: var(--text-xs--line-height);
+  color: rgb(113 118 128);
+}
+
+/* Filters: 410x40px */
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+}
+
+.dropdown {
+  width: 200px;
+  height: 40px;
+}
+
+.dropdownButton {
+  width: 200px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing-sm) 0 var(--spacing-sm);
+  background-color: var(--color-white);
+  border: 1px solid rgb(213 215 218);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.dropdownButton:hover {
+  border-color: rgb(181 183 187);
+}
+
+.dropdownText {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  line-height: var(--text-sm--line-height);
+  color: rgb(65 70 81);
+  margin-left: var(--spacing-md);
+}
+
+.dropdownIcon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Actions: 407x36px */
+.actions {
+  width: 407px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-lg);
+}
+
+.searchButton {
+  width: 119px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  padding: 0 var(--spacing-lg);
+  background-color: rgb(25 32 68);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.searchButton:hover {
+  background-color: rgb(20 26 54);
+}
+
+.downloadButton {
+  width: 124px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  padding: 0 var(--spacing-lg);
+  background-color: var(--color-white);
+  border: 1px solid rgb(213 215 218);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.downloadButton:hover {
+  border-color: rgb(181 183 187);
+}
+
+.excelIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.buttonText {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  line-height: var(--text-sm--line-height);
+}
+
+.searchButton .buttonText {
+  color: var(--color-white);
+}
+
+.downloadButton .buttonText {
+  color: rgb(65 70 81);
+}
+
+/* Gap 2: 15px */
+.gap2 {
+  width: 100%;
+  max-width: 1609px;
+  height: 15px;
+}
+
+/* Horizontal Tabs: 540px * 36px */
+.horizontalTabs {
+  width: 100%;
+  max-width: 540px;
+  height: 36px;
+  align-self: flex-start;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background-color: var(--color-white);
+}
+
+/* Tab Button Base */
+.tabButton {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--spacing-lg);
+  background-color: transparent;
+  border: 1px solid rgb(213 215 218);
+  border-right: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tabButton:last-child {
+  border-right: 1px solid rgb(213 215 218);
+}
+
+/* Tab Button Active State */
+.tabButtonActive {
+  background-color: rgb(206 239 241);
+  border-color: rgb(213 215 218);
+}
+
+.tabButtonActive:hover {
+  background-color: rgb(196 229 231);
+}
+
+.tabButton:hover {
+  background-color: rgb(249 250 251);
+}
+
+/* Tab Text */
+.tabText {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  line-height: var(--text-sm--line-height);
+  color: rgb(113 118 128);
+  white-space: nowrap;
+}
+
+.tabButtonActive .tabText {
+  color: rgb(48 54 87);
+}
+
+/* Gap 3: 16px */
+.gap3 {
+  width: 100%;
+  max-width: 1609px;
+  height: var(--spacing-xl);
+}
+
+/* Table Area: 1591px * 764px */
+.table {
+  width: 100%;
+  max-width: 1591px;
+  height: 764px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(250 250 250);
+  border: 1px solid rgb(229 229 229);
+}
+
+/* Gap 4: 16px */
+.gap4 {
+  width: 100%;
+  max-width: 1591px;
+  height: var(--spacing-xl);
+}
+
+/* Pagination Area: 1600px * 68px */
+.pagination {
+  width: 100%;
+  max-width: 1600px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(245 245 245);
+}
