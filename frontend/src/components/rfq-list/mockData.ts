@@ -16,12 +16,12 @@ export const mockRfqData: RfqItem[] = [
     status: 'NEW',
     assignedTo: {
       name: 'Olivia Rhye',
-      email: 'olivia@untitledui.com',
+      email: 'olivia@oceansmart.ai',
       avatar: '/icons/rfq-list/avatar.svg',
     },
     contactPerson: {
       name: 'Olivia Rhye',
-      email: 'olivia@untitledui.com',
+      email: 'olivia@oceansmart.ai',
     },
   },
   {
@@ -34,12 +34,12 @@ export const mockRfqData: RfqItem[] = [
     status: 'IN_PROGRESS',
     assignedTo: {
       name: 'Phoenix Baker',
-      email: 'phoenix@untitledui.com',
+      email: 'phoenix@oceansmart.ai',
       avatar: '/icons/rfq-list/avatar-1.svg',
     },
     contactPerson: {
       name: 'Lana Steiner',
-      email: 'lana@untitledui.com',
+      email: 'lana@oceansmart.ai',
     },
   },
   {
@@ -52,12 +52,12 @@ export const mockRfqData: RfqItem[] = [
     status: 'PENDING',
     assignedTo: {
       name: 'Candice Wu',
-      email: 'candice@untitledui.com',
+      email: 'candice@oceansmart.ai',
       avatar: '/icons/rfq-list/avatar-2.svg',
     },
     contactPerson: {
       name: 'Natali Craig',
-      email: 'natali@untitledui.com',
+      email: 'natali@oceansmart.ai',
     },
   },
   {
@@ -70,12 +70,12 @@ export const mockRfqData: RfqItem[] = [
     status: 'COMPLETED',
     assignedTo: {
       name: 'Drew Cano',
-      email: 'drew@untitledui.com',
+      email: 'drew@oceansmart.ai',
       avatar: '/icons/rfq-list/avatar-3.svg',
     },
     contactPerson: {
       name: 'Orlando Diggs',
-      email: 'orlando@untitledui.com',
+      email: 'orlando@oceansmart.ai',
     },
   },
   {
@@ -88,12 +88,12 @@ export const mockRfqData: RfqItem[] = [
     status: 'NEW',
     assignedTo: {
       name: 'Kate Morrison',
-      email: 'kate@untitledui.com',
+      email: 'kate@oceansmart.ai',
       avatar: '/icons/rfq-list/avatar-4.svg',
     },
     contactPerson: {
       name: 'Andi Lane',
-      email: 'andi@untitledui.com',
+      email: 'andi@oceansmart.ai',
     },
   },
   {
@@ -106,11 +106,11 @@ export const mockRfqData: RfqItem[] = [
     status: 'IN_PROGRESS',
     assignedTo: {
       name: 'Koray Okumus',
-      email: 'koray@untitledui.com',
+      email: 'koray@oceansmart.ai',
     },
     contactPerson: {
       name: 'Drew Cano',
-      email: 'drew@untitledui.com',
+      email: 'drew@oceansmart.ai',
     },
   },
   {
@@ -123,11 +123,11 @@ export const mockRfqData: RfqItem[] = [
     status: 'PENDING',
     assignedTo: {
       name: 'Alec Whitten',
-      email: 'alec@untitledui.com',
+      email: 'alec@oceansmart.ai',
     },
     contactPerson: {
       name: 'Kate Morrison',
-      email: 'kate@untitledui.com',
+      email: 'kate@oceansmart.ai',
     },
   },
   {
@@ -140,11 +140,11 @@ export const mockRfqData: RfqItem[] = [
     status: 'COMPLETED',
     assignedTo: {
       name: 'Demi Wilkinson',
-      email: 'demi@untitledui.com',
+      email: 'demi@oceansmart.ai',
     },
     contactPerson: {
       name: 'Phoenix Baker',
-      email: 'phoenix@untitledui.com',
+      email: 'phoenix@oceansmart.ai',
     },
   },
   {
@@ -157,11 +157,11 @@ export const mockRfqData: RfqItem[] = [
     status: 'IN_PROGRESS',
     assignedTo: {
       name: 'Orlando Diggs',
-      email: 'orlando@untitledui.com',
+      email: 'orlando@oceansmart.ai',
     },
     contactPerson: {
       name: 'Candice Wu',
-      email: 'candice@untitledui.com',
+      email: 'candice@oceansmart.ai',
     },
   },
   {
@@ -174,11 +174,11 @@ export const mockRfqData: RfqItem[] = [
     status: 'NEW',
     assignedTo: {
       name: 'Natali Craig',
-      email: 'natali@untitledui.com',
+      email: 'natali@oceansmart.ai',
     },
     contactPerson: {
       name: 'Koray Okumus',
-      email: 'koray@untitledui.com',
+      email: 'koray@oceansmart.ai',
     },
   },
 ];

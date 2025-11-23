@@ -21,7 +21,7 @@
 
 ## 조건-Figma
 
-**Figma Channel**: `iv0w5hc4`
+**Figma Channel**: `g7eb9idk`
 
 ### 구현될 컴포넌트 노드 ID
 

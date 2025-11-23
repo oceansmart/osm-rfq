@@ -2,7 +2,7 @@
 
 import type { CSSProperties, FC, HTMLAttributes, ReactNode } from "react";
 import React, { cloneElement, createContext, isValidElement, useCallback, useContext, useEffect, useState } from "react";
-import { ArrowLeft, ArrowRight } from "@untitledui/icons";
+import { ArrowLeft, ArrowRight, ChevronDown } from "@untitledui/icons";
 import { ButtonGroup, ButtonGroupItem } from "@/commons/components/button-group";
 import { Button } from "@/commons/components/button";
 import { useBreakpoint } from "@/commons/hooks/use-breakpoint";
@@ -491,55 +491,68 @@ export const PaginationPageDefault = ({ rounded, page = 1, total = 10, className
             {...props}
             page={page}
             total={total}
-            className={cx("flex w-full items-center justify-between gap-3 border-t border-secondary pt-4 md:pt-5", className)}
+            className={cx(
+                "flex h-[68px] w-full max-w-[1600px] items-center justify-between px-[var(--spacing-3xl)]",
+                className,
+            )}
         >
-            <div className="hidden flex-1 justify-start md:flex">
-                <Pagination.PrevTrigger asChild>
-                    <Button iconLeading={ArrowLeft} color="link-gray" size="sm">
-                        {isDesktop ? "Previous" : undefined}{" "}
-                    </Button>
-                </Pagination.PrevTrigger>
-            </div>
-
-            <Pagination.PrevTrigger asChild className="md:hidden">
-                <Button iconLeading={ArrowLeft} color="secondary" size="sm">
-                    {isDesktop ? "Previous" : undefined}
-                </Button>
+            <Pagination.PrevTrigger
+                className={cx(
+                    "flex h-[36px] w-[113px] items-center justify-center gap-[var(--spacing-md)] rounded-[var(--radius-md)] border border-[var(--color-rfq-ui-borderSecondary)] bg-[var(--color-white)] px-[var(--spacing-lg)] transition-colors duration-200 hover:border-[var(--color-rfq-ui-borderHover)] disabled:cursor-not-allowed disabled:opacity-50",
+                    !isDesktop && "w-auto px-2",
+                )}
+            >
+                <ChevronDown className="h-5 w-5 rotate-90 text-[var(--color-rfq-ui-textTertiary)]" aria-hidden="true" strokeWidth={2} />
+                <span className={cx("font-body text-sm font-semibold text-[var(--color-rfq-ui-textTertiary)]", !isDesktop && "hidden")}>
+                    Previous
+                </span>
             </Pagination.PrevTrigger>
 
             <Pagination.Context>
-                {({ pages, currentPage, total }) => (
-                    <>
-                        <div className="hidden justify-center gap-0.5 md:flex">
-                            {pages.map((page, index) =>
-                                page.type === "page" ? (
-                                    <PaginationItemComponent key={index} rounded={rounded} {...page} />
-                                ) : (
-                                    <Pagination.Ellipsis key={index} className="flex size-10 shrink-0 items-center justify-center text-tertiary">
-                                        &#8230;
-                                    </Pagination.Ellipsis>
-                                ),
-                            )}
-                        </div>
-
-                        <div className="flex justify-center text-sm whitespace-pre text-fg-secondary md:hidden">
-                            Page <span className="font-medium">{currentPage}</span> of <span className="font-medium">{total}</span>
-                        </div>
-                    </>
+                {({ pages }) => (
+                    <div className="flex h-[40px] items-center gap-[2px]">
+                        {pages.map((page, index) =>
+                            page.type === "page" ? (
+                                <Pagination.Item
+                                    key={index}
+                                    {...page}
+                                    className={({ isSelected }) =>
+                                        cx(
+                                            "flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-[var(--radius-md)] border-none bg-transparent transition-colors duration-200 hover:bg-[var(--color-rfq-ui-bgGray100)]",
+                                            isSelected && "bg-[var(--color-rfq-ui-bgGray50)] hover:bg-[var(--color-rfq-ui-bgGray50)]",
+                                        )
+                                    }
+                                >
+                                    <span
+                                        className={cx(
+                                            "font-body text-sm font-medium leading-[20px]",
+                                            page.isCurrent ? "text-[var(--color-rfq-ui-textLabel)]" : "text-[var(--color-rfq-ui-textTertiary)]",
+                                        )}
+                                    >
+                                        {page.value}
+                                    </span>
+                                </Pagination.Item>
+                            ) : (
+                                <Pagination.Ellipsis
+                                    key={index}
+                                    className="flex h-[40px] w-[40px] items-center justify-center rounded-[var(--radius-md)] border-none bg-transparent"
+                                >
+                                    <span className="font-body text-sm font-medium leading-[20px] text-[var(--color-rfq-ui-textTertiary)]">...</span>
+                                </Pagination.Ellipsis>
+                            ),
+                        )}
+                    </div>
                 )}
             </Pagination.Context>
 
-            <div className="hidden flex-1 justify-end md:flex">
-                <Pagination.NextTrigger asChild>
-                    <Button iconTrailing={ArrowRight} color="link-gray" size="sm">
-                        {isDesktop ? "Next" : undefined}
-                    </Button>
-                </Pagination.NextTrigger>
-            </div>
-            <Pagination.NextTrigger asChild className="md:hidden">
-                <Button iconTrailing={ArrowRight} color="secondary" size="sm">
-                    {isDesktop ? "Next" : undefined}
-                </Button>
+            <Pagination.NextTrigger
+                className={cx(
+                    "flex h-[36px] w-[84px] items-center justify-center gap-[var(--spacing-md)] rounded-[var(--radius-md)] border border-[var(--color-rfq-ui-borderPrimary)] bg-[var(--color-white)] px-[var(--spacing-lg)] transition-colors duration-200 hover:border-[var(--color-rfq-ui-borderHover)] disabled:cursor-not-allowed disabled:opacity-50",
+                    !isDesktop && "w-auto px-2",
+                )}
+            >
+                <span className={cx("font-body text-sm font-semibold text-[var(--color-rfq-ui-textLabel)]", !isDesktop && "hidden")}>Next</span>
+                <ChevronDown className="h-5 w-5 -rotate-90 text-[var(--color-rfq-ui-textLabel)]" aria-hidden="true" strokeWidth={2} />
             </Pagination.NextTrigger>
         </Pagination.Root>
     );

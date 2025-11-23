@@ -114,9 +114,82 @@ export const radiusTokens = {
   radiusWithUnit,
 } as const;
 
+// ============================================================================
+// 4. CSS VARIABLES GENERATION (Single Source of Truth)
+// ============================================================================
+
+/**
+ * Figma tokens 네이밍을 CSS Variables로 매핑
+ * TypeScript: xl2 → CSS: --radius-2xl
+ */
+const radiusCSSNameMapping: Record<string, string> = {
+  none: 'none',
+  xxs: 'xxs',
+  xs: 'xs',
+  sm: 'sm',
+  md: 'md',
+  lg: 'lg',
+  xl: 'xl',
+  xl2: '2xl',   // TypeScript xl2 → CSS 2xl
+  xl3: '3xl',
+  xl4: '4xl',
+  full: 'full',
+};
+
+/**
+ * Generate CSS Variables for radius tokens
+ * Follows Untitled UI naming convention: --radius-{size}
+ *
+ * @returns Record of CSS variable names and values
+ *
+ * @example
+ * ```typescript
+ * const cssVars = generateRadiusCSS();
+ * // {
+ * //   '--radius-none': '0px',
+ * //   '--radius-md': '8px',
+ * //   '--radius-2xl': '16px',
+ * //   '--radius-full': '9999px',
+ * //   ...
+ * // }
+ * ```
+ */
+export function generateRadiusCSS(): Record<string, string> {
+  const cssVars: Record<string, string> = {};
+
+  // radius 객체를 순회하며 CSS Variables 생성
+  Object.entries(radius).forEach(([key, value]) => {
+    const cssName = radiusCSSNameMapping[key as RadiusSize];
+    cssVars[`--radius-${cssName}`] = `${value}px`;
+  });
+
+  return cssVars;
+}
+
+/**
+ * Generate CSS string for radius tokens
+ * Can be used directly in CSS files or style tags
+ *
+ * @returns CSS string with all radius variables
+ *
+ * @example
+ * ```typescript
+ * const css = generateRadiusCSSString();
+ * // '  --radius-none: 0px;\n  --radius-xxs: 2px;\n  --radius-md: 8px;\n  ...'
+ * ```
+ */
+export function generateRadiusCSSString(): string {
+  const vars = generateRadiusCSS();
+  return Object.entries(vars)
+    .map(([key, value]) => `  ${key}: ${value};`)
+    .join('\n');
+}
+
 // Default export
 export default {
   ...radiusTokens,
   getRadiusInRem,
   createCornerRadius,
+  generateRadiusCSS,
+  generateRadiusCSSString,
 } as const;

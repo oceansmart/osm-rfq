@@ -109,8 +109,12 @@ nav:
           - Figma Collection (Primitive) 가이드: frontend/figma-collection-primitive-guide.md
           - Figma to React 워크플로우: frontend/figma-to-react-optimal-workflow.md
       - Untitled UI:
-          - PRO 컴포넌트 공통화 전략: frontend/untitled-ui-pro-commons-guide.md
           - Foundation 토큰 오버라이드 가이드: frontend/foundation-token-override-guide.md
+          - Component Installer Skill 가이드: frontend/untitledui-component-installer-guide.md
+      - 아이콘 시스템:
+          - 하이브리드 아이콘 관리 시스템: frontend/하이브리드 아이콘 관리 시스템.md
+      - 색상 시스템:
+          - Single Source of Truth: frontend/color-system-single-source.md
       # 향후 구현 예정:
       # - 컴포넌트:
       #     - 개요: frontend/components/index.md

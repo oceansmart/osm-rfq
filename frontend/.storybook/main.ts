@@ -37,6 +37,14 @@ const config: StorybookConfig = {
     }
   },
   "webpackFinal": async (config: any) => {
+    // Configure path alias resolution for @/* imports
+    const path = require('path');
+    config.resolve = config.resolve || {};
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(__dirname, '../src'),
+    };
+
     // Suppress "unable to find package.json" warnings from @untitledui/icons
     config.stats = {
       ...config.stats,

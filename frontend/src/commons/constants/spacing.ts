@@ -215,10 +215,88 @@ export const spacingTokens = {
   presets: spacingPresets,
 } as const;
 
+// ============================================================================
+// 5. CSS VARIABLES GENERATION (Single Source of Truth)
+// ============================================================================
+
+/**
+ * Figma tokens 네이밍을 CSS Variables로 매핑
+ * TypeScript: xl2 → CSS: --spacing-2xl
+ */
+const spacingCSSNameMapping: Record<string, string> = {
+  none: 'none',
+  xxs: 'xxs',
+  xs: 'xs',
+  sm: 'sm',
+  md: 'md',
+  lg: 'lg',
+  xl: 'xl',
+  xl2: '2xl',   // TypeScript xl2 → CSS 2xl
+  xl3: '3xl',
+  xl4: '4xl',
+  xl5: '5xl',
+  xl6: '6xl',
+  xl7: '7xl',
+  xl8: '8xl',
+  xl9: '9xl',
+  xl10: '10xl',
+  xl11: '11xl',
+};
+
+/**
+ * Generate CSS Variables for spacing tokens
+ * Follows Untitled UI naming convention: --spacing-{size}
+ *
+ * @returns Record of CSS variable names and values
+ *
+ * @example
+ * ```typescript
+ * const cssVars = generateSpacingCSS();
+ * // {
+ * //   '--spacing-none': '0px',
+ * //   '--spacing-xl': '16px',
+ * //   '--spacing-2xl': '20px',
+ * //   ...
+ * // }
+ * ```
+ */
+export function generateSpacingCSS(): Record<string, string> {
+  const cssVars: Record<string, string> = {};
+
+  // spacing 객체를 순회하며 CSS Variables 생성
+  Object.entries(spacing).forEach(([key, value]) => {
+    const cssName = spacingCSSNameMapping[key as SpacingSize];
+    cssVars[`--spacing-${cssName}`] = `${value}px`;
+  });
+
+  return cssVars;
+}
+
+/**
+ * Generate CSS string for spacing tokens
+ * Can be used directly in CSS files or style tags
+ *
+ * @returns CSS string with all spacing variables
+ *
+ * @example
+ * ```typescript
+ * const css = generateSpacingCSSString();
+ * // '  --spacing-none: 0px;\n  --spacing-xxs: 2px;\n  --spacing-xl: 16px;\n  ...'
+ * ```
+ */
+export function generateSpacingCSSString(): string {
+  const vars = generateSpacingCSS();
+  return Object.entries(vars)
+    .map(([key, value]) => `  ${key}: ${value};`)
+    .join('\n');
+}
+
 // Default export
 export default {
   ...spacingTokens,
   getSpacingInRem,
   createPadding,
   createMargin,
+  generateSpacingCSS,
+  generateSpacingCSSString,
 } as const;

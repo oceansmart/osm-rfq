@@ -1,6 +1,12 @@
+"use client";
+
 import Image from 'next/image';
 import { SearchLg, HelpCircle, ChevronDown, Check, User01, Trash01, Edit01 } from '@untitledui/icons';
+import { Button } from '@/commons/components/button';
+import { Select, SelectItem } from '@/commons/components/select';
 import { ExcelIcon } from '@/commons/components/icons';
+import { Table } from '@/commons/components/table';
+import { cx } from '@/commons/utils/cx';
 import { mockRfqData } from './mockData';
 import { getStatusText, formatRouteCount } from './utils';
 import styles from './styles.module.css';
@@ -48,33 +54,38 @@ export default function RfqList({ children }: { children?: React.ReactNode }) {
         <div className={styles.filters}>
           {/* Dropdown 1: All Status */}
           <div className={styles.dropdown}>
-            <button className={styles.dropdownButton}>
-              <span className={styles.dropdownText}>All Status</span>
-              <ChevronDown size={20} className={styles.dropdownIcon} />
-            </button>
+            <Select placeholder="All Status" aria-label="Filter by status">
+              <SelectItem id="all">All Status</SelectItem>
+              <SelectItem id="new">New</SelectItem>
+              <SelectItem id="in_progress">In Progress</SelectItem>
+              <SelectItem id="completed">Completed</SelectItem>
+            </Select>
           </div>
 
           {/* Dropdown 2: All Shippers */}
           <div className={styles.dropdown}>
-            <button className={styles.dropdownButton}>
-              <span className={styles.dropdownText}>All Shippers</span>
-              <ChevronDown size={20} className={styles.dropdownIcon} />
-            </button>
+            <Select placeholder="All Shippers" aria-label="Filter by shipper">
+              <SelectItem id="all">All Shippers</SelectItem>
+              <SelectItem id="shipper1">Shipper 1</SelectItem>
+              <SelectItem id="shipper2">Shipper 2</SelectItem>
+            </Select>
           </div>
         </div>
 
         {/* Actions */}
         <div className={styles.actions}>
           {/* Search Button */}
-          <button className={styles.searchButton}>
-            <span className={styles.buttonText}>Search</span>
-          </button>
+          <Button className={styles.searchButton}>
+            Search
+          </Button>
 
           {/* Download Button */}
-          <button className={styles.downloadButton}>
-            <ExcelIcon size={20} className={styles.excelIcon} />
+          <Button
+            className={styles.downloadButton}
+            iconLeading={<ExcelIcon size={20} className={styles.excelIcon} />}
+          >
             <span className={styles.buttonText}>Download</span>
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -104,163 +115,168 @@ export default function RfqList({ children }: { children?: React.ReactNode }) {
       {/* Table */}
       <div className={styles.table}>
         <div className={styles.tableContent}>
-          {/* Header Row */}
-          <div className={styles.tableHeaderRow}>
-            {/* Column: RFQ ID */}
-            <div className={`${styles.tableHeaderCell} ${styles.colRfqId}`}>
-              <div className={styles.headerCheckboxWrapper}>
-                <input type="checkbox" className={styles.checkbox} />
-              </div>
-              <div className={styles.headerLabelWrapper}>
-                <span className={styles.headerText}>RFQ ID</span>
-                <ChevronDown size={12} className={styles.arrowDown} />
-              </div>
-            </div>
-
-            {/* Column: Received Date */}
-            <div className={`${styles.tableHeaderCell} ${styles.colReceivedDate}`}>
-              <span className={styles.headerText}>Rec'd Date</span>
-            </div>
-
-            {/* Column: Deadline */}
-            <div className={`${styles.tableHeaderCell} ${styles.colDeadline}`}>
-              <span className={styles.headerText}>Deadline</span>
-            </div>
-
-            {/* Column: Shipper */}
-            <div className={`${styles.tableHeaderCell} ${styles.colShipper}`}>
-              <span className={styles.headerText}>Shipper</span>
-            </div>
-
-            {/* Column: Route */}
-            <div className={`${styles.tableHeaderCell} ${styles.colRoute}`}>
-              <span className={styles.headerText}>Route</span>
-            </div>
-
-            {/* Column: Status */}
-            <div className={`${styles.tableHeaderCell} ${styles.colStatus}`}>
-              <span className={styles.headerText}>Status</span>
-            </div>
-
-            {/* Column: Assigned To */}
-            <div className={`${styles.tableHeaderCell} ${styles.colAssignedTo}`}>
-              <span className={styles.headerText}>Assigned To</span>
-            </div>
-
-            {/* Column: Contact Person */}
-            <div className={`${styles.tableHeaderCell} ${styles.colContactPerson}`}>
-              <span className={styles.headerText}>Contact Person</span>
-            </div>
-
-            {/* Column: Actions */}
-            <div className={`${styles.tableHeaderCell} ${styles.colActions}`}>
-            </div>
-          </div>
-
-          {/* Data Rows */}
-          {mockRfqData.map((item) => (
-            <div key={item.id} className={styles.tableDataRow}>
-              {/* Cell: RFQ ID */}
-              <div className={`${styles.tableCell} ${styles.colRfqId}`}>
-                <div className={styles.cellCheckboxWrapper}>
+          <Table>
+            {/* Header Row */}
+            <Table.Header className={styles.tableHeaderRow} bordered={false}>
+              {/* Column: RFQ ID */}
+              <Table.Head className={cx(styles.tableHeaderCell, styles.colRfqId)} isRowHeader>
+                <div className={styles.headerCheckboxWrapper}>
                   <input type="checkbox" className={styles.checkbox} />
                 </div>
-                <div className={styles.cellTextWrapper}>
-                  <span className={styles.cellText}>{item.rfqId}</span>
+                <div className={styles.headerLabelWrapper}>
+                  <span className={styles.headerText}>RFQ ID</span>
+                  <ChevronDown size={12} className={styles.arrowDown} />
                 </div>
-              </div>
+              </Table.Head>
 
-              {/* Cell: Received Date */}
-              <div className={`${styles.tableCell} ${styles.colReceivedDate}`}>
-                <div className={styles.cellTextWrapper}>
-                  <span className={styles.supportingCellText}>{item.receivedDate}</span>
-                </div>
-              </div>
+              {/* Column: Received Date */}
+              <Table.Head className={cx(styles.tableHeaderCell, styles.colReceivedDate)}>
+                <span className={styles.headerText}>Rec&apos;d Date</span>
+              </Table.Head>
 
-              {/* Cell: Deadline */}
-              <div className={`${styles.tableCell} ${styles.colDeadline}`}>
-                <div className={styles.cellTextWrapper}>
-                  <span className={styles.supportingCellText}>{item.deadline}</span>
-                </div>
-              </div>
+              {/* Column: Deadline */}
+              <Table.Head className={cx(styles.tableHeaderCell, styles.colDeadline)}>
+                <span className={styles.headerText}>Deadline</span>
+              </Table.Head>
 
-              {/* Cell: Shipper */}
-              <div className={`${styles.tableCell} ${styles.colShipper}`}>
-                <div className={styles.cellTextWrapper}>
-                  <span className={styles.supportingCellText}>{item.shipper}</span>
-                </div>
-              </div>
+              {/* Column: Shipper */}
+              <Table.Head className={cx(styles.tableHeaderCell, styles.colShipper)}>
+                <span className={styles.headerText}>Shipper</span>
+              </Table.Head>
 
-              {/* Cell: Route */}
-              <div className={`${styles.tableCell} ${styles.colRoute}`}>
-                <div className={styles.cellTextWrapper}>
-                  <span className={styles.supportingCellText}>{formatRouteCount(item.routeCount)}</span>
-                </div>
-              </div>
+              {/* Column: Route */}
+              <Table.Head className={cx(styles.tableHeaderCell, styles.colRoute)}>
+                <span className={styles.headerText}>Route</span>
+              </Table.Head>
 
-              {/* Cell: Status */}
-              <div className={`${styles.tableCell} ${styles.colStatus}`}>
-                <div className={`${styles.badge} ${
-                  item.status === 'NEW' ? styles.badgeNew :
-                  item.status === 'IN_PROGRESS' ? styles.badgeInProgress :
-                  item.status === 'PENDING' ? styles.badgePending :
-                  item.status === 'COMPLETED' ? styles.badgeCompleted :
-                  ''
-                }`}>
-                  <Check size={12} className={styles.badgeIcon} />
-                  <span className={styles.badgeText}>{getStatusText(item.status)}</span>
-                </div>
-              </div>
+              {/* Column: Status */}
+              <Table.Head className={cx(styles.tableHeaderCell, styles.colStatus)}>
+                <span className={styles.headerText}>Status</span>
+              </Table.Head>
 
-              {/* Cell: Assigned To */}
-              <div className={`${styles.tableCell} ${styles.colAssignedTo}`}>
-                <div className={styles.avatarTextWrapper}>
-                  <div className={styles.avatar}>
-                    {item.assignedTo.avatar ? (
-                      <Image
-                        src={item.assignedTo.avatar}
-                        alt={item.assignedTo.name}
-                        width={40}
-                        height={40}
-                        className={styles.avatarImage}
-                      />
-                    ) : (
-                      <div className={styles.avatarImagePlaceholder}></div>
-                    )}
-                  </div>
-                  <div className={styles.avatarTextContent}>
-                    <span className={styles.cellText}>{item.assignedTo.name}</span>
-                    <span className={styles.supportingCellText}>{item.assignedTo.email}</span>
-                  </div>
-                </div>
-              </div>
+              {/* Column: Assigned To */}
+              <Table.Head className={cx(styles.tableHeaderCell, styles.colAssignedTo)}>
+                <span className={styles.headerText}>Assigned To</span>
+              </Table.Head>
 
-              {/* Cell: Contact Person */}
-              <div className={`${styles.tableCell} ${styles.colContactPerson}`}>
-                <div className={styles.avatarTextWrapper}>
-                  <div className={styles.avatarPlaceholder}>
-                    <User01 size={24} className={styles.userIcon} />
-                  </div>
-                  <div className={styles.avatarTextContent}>
-                    <span className={styles.cellText}>{item.contactPerson.name}</span>
-                    <span className={styles.supportingCellText}>{item.contactPerson.email}</span>
-                  </div>
-                </div>
-              </div>
+              {/* Column: Contact Person */}
+              <Table.Head className={cx(styles.tableHeaderCell, styles.colContactPerson)}>
+                <span className={styles.headerText}>Contact Person</span>
+              </Table.Head>
 
-              {/* Cell: Actions */}
-              <div className={`${styles.tableCell} ${styles.colActions}`}>
-                <div className={styles.actionButtons}>
-                  <button className={styles.actionButton}>
-                    <Trash01 size={16} className={styles.actionIcon} />
-                  </button>
-                  <button className={styles.actionButton}>
-                    <Edit01 size={16} className={styles.actionIcon} />
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
+              {/* Column: Actions */}
+              <Table.Head className={cx(styles.tableHeaderCell, styles.colActions)}>
+                <span className={styles.headerText}>Actions</span>
+              </Table.Head>
+            </Table.Header>
+
+            {/* Data Rows */}
+            <Table.Body>
+              {mockRfqData.map((item) => (
+                <Table.Row key={item.id} className={styles.tableDataRow}>
+                  {/* Cell: RFQ ID */}
+                  <Table.Cell className={cx(styles.tableCell, styles.colRfqId)}>
+                    <div className={styles.cellCheckboxWrapper}>
+                      <input type="checkbox" className={styles.checkbox} />
+                    </div>
+                    <div className={styles.cellTextWrapper}>
+                      <span className={styles.cellText}>{item.rfqId}</span>
+                    </div>
+                  </Table.Cell>
+
+                  {/* Cell: Received Date */}
+                  <Table.Cell className={cx(styles.tableCell, styles.colReceivedDate)}>
+                    <div className={styles.cellTextWrapper}>
+                      <span className={styles.supportingCellText}>{item.receivedDate}</span>
+                    </div>
+                  </Table.Cell>
+
+                  {/* Cell: Deadline */}
+                  <Table.Cell className={cx(styles.tableCell, styles.colDeadline)}>
+                    <div className={styles.cellTextWrapper}>
+                      <span className={styles.supportingCellText}>{item.deadline}</span>
+                    </div>
+                  </Table.Cell>
+
+                  {/* Cell: Shipper */}
+                  <Table.Cell className={cx(styles.tableCell, styles.colShipper)}>
+                    <div className={styles.cellTextWrapper}>
+                      <span className={styles.supportingCellText}>{item.shipper}</span>
+                    </div>
+                  </Table.Cell>
+
+                  {/* Cell: Route */}
+                  <Table.Cell className={cx(styles.tableCell, styles.colRoute)}>
+                    <div className={styles.cellTextWrapper}>
+                      <span className={styles.supportingCellText}>{formatRouteCount(item.routeCount)}</span>
+                    </div>
+                  </Table.Cell>
+
+                  {/* Cell: Status */}
+                  <Table.Cell className={cx(styles.tableCell, styles.colStatus)}>
+                    <div className={`${styles.badge} ${
+                      item.status === 'NEW' ? styles.badgeNew :
+                      item.status === 'IN_PROGRESS' ? styles.badgeInProgress :
+                      item.status === 'PENDING' ? styles.badgePending :
+                      item.status === 'COMPLETED' ? styles.badgeCompleted :
+                      ''
+                    }`}>
+                      <Check size={12} className={styles.badgeIcon} />
+                      <span className={styles.badgeText}>{getStatusText(item.status)}</span>
+                    </div>
+                  </Table.Cell>
+
+                  {/* Cell: Assigned To */}
+                  <Table.Cell className={cx(styles.tableCell, styles.colAssignedTo)}>
+                    <div className={styles.avatarTextWrapper}>
+                      <div className={styles.avatar}>
+                        {item.assignedTo.avatar ? (
+                          <Image
+                            src={item.assignedTo.avatar}
+                            alt={item.assignedTo.name}
+                            width={40}
+                            height={40}
+                            className={styles.avatarImage}
+                          />
+                        ) : (
+                          <div className={styles.avatarImagePlaceholder}></div>
+                        )}
+                      </div>
+                      <div className={styles.avatarTextContent}>
+                        <span className={styles.cellText}>{item.assignedTo.name}</span>
+                        <span className={styles.supportingCellText}>{item.assignedTo.email}</span>
+                      </div>
+                    </div>
+                  </Table.Cell>
+
+                  {/* Cell: Contact Person */}
+                  <Table.Cell className={cx(styles.tableCell, styles.colContactPerson)}>
+                    <div className={styles.avatarTextWrapper}>
+                      <div className={styles.avatarPlaceholder}>
+                        <User01 size={24} className={styles.userIcon} />
+                      </div>
+                      <div className={styles.avatarTextContent}>
+                        <span className={styles.cellText}>{item.contactPerson.name}</span>
+                        <span className={styles.supportingCellText}>{item.contactPerson.email}</span>
+                      </div>
+                    </div>
+                  </Table.Cell>
+
+                  {/* Cell: Actions */}
+                  <Table.Cell className={cx(styles.tableCell, styles.colActions)}>
+                    <div className={styles.actionButtons}>
+                      <button className={styles.actionButton}>
+                        <Trash01 size={16} className={styles.actionIcon} />
+                      </button>
+                      <button className={styles.actionButton}>
+                        <Edit01 size={16} className={styles.actionIcon} />
+                      </button>
+                    </div>
+                  </Table.Cell>
+                </Table.Row>
+              ))}
+            </Table.Body>
+          </Table>
         </div>
       </div>
 

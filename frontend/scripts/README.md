@@ -1,4 +1,40 @@
-# Mock 일기 데이터 설정 가이드
+# Frontend Build Scripts
+
+이 디렉토리에는 프론트엔드 빌드 자동화 스크립트가 포함되어 있습니다.
+
+---
+
+## 📜 빌드 스크립트
+
+### generate-theme-css.ts
+
+**용도**: [color.ts](../src/commons/constants/color.ts)에서 CSS Variables를 자동 생성하여 [theme.css](../src/styles/theme.css)를 업데이트합니다.
+
+**실행**:
+
+```bash
+# 프로젝트 루트에서
+cd frontend
+npm run generate:theme
+
+# 또는 직접 실행
+tsx scripts/generate-theme-css.ts
+```
+
+**자동 실행**:
+
+```bash
+# build 시 자동 실행됨
+npm run build
+```
+
+**관련 문서**: [색상 시스템 가이드](../../docs/frontend/color-system-single-source.md)
+
+---
+
+## 🧪 테스트 스크립트
+
+### Mock 일기 데이터 설정 가이드
 
 로컬스토리지에 테스트용 일기 데이터를 생성하는 스크립트입니다.
 

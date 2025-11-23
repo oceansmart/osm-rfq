@@ -335,6 +335,114 @@ export const typographyTokens = {
   presets: typographyPresets,
 } as const;
 
+// ============================================================================
+// 8. LETTER SPACING (Display sizes only)
+// ============================================================================
+
+/**
+ * Letter Spacing for Display Sizes (px)
+ * Display sizes (md, lg, xl, 2xl)만 letter spacing 적용
+ */
+export const letterSpacing = {
+  displayMd: -0.72,
+  displayLg: -0.96,
+  displayXl: -1.2,
+  display2xl: -1.44,
+} as const;
+
+// ============================================================================
+// 9. CSS VARIABLES GENERATION (Single Source of Truth)
+// ============================================================================
+
+/**
+ * Font size 네이밍을 CSS Variables로 매핑
+ * TypeScript: textXs, displayXs → CSS: --text-xs, --text-display-xs
+ */
+const fontSizeCSSNameMapping: Record<FontSize, string> = {
+  textXs: 'xs',
+  textSm: 'sm',
+  textMd: 'md',
+  textLg: 'lg',
+  textXl: 'xl',
+  displayXs: 'display-xs',
+  displaySm: 'display-sm',
+  displayMd: 'display-md',
+  displayLg: 'display-lg',
+  displayXl: 'display-xl',
+  display2xl: 'display-2xl',
+};
+
+/**
+ * Generate CSS Variables for typography tokens
+ * Follows Untitled UI naming convention:
+ * - Font families: --font-{family}
+ * - Font sizes: --text-{size}
+ * - Line heights: --text-{size}--line-height
+ * - Letter spacing: --text-display-{size}--letter-spacing
+ *
+ * @returns Record of CSS variable names and values
+ *
+ * @example
+ * ```typescript
+ * const cssVars = generateTypographyCSS();
+ * // {
+ * //   '--font-body': "'Poppins', ...",
+ * //   '--font-display': "'DM Sans', ...",
+ * //   '--text-xs': '12px',
+ * //   '--text-xs--line-height': '18px',
+ * //   '--text-display-md--letter-spacing': '-0.72px',
+ * //   ...
+ * // }
+ * ```
+ */
+export function generateTypographyCSS(): Record<string, string> {
+  const cssVars: Record<string, string> = {};
+
+  // Font families
+  Object.entries(fontFamiliesWithFallback).forEach(([key, value]) => {
+    cssVars[`--font-${key}`] = value;
+  });
+
+  // Font sizes and line heights
+  Object.entries(fontSizes).forEach(([key, value]) => {
+    const cssName = fontSizeCSSNameMapping[key as FontSize];
+    cssVars[`--text-${cssName}`] = `${value}px`;
+
+    // Line height (동일한 키로 접근)
+    const lineHeight = lineHeights[key as FontSize];
+    cssVars[`--text-${cssName}--line-height`] = `${lineHeight}px`;
+  });
+
+  // Letter spacing (display sizes only)
+  Object.entries(letterSpacing).forEach(([key, value]) => {
+    const sizeKey = key
+      .replace('display', 'display-')
+      .toLowerCase() as 'display-md' | 'display-lg' | 'display-xl' | 'display-2xl';
+    cssVars[`--text-${sizeKey}--letter-spacing`] = `${value}px`;
+  });
+
+  return cssVars;
+}
+
+/**
+ * Generate CSS string for typography tokens
+ * Can be used directly in CSS files or style tags
+ *
+ * @returns CSS string with all typography variables
+ *
+ * @example
+ * ```typescript
+ * const css = generateTypographyCSSString();
+ * // '  --font-body: ...\n  --text-xs: 12px;\n  --text-xs--line-height: 18px;\n  ...'
+ * ```
+ */
+export function generateTypographyCSSString(): string {
+  const vars = generateTypographyCSS();
+  return Object.entries(vars)
+    .map(([key, value]) => `  ${key}: ${value};`)
+    .join('\n');
+}
+
 // Default export
 export default {
   ...typographyTokens,
@@ -342,4 +450,7 @@ export default {
   pxToRem,
   getFontSizeInRem,
   getLineHeightInRem,
+  generateTypographyCSS,
+  generateTypographyCSSString,
+  letterSpacing,
 } as const;

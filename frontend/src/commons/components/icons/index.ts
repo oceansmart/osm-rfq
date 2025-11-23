@@ -102,6 +102,31 @@ export { ZoomIn } from '@untitledui/icons';
 export { ZoomOut } from '@untitledui/icons';
 
 /**
+ * ============================================================================
+ * Custom Payment Icons (Input Component Integration)
+ * ============================================================================
+ *
+ * These payment brand icons are custom SVG React components used exclusively
+ * in the Input component for credit card type detection.
+ *
+ * Note: While the hybrid icon system typically uses /public/icons for custom
+ * SVGs, these are kept here as React components for better integration with
+ * the Input component's dynamic icon rendering system.
+ *
+ * Location: src/commons/components/icons/*.tsx
+ * Usage: src/commons/components/input/index.tsx
+ */
+export { default as AmexIcon } from './amex-icon';
+export { default as ApplePayIcon } from './apple-pay-icon';
+export { default as DiscoverIcon } from './discover-icon';
+export { default as ExcelIcon } from './excel-icon';
+export { default as MastercardIcon } from './mastercard-icon';
+export { default as VisaIcon } from './visa-icon';
+export { default as PayPalIcon } from './paypal-icon';
+export { default as StripeIcon } from './stripe-icon';
+export { default as UnionPayIcon } from './union-pay-icon';
+
+/**
  * Icon Component Type
  *
  * All Untitled UI icons follow this structure:

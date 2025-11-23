@@ -149,9 +149,67 @@ export const widthTokens = {
   mediaQueries,
 } as const;
 
+// ============================================================================
+// 5. CSS VARIABLES GENERATION (Single Source of Truth)
+// ============================================================================
+
+/**
+ * Generate CSS Variables for width and breakpoint tokens
+ * Follows Untitled UI naming convention:
+ * - Max widths: --max-width-{size}
+ * - Breakpoints: --breakpoint-{device}
+ *
+ * @returns Record of CSS variable names and values
+ *
+ * @example
+ * ```typescript
+ * const cssVars = generateWidthsCSS();
+ * // {
+ * //   '--max-width-container': '1280px',
+ * //   '--breakpoint-xxs': '320px',
+ * //   '--breakpoint-xs': '600px',
+ * //   ...
+ * // }
+ * ```
+ */
+export function generateWidthsCSS(): Record<string, string> {
+  const cssVars: Record<string, string> = {};
+
+  // Max width container (xl3 = 1280px를 container로 매핑)
+  cssVars['--max-width-container'] = `${widths.xl3}px`;
+
+  // Breakpoints (theme.css에 정의된 것만)
+  // xxs = 320px, xs = 600px (Sonner와 호환)
+  cssVars['--breakpoint-xxs'] = `${breakpoints.mobile}px`; // 320px
+  cssVars['--breakpoint-xs'] = '600px'; // Sonner compatibility
+
+  return cssVars;
+}
+
+/**
+ * Generate CSS string for width and breakpoint tokens
+ * Can be used directly in CSS files or style tags
+ *
+ * @returns CSS string with all width variables
+ *
+ * @example
+ * ```typescript
+ * const css = generateWidthsCSSString();
+ * // '  --max-width-container: 1280px;\n  --breakpoint-xxs: 320px;\n  ...'
+ * ```
+ */
+export function generateWidthsCSSString(): string {
+  const vars = generateWidthsCSS();
+  return Object.entries(vars)
+    .map(([key, value]) => `  ${key}: ${value};`)
+    .join('\n');
+}
+
 // Default export
 export default {
   ...widthTokens,
   createMaxWidth,
   createResponsiveContainer,
+  generateWidthsCSS,
+  generateWidthsCSSString,
 } as const;
