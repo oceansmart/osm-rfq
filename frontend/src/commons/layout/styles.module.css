@@ -1,50 +1,144 @@
-/*
- * Layout Wireframe - Hybrid Architecture (CSS Modules)
- * Version: 1.1.0
- * Figma Channel: 0cy4goa3
- * Architecture: CSS Modules for Layout Layer
- */
+/* ============================================================================
+   LAYOUT CONTAINER
+   ============================================================================ */
 
-/* Layout Container: Full viewport with Flexbox column */
-.layout {
+/* Layout Container - Flexbox 기반 수평 구조 */
+.layoutContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 100%;
   min-height: 100vh;
 }
 
-/* Header: 1640 * 64 (Figma Node: 157:9253) */
-.header {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  max-width: 1640px;
-  height: 64px;
-  margin: 0 auto;
+/* Sidebar - 고정 너비 (Figma 노드: 157:9252) */
+.sidebar {
+  width: 280px;
+  min-width: 280px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  background-color: var(--color-white);
+  border-right: 1px solid var(--color-border-secondary);
 }
 
-/* Content Wrapper: Sidebar + Main Content */
-.contentWrapper {
+/* Main Wrapper - Header와 Content를 포함하는 수직 컨테이너 */
+.mainWrapper {
   display: flex;
+  flex-direction: column;
   flex: 1;
   width: 100%;
   max-width: 1640px;
-  margin: 0 auto;
 }
 
-/* Sidebar: 280 * 1079 (Figma Node: 157:9252) */
-.sidebar {
+/* Main Content - 가변 높이 */
+.mainContent {
+  flex: 1;
+  width: 100%;
+  background-color: var(--color-gray-light-50);
+}
+
+/* ============================================================================
+   HEADER (Figma 노드: 166:9842 - 1640 × 64px)
+   ============================================================================ */
+
+.header {
+  width: 100%;
+  height: 64px;
+  min-height: 64px;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-border-secondary);
+}
+
+.headerInner {
   display: flex;
-  flex-direction: column;
-  width: 280px;
-  min-height: 1079px;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 var(--spacing-xl);
+}
+
+/* Breadcrumbs (Figma: 166:9843 - 493 × 24px) */
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.hamburgerMenu {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--color-text-primary);
+}
+
+.breadcrumbNav {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.breadcrumbItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 15px;
+  line-height: 24px;
+  letter-spacing: -0.4px;
+  color: var(--color-text-tertiary);
+  font-style: italic;
+}
+
+.breadcrumbIcon {
   flex-shrink: 0;
 }
 
-/* Main Content: 1640 * auto (Figma Node: 157:9648) */
-.mainContent {
+.breadcrumbSeparator {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 15px;
+  line-height: 24px;
+  letter-spacing: -0.4px;
+  color: var(--color-text-tertiary);
+}
+
+/* Avatar (Figma: 166:9846 - 32 × 32px) */
+.avatar {
+  width: 32px;
+  height: 32px;
+  position: relative;
+}
+
+.avatarCircle {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-teal-400);
+  border: 2px solid var(--color-white);
+  position: relative;
+}
+
+/* Avatar Icon (User silhouette - 18 × 22px) */
+.avatarIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Avatar Indicator (Figma: 166:9849 - 10 × 10px) */
+.avatarIndicator {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
   display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-height: 100%;
+  align-items: center;
+  justify-content: center;
 }
