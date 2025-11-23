@@ -1,12 +1,16 @@
 /**
- * Color Token System
+ * Color Token System - Single Source of Truth
  *
- * Figma Tokens Studio에서 추출한 Design Tokens
+ * 이 파일은 TypeScript 상수와 CSS Variables를 모두 제공합니다.
  * - Primitive Colors: 39개 팔레트 × 11 shades (25-950)
  * - Semantic Colors: Light/Dark mode 지원
+ * - CSS Variables: 자동 생성 함수 제공
  *
- * @generated from Figma Tokens Studio
- * @version 1.0.0
+ * @usage
+ * TypeScript: import { brand } from '@/commons/constants/color'
+ * CSS: 자동 생성된 theme.css 사용 또는 generateCSSVariables() 호출
+ *
+ * @version 2.0.0
  */
 
 // ============================================================================
@@ -562,6 +566,63 @@ export const grayDarkAlpha = {
   950: '#000000f0',
 } as const;
 
+/**
+ * RFQ (Request for Quotation) UI-Specific Colors
+ * Figma 디자인에서 추출한 RFQ List 컴포넌트 전용 색상
+ * Source: Figma Node 227:60760, Channel 6kxxigzx
+ */
+export const rfqUi = {
+  // Text Colors (from Figma extraction)
+  textMain: '#181d27',           // rgb(24 29 39) - Main text
+  textSupporting: '#535862',     // rgb(83 88 98) - Supporting text
+  textTertiary: '#717680',       // rgb(113 118 128) - Tertiary text / placeholders
+  textLabel: '#414651',          // rgb(65 70 81) - Labels
+  textTabActive: '#303657',      // rgb(48 54 87) - Active tab text
+  textAsterisk: '#474d69',       // rgb(71 77 105) - Asterisk / required indicators
+
+  // Border Colors
+  borderPrimary: '#d5d7da',      // rgb(213 215 218) - Primary borders
+  borderSecondary: '#e9eaeb',    // rgb(233 234 235) - Secondary borders / dividers
+  borderHover: '#b5b7bb',        // rgb(181 183 187) - Hover state borders
+
+  // Background Colors
+  bgWhite: '#ffffff',            // rgb(255 255 255) - Base white
+  bgGray50: '#fafafa',           // rgb(250 250 250) - Table header background
+  bgGray100: '#f9fafb',          // rgb(249 250 251) - Hover backgrounds
+  bgGray200: '#f5f5f5',          // rgb(245 245 245) - Disabled backgrounds
+
+  // Button Colors
+  buttonPrimary: '#192044',      // rgb(25 32 68) - Primary button background
+  buttonPrimaryHover: '#141a36', // rgb(20 26 54) - Primary button hover
+
+  // Badge Colors - NEW Status
+  badgeNewBg: '#ceeff1',         // rgb(206 239 241) - NEW badge background
+  badgeNewBgHover: '#c4e5e7',    // rgb(196 229 231) - NEW badge hover
+  badgeNewBorder: '#abefc6',     // rgb(171 239 198) - NEW badge border (success.200)
+  badgeNewText: '#067647',       // rgb(6 118 71) - NEW badge text (success.700)
+
+  // Badge Colors - IN_PROGRESS Status
+  badgeInProgressBg: '#eff6ff',  // rgb(239 246 255) - IN_PROGRESS background
+  badgeInProgressBorder: '#c2dafe', // rgb(194 218 254) - IN_PROGRESS border
+  badgeInProgressText: '#1570ef',   // rgb(21 112 239) - IN_PROGRESS text
+
+  // Badge Colors - PENDING Status
+  badgePendingBg: '#fffaeb',     // rgb(255 250 235) - PENDING background
+  badgePendingBorder: '#fedf89', // rgb(254 223 137) - PENDING border (warning.200)
+  badgePendingText: '#dc6803',   // rgb(220 104 3) - PENDING text (warning.600)
+
+  // Badge Colors - COMPLETED Status
+  badgeCompletedBg: '#ecfdf3',   // rgb(236 253 243) - COMPLETED background (success.50)
+  badgeCompletedBorder: '#abefc6', // rgb(171 239 198) - COMPLETED border (success.200)
+  badgeCompletedText: '#079455',   // rgb(7 148 85) - COMPLETED text (success.600)
+
+  // Avatar & User Elements
+  avatarPlaceholderBg: '#f5f5f5', // rgb(245 245 245) - Avatar placeholder background
+  avatarPlaceholderBorder: '#e9eaeb', // rgb(233 234 235) - Avatar placeholder border
+  avatarImagePlaceholder: '#cfcbdc',  // rgb(207 203 220) - Avatar image placeholder
+  userIconColor: '#717680',       // rgb(113 118 128) - User icon color
+} as const;
+
 // ============================================================================
 // 2. SEMANTIC COLORS - LIGHT MODE
 // ============================================================================
@@ -1002,6 +1063,7 @@ export const primitiveColors = {
   grayTrue,
   grayWarm,
   grayDarkAlpha,
+  rfqUi,
 } as const;
 
 /**
@@ -1012,10 +1074,132 @@ export const semanticColors = {
   dark: darkMode,
 } as const;
 
+// ============================================================================
+// 6. CSS VARIABLES 생성 유틸리티
+// ============================================================================
+
+/**
+ * Hex 색상을 RGB 형식으로 변환합니다.
+ * @param hex - Hex 색상 코드 (예: '#6941c6')
+ * @returns RGB 문자열 (예: '105 65 198')
+ */
+function hexToRgb(hex: string): string {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  if (!result) return '0 0 0';
+  return `${parseInt(result[1], 16)} ${parseInt(result[2], 16)} ${parseInt(result[3], 16)}`;
+}
+
+/**
+ * camelCase를 kebab-case로 변환합니다.
+ * @param str - camelCase 문자열 (예: 'grayBlue')
+ * @returns kebab-case 문자열 (예: 'gray-blue')
+ */
+function kebabCase(str: string): string {
+  return str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
+}
+
+/**
+ * Primitive Colors를 CSS Variables로 변환합니다.
+ * @returns CSS Variables 객체
+ */
+export function generateCSSVariables(): Record<string, string> {
+  const cssVars: Record<string, string> = {};
+
+  // Base colors
+  cssVars['--color-white'] = `rgb(${hexToRgb(base.white)})`;
+  cssVars['--color-black'] = `rgb(${hexToRgb(base.black)})`;
+  cssVars['--color-transparent'] = 'rgb(0 0 0 / 0)';
+
+  // Primitive color palettes
+  Object.entries(primitiveColors).forEach(([paletteName, palette]) => {
+    if (paletteName === 'base' || paletteName === 'grayDarkAlpha') return;
+
+    const cssName = kebabCase(paletteName);
+    Object.entries(palette).forEach(([shade, color]) => {
+      cssVars[`--color-${cssName}-${shade}`] = `rgb(${hexToRgb(color)})`;
+    });
+  });
+
+  return cssVars;
+}
+
+/**
+ * CSS Variables를 CSS 문자열로 변환합니다.
+ * @returns @theme 블록 내부에 들어갈 CSS 문자열
+ */
+export function generateCSSString(): string {
+  const vars = generateCSSVariables();
+  return Object.entries(vars)
+    .map(([key, value]) => `  ${key}: ${value};`)
+    .join('\n');
+}
+
+/**
+ * Semantic Colors를 CSS Variables로 변환합니다.
+ * @param mode - 'light' 또는 'dark'
+ * @returns CSS Variables 객체
+ */
+export function generateSemanticCSSVariables(mode: 'light' | 'dark' = 'light'): Record<string, string> {
+  const semanticMode = mode === 'dark' ? darkMode : lightMode;
+  const cssVars: Record<string, string> = {};
+
+  // Text colors
+  Object.entries(semanticMode.text).forEach(([key, value]) => {
+    const cssKey = kebabCase(key);
+    cssVars[`--color-text-${cssKey}`] = `var(--color-${getColorVariable(value)})`;
+  });
+
+  // Border colors
+  Object.entries(semanticMode.border).forEach(([key, value]) => {
+    const cssKey = kebabCase(key);
+    cssVars[`--color-border-${cssKey}`] = `var(--color-${getColorVariable(value)})`;
+  });
+
+  // Background colors
+  Object.entries(semanticMode.background).forEach(([key, value]) => {
+    const cssKey = kebabCase(key);
+    cssVars[`--color-bg-${cssKey}`] = `var(--color-${getColorVariable(value)})`;
+  });
+
+  // Foreground colors
+  Object.entries(semanticMode.foreground).forEach(([key, value]) => {
+    const cssKey = kebabCase(key);
+    cssVars[`--color-fg-${cssKey}`] = `var(--color-${getColorVariable(value)})`;
+  });
+
+  return cssVars;
+}
+
+/**
+ * 색상 값을 CSS Variable 이름으로 변환합니다.
+ * @param color - Hex 색상 코드
+ * @returns CSS Variable 이름 (예: 'gray-900')
+ */
+function getColorVariable(color: string): string {
+  // 1. Base colors 먼저 확인 (white, black, transparent)
+  if (color === base.white) return 'white';
+  if (color === base.black) return 'black';
+  if (color === base.transparent) return 'transparent';
+
+  // 2. primitiveColors에서 해당 색상을 찾습니다
+  for (const [paletteName, palette] of Object.entries(primitiveColors)) {
+    if (paletteName === 'base') continue; // base는 위에서 이미 처리
+    for (const [shade, value] of Object.entries(palette)) {
+      if (value === color) {
+        return `${kebabCase(paletteName)}-${shade}`;
+      }
+    }
+  }
+  return 'gray-900'; // fallback
+}
+
 // Default export
 export default {
   primitive: primitiveColors,
   semantic: semanticColors,
   getSemanticColors,
   getPrimitiveColor,
+  generateCSSVariables,
+  generateCSSString,
+  generateSemanticCSSVariables,
 } as const;

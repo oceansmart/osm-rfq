@@ -1,5 +1,8 @@
-import { SearchLg, HelpCircle, ChevronDown } from '@untitledui/icons';
+import Image from 'next/image';
+import { SearchLg, HelpCircle, ChevronDown, Check, User01, Trash01, Edit01 } from '@untitledui/icons';
 import { ExcelIcon } from '@/commons/components/icons';
+import { mockRfqData } from './mockData';
+import { getStatusText, formatRouteCount } from './utils';
 import styles from './styles.module.css';
 
 export default function RfqList({ children }: { children?: React.ReactNode }) {
@@ -97,9 +100,212 @@ export default function RfqList({ children }: { children?: React.ReactNode }) {
       </div>
 
       <div className={styles.gap3}></div>
-      <div className={styles.table}>테이블 영역</div>
+
+      {/* Table */}
+      <div className={styles.table}>
+        <div className={styles.tableContent}>
+          {/* Header Row */}
+          <div className={styles.tableHeaderRow}>
+            {/* Column: RFQ ID */}
+            <div className={`${styles.tableHeaderCell} ${styles.colRfqId}`}>
+              <div className={styles.headerCheckboxWrapper}>
+                <input type="checkbox" className={styles.checkbox} />
+              </div>
+              <div className={styles.headerLabelWrapper}>
+                <span className={styles.headerText}>RFQ ID</span>
+                <ChevronDown size={12} className={styles.arrowDown} />
+              </div>
+            </div>
+
+            {/* Column: Received Date */}
+            <div className={`${styles.tableHeaderCell} ${styles.colReceivedDate}`}>
+              <span className={styles.headerText}>Rec'd Date</span>
+            </div>
+
+            {/* Column: Deadline */}
+            <div className={`${styles.tableHeaderCell} ${styles.colDeadline}`}>
+              <span className={styles.headerText}>Deadline</span>
+            </div>
+
+            {/* Column: Shipper */}
+            <div className={`${styles.tableHeaderCell} ${styles.colShipper}`}>
+              <span className={styles.headerText}>Shipper</span>
+            </div>
+
+            {/* Column: Route */}
+            <div className={`${styles.tableHeaderCell} ${styles.colRoute}`}>
+              <span className={styles.headerText}>Route</span>
+            </div>
+
+            {/* Column: Status */}
+            <div className={`${styles.tableHeaderCell} ${styles.colStatus}`}>
+              <span className={styles.headerText}>Status</span>
+            </div>
+
+            {/* Column: Assigned To */}
+            <div className={`${styles.tableHeaderCell} ${styles.colAssignedTo}`}>
+              <span className={styles.headerText}>Assigned To</span>
+            </div>
+
+            {/* Column: Contact Person */}
+            <div className={`${styles.tableHeaderCell} ${styles.colContactPerson}`}>
+              <span className={styles.headerText}>Contact Person</span>
+            </div>
+
+            {/* Column: Actions */}
+            <div className={`${styles.tableHeaderCell} ${styles.colActions}`}>
+            </div>
+          </div>
+
+          {/* Data Rows */}
+          {mockRfqData.map((item) => (
+            <div key={item.id} className={styles.tableDataRow}>
+              {/* Cell: RFQ ID */}
+              <div className={`${styles.tableCell} ${styles.colRfqId}`}>
+                <div className={styles.cellCheckboxWrapper}>
+                  <input type="checkbox" className={styles.checkbox} />
+                </div>
+                <div className={styles.cellTextWrapper}>
+                  <span className={styles.cellText}>{item.rfqId}</span>
+                </div>
+              </div>
+
+              {/* Cell: Received Date */}
+              <div className={`${styles.tableCell} ${styles.colReceivedDate}`}>
+                <div className={styles.cellTextWrapper}>
+                  <span className={styles.supportingCellText}>{item.receivedDate}</span>
+                </div>
+              </div>
+
+              {/* Cell: Deadline */}
+              <div className={`${styles.tableCell} ${styles.colDeadline}`}>
+                <div className={styles.cellTextWrapper}>
+                  <span className={styles.supportingCellText}>{item.deadline}</span>
+                </div>
+              </div>
+
+              {/* Cell: Shipper */}
+              <div className={`${styles.tableCell} ${styles.colShipper}`}>
+                <div className={styles.cellTextWrapper}>
+                  <span className={styles.supportingCellText}>{item.shipper}</span>
+                </div>
+              </div>
+
+              {/* Cell: Route */}
+              <div className={`${styles.tableCell} ${styles.colRoute}`}>
+                <div className={styles.cellTextWrapper}>
+                  <span className={styles.supportingCellText}>{formatRouteCount(item.routeCount)}</span>
+                </div>
+              </div>
+
+              {/* Cell: Status */}
+              <div className={`${styles.tableCell} ${styles.colStatus}`}>
+                <div className={`${styles.badge} ${
+                  item.status === 'NEW' ? styles.badgeNew :
+                  item.status === 'IN_PROGRESS' ? styles.badgeInProgress :
+                  item.status === 'PENDING' ? styles.badgePending :
+                  item.status === 'COMPLETED' ? styles.badgeCompleted :
+                  ''
+                }`}>
+                  <Check size={12} className={styles.badgeIcon} />
+                  <span className={styles.badgeText}>{getStatusText(item.status)}</span>
+                </div>
+              </div>
+
+              {/* Cell: Assigned To */}
+              <div className={`${styles.tableCell} ${styles.colAssignedTo}`}>
+                <div className={styles.avatarTextWrapper}>
+                  <div className={styles.avatar}>
+                    {item.assignedTo.avatar ? (
+                      <Image
+                        src={item.assignedTo.avatar}
+                        alt={item.assignedTo.name}
+                        width={40}
+                        height={40}
+                        className={styles.avatarImage}
+                      />
+                    ) : (
+                      <div className={styles.avatarImagePlaceholder}></div>
+                    )}
+                  </div>
+                  <div className={styles.avatarTextContent}>
+                    <span className={styles.cellText}>{item.assignedTo.name}</span>
+                    <span className={styles.supportingCellText}>{item.assignedTo.email}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Cell: Contact Person */}
+              <div className={`${styles.tableCell} ${styles.colContactPerson}`}>
+                <div className={styles.avatarTextWrapper}>
+                  <div className={styles.avatarPlaceholder}>
+                    <User01 size={24} className={styles.userIcon} />
+                  </div>
+                  <div className={styles.avatarTextContent}>
+                    <span className={styles.cellText}>{item.contactPerson.name}</span>
+                    <span className={styles.supportingCellText}>{item.contactPerson.email}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Cell: Actions */}
+              <div className={`${styles.tableCell} ${styles.colActions}`}>
+                <div className={styles.actionButtons}>
+                  <button className={styles.actionButton}>
+                    <Trash01 size={16} className={styles.actionIcon} />
+                  </button>
+                  <button className={styles.actionButton}>
+                    <Edit01 size={16} className={styles.actionIcon} />
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div className={styles.gap4}></div>
-      <div className={styles.pagination}>페이지네이션 영역</div>
+
+      {/* Pagination */}
+      <div className={styles.pagination}>
+        {/* Previous Button */}
+        <button className={styles.paginationPrevButton}>
+          <ChevronDown size={20} className={styles.paginationArrowLeft} />
+          <span className={styles.paginationPrevText}>Previous</span>
+        </button>
+
+        {/* Page Numbers */}
+        <div className={styles.paginationNumbers}>
+          <button className={`${styles.paginationNumberButton} ${styles.paginationNumberActive}`}>
+            <span className={styles.paginationNumber}>1</span>
+          </button>
+          <button className={styles.paginationNumberButton}>
+            <span className={styles.paginationNumber}>2</span>
+          </button>
+          <button className={styles.paginationNumberButton}>
+            <span className={styles.paginationNumber}>3</span>
+          </button>
+          <button className={styles.paginationNumberButton}>
+            <span className={styles.paginationNumber}>...</span>
+          </button>
+          <button className={styles.paginationNumberButton}>
+            <span className={styles.paginationNumber}>8</span>
+          </button>
+          <button className={styles.paginationNumberButton}>
+            <span className={styles.paginationNumber}>9</span>
+          </button>
+          <button className={styles.paginationNumberButton}>
+            <span className={styles.paginationNumber}>10</span>
+          </button>
+        </div>
+
+        {/* Next Button */}
+        <button className={styles.paginationNextButton}>
+          <span className={styles.paginationNextText}>Next</span>
+          <ChevronDown size={20} className={styles.paginationArrowRight} />
+        </button>
+      </div>
+
       {children}
     </div>
   );
