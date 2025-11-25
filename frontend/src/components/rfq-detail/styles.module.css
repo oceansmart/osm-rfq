@@ -927,7 +927,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
+  width: 120px;
   height: 44px;
   flex-shrink: 0;
   background: var(--color-rfq-ui-bgGray50);
@@ -1008,7 +1008,6 @@
   height: 22px;
   padding: 3px 8px;
   background: #f9dbaf;
-  border: 1px solid #f7b27a;
   border-radius: 9999px;
 }
 
@@ -1019,7 +1018,6 @@
   height: 22px;
   padding: 3px 8px;
   background: #fafafa;
-  border: 1px solid #e9eaeb;
   border-radius: 9999px;
 }
 
@@ -1127,7 +1125,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
+  width: 120px;
   height: 44px;
   flex-shrink: 0;
   background: var(--color-rfq-ui-bgWhite);
