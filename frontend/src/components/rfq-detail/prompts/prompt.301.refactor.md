@@ -21,9 +21,9 @@
 ## 조건-대상
 
 - **구현될 TSX 파일경로**: 
-   `frontend/src/components/rfq-list/index.tsx`
+   `frontend/src/components/rfq-detail/index.tsx`
 - **구현될 CSS 파일경로**: 
-    `frontend/src/components/rfq-list/styles.module.css`
+    `frontend/src/components/rfq-detail/styles.module.css`
 
 ---
 
@@ -36,6 +36,23 @@
 | *예: Pagination div* | `@/commons/components/pagination` | *HTML 구조 변경, 스타일 매핑* |
 | *예: Table div* | `@/commons/components/table` | *`use client` 추가, 접근성 속성* |
 | *[추가 항목...]* | *[컴포넌트 경로...]* | *...* |
+
+body > div > div > main > div > div.styles_container1__IYEtz > div:nth-child(1) > button ->  frontend/src/commons/components/select
+
+body > div > div > main > div > div.styles_container1__IYEtz > div:nth-child(2) > button-> frontend/src/commons/components/select
+
+body > div > div > main > div > div.styles_container1__IYEtz > div:nth-child(3) > button-> frontend/src/commons/components/select
+
+body > div > div > main > div > div.styles_container1__IYEtz > div:nth-child(4) > button > span -> frontend/src/commons/components/select
+
+body > div > div > main > div > div.styles_container1__IYEtz > div:nth-child(5) > button -> frontend/src/commons/components/select
+
+body > div > div > main > div > div.styles_container1__IYEtz > div:nth-child(6) > button > span -> frontend/src/commons/components/select
+
+
+
+
+
 
 ---
 
