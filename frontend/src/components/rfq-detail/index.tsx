@@ -671,7 +671,7 @@ export default function RfqDetailLayout({ children }: RfqDetailLayoutProps) {
 
               {/* Commodity Cell */}
               <div className={styles.tableCell_Commodity}>
-                <span className={styles.cellTextPrimary}>{route.commodity}</span>
+                <span className={styles.cellTextSupporting}>{route.commodity}</span>
               </div>
 
               {/* Actions Cell */}
