@@ -922,12 +922,12 @@
   border-right: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
-/* 헤더 셀 - Actions (60px) */
+/* 헤더 셀 - Actions (90px) */
 .tableHeaderCell_Actions {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
+  width: 90px;
   height: 44px;
   flex-shrink: 0;
   background: var(--color-rfq-ui-bgGray50);
@@ -1122,12 +1122,12 @@
   border-bottom: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
-/* 셀 - Actions (60px) */
+/* 셀 - Actions (90px) */
 .tableCell_Actions {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
+  width: 90px;
   height: 44px;
   flex-shrink: 0;
   background: var(--color-rfq-ui-bgWhite);
