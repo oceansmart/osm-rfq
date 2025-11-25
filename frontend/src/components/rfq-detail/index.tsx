@@ -6,6 +6,66 @@ interface RfqDetailLayoutProps {
   children?: React.ReactNode;
 }
 
+interface RouteRow {
+  id: string;
+  originName: string;
+  originNameDetail?: string;
+  originCode: string;
+  destinationName: string;
+  destinationNameDetail?: string;
+  destCode: string;
+  typeSize: string;
+  commodity: string;
+}
+
+const mockRoutes: RouteRow[] = [
+  {
+    id: 'route-1',
+    originName: 'BANGKOKBANGKOKBANGKOKBANGKOK',
+    originCode: 'THBKK',
+    destinationName: 'OTARUBANGKOKBANGKOKBANGKOK',
+    destCode: '40HC,20GP',
+    typeSize: 'JPOTR',
+    commodity: 'Glass Sheets',
+  },
+  {
+    id: 'route-2',
+    originName: 'BANGKOKBANGKOKBANGKOKBANGKOK',
+    originCode: 'THBKK',
+    destinationName: 'YOKOHAMABANGKOKBANGKOK',
+    destCode: '40HC,20GP',
+    typeSize: 'JPOTR',
+    commodity: 'Glass Sheets',
+  },
+  {
+    id: 'route-3',
+    originName: 'BANGKOKBANGKOKBANGKOKBANGKOK',
+    originCode: 'THBKK',
+    destinationName: 'TOKYOBANGKOKBANGKOKBANGKOK',
+    destCode: '40HC,20GP',
+    typeSize: 'JPOTR',
+    commodity: 'Auto Parts',
+  },
+  {
+    id: 'route-4',
+    originName: 'BANGKOKBANGKOKBANGKOKBANGKOK',
+    originCode: 'THBKK',
+    destinationName: 'YOKOHAMABANGKOKBANGKOK',
+    destCode: '40HC,20GP',
+    typeSize: 'JPOTR',
+    commodity: 'Auto Parts',
+  },
+  {
+    id: 'route-5',
+    originName: 'BANGKOKBANGKOKBANGKOKBANGKOK',
+    originCode: 'THBKK',
+    destinationName: 'YOKOHAMABANGKOKBANGKOK',
+    destCode: '40HC,20GP',
+    typeSize: 'JPOTR',
+    commodity: 'Glass Sheets',
+  },
+];
+
 export default function RfqDetailLayout({ children }: RfqDetailLayoutProps) {
   return (
     <div className={styles.rfqDetailLayout}>
@@ -28,9 +88,9 @@ export default function RfqDetailLayout({ children }: RfqDetailLayoutProps) {
             <span className={styles.buttonText}>Generate Template</span>
           </button>
 
-          {/* Request Approval 버튼 */}
+          {/* Search 버튼 */}
           <button className={styles.primaryButton}>
-            <span className={styles.buttonText}>Request Approval</span>
+            <span className={styles.buttonText}>Search</span>
           </button>
 
           {/* Download 버튼 */}
@@ -565,8 +625,8 @@ export default function RfqDetailLayout({ children }: RfqDetailLayoutProps) {
           </div>
 
           {/* 테이블 행들 */}
-          {[0, 1, 2, 3, 4].map((rowIndex) => (
-            <div key={rowIndex} className={styles.tableRow}>
+          {mockRoutes.map((route) => (
+            <div key={route.id} className={styles.tableRow}>
               {/* Checkbox Cell */}
               <div className={styles.tableCell_Checkbox}>
                 <div className={styles.cellCheckboxWrapper}>
@@ -576,50 +636,42 @@ export default function RfqDetailLayout({ children }: RfqDetailLayoutProps) {
 
               {/* Origin Name Cell */}
               <div className={styles.tableCell_OriginName}>
-                <span className={styles.cellTextPrimary}>Olivia Rhye</span>
                 <span className={styles.cellTextSupporting}>
-                  BANGKOKBANGKOKBANGKOKBANGKOK
+                  {route.originName}
                 </span>
               </div>
 
               {/* Origin Code Cell */}
               <div className={styles.tableCell_OriginCode}>
-                <span className={styles.cellTextPrimary}>Olivia Rhye</span>
-                <span className={styles.cellTextSupporting}>THBKK</span>
+                <span className={styles.cellTextSupporting}>
+                  {route.originCode}
+                </span>
               </div>
 
               {/* Destination Name Cell */}
               <div className={styles.tableCell_DestName}>
-                <span className={styles.cellTextPrimary}>Olivia Rhye</span>
                 <span className={styles.cellTextSupporting}>
-                  {rowIndex === 0
-                    ? 'OTARUBANGKOKBANGKOKBANGKOK'
-                    : rowIndex === 1 || rowIndex === 3 || rowIndex === 4
-                    ? 'YOKOHAMABANGKOKBANGKOK'
-                    : 'TOKYOBANGKOKBANGKOKBANGKOK'}
+                  {route.destinationName}
                 </span>
               </div>
 
               {/* DEST Code Cell */}
               <div className={styles.tableCell_DestCode}>
-                <span className={styles.cellTextPrimary}>Olivia Rhye</span>
-                <span className={styles.cellTextSupporting}>40HC,20GP</span>
+                <span className={styles.cellTextSupporting}>
+                  {route.destCode}
+                </span>
               </div>
 
               {/* TYPE/SIZE Cell */}
               <div className={styles.tableCell_TypeSize}>
-                <span className={styles.cellTextPrimary}>Olivia Rhye</span>
-                <span className={styles.cellTextSupporting}>JPOTR</span>
+                <span className={styles.cellTextSupporting}>
+                  {route.typeSize}
+                </span>
               </div>
 
               {/* Commodity Cell */}
               <div className={styles.tableCell_Commodity}>
-                <span className={styles.cellTextPrimary}>Olivia Rhye</span>
-                <span className={styles.cellTextSupporting}>
-                  {rowIndex === 2 || rowIndex === 3
-                    ? 'Auto Parts'
-                    : 'Glass Sheets'}
-                </span>
+                <span className={styles.cellTextPrimary}>{route.commodity}</span>
               </div>
 
               {/* Actions Cell */}

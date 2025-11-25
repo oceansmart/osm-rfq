@@ -79,14 +79,16 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 458px;
+  width: 100%;
+  max-width: 458px;
   height: 32px;
 }
 
 .titleTextWrapper {
   display: flex;
   align-items: center;
-  width: 426px;
+  width: 100%;
+  max-width: 426px;
   height: 32px;
   padding-left: 16px;
 }
@@ -97,7 +99,7 @@
   font-weight: 600;
   font-size: 24px;
   line-height: 32px;
-  color: rgb(24 29 39);
+  color: var(--color-rfq-ui-textMain);
   letter-spacing: 0;
 }
 
@@ -118,7 +120,7 @@
   justify-content: center;
   height: 36px;
   padding: 8px 12px;
-  background: rgb(25 32 68);
+  background: var(--color-rfq-ui-buttonPrimary);
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -126,7 +128,7 @@
 }
 
 .primaryButton:hover {
-  background: rgb(20 26 54);
+  background: var(--color-rfq-ui-buttonPrimaryHover);
 }
 
 .buttonText {
@@ -134,7 +136,7 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 20px;
-  color: rgb(255 255 255);
+  color: var(--color-white);
   letter-spacing: 0;
   padding: 0 2px;
 }
@@ -148,15 +150,15 @@
   gap: 4px;
   height: 36px;
   padding: 8px 12px;
-  background: rgb(255 255 255);
-  border: 1px solid rgb(213 215 218);
+  background: var(--color-rfq-ui-bgWhite);
+  border: 1px solid var(--color-rfq-ui-borderPrimary);
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .secondaryButton:hover {
-  border-color: rgb(181 183 187);
+  border-color: var(--color-rfq-ui-borderHover);
 }
 
 .secondaryButtonText {
@@ -164,7 +166,7 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 20px;
-  color: rgb(65 70 81);
+  color: var(--color-rfq-ui-textLabel);
   letter-spacing: 0;
   padding: 0 2px;
 }
@@ -367,7 +369,7 @@
   font-weight: 600;
   font-size: var(--text-sm);
   line-height: var(--text-sm--line-height);
-  color: rgb(24 29 39);
+  color: var(--color-rfq-ui-textMain);
   letter-spacing: 0;
   text-align: center;
 }
@@ -439,8 +441,10 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  width: 362px;
+  width: 100%;
+  max-width: 362px;
   height: 230px;
+  flex: 1;
 }
 
 /* Input Field */
@@ -448,7 +452,8 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  width: 320px;
+  width: 100%;
+  max-width: 320px;
   height: 66px;
 }
 
@@ -464,7 +469,7 @@
   font-weight: 500;
   font-size: var(--text-sm);
   line-height: var(--text-sm--line-height);
-  color: rgb(65 70 81);
+  color: var(--color-rfq-ui-textLabel);
   letter-spacing: 0;
 }
 
@@ -473,7 +478,7 @@
   font-weight: 500;
   font-size: var(--text-sm);
   line-height: var(--text-sm--line-height);
-  color: rgb(71 77 105);
+  color: var(--color-rfq-ui-textAsterisk);
   letter-spacing: 0;
   margin-left: 2px;
 }
@@ -483,10 +488,11 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 320px;
+  width: 100%;
+  max-width: 320px;
   height: 40px;
   padding: 10px 12px;
-  background: rgb(250 250 250);
+  background: var(--color-rfq-ui-bgGray50);
   border: 1px solid var(--color-rfq-ui-borderPrimary);
   border-radius: var(--radius-xs);
 }
@@ -496,7 +502,7 @@
   font-weight: 400;
   font-size: var(--text-md);
   line-height: var(--text-md--line-height);
-  color: rgb(113 118 128);
+  color: var(--color-rfq-ui-textTertiary);
   letter-spacing: 0;
 }
 
@@ -539,7 +545,7 @@
   font-weight: 600;
   font-size: var(--text-sm);
   line-height: var(--text-sm--line-height);
-  color: rgb(24 29 39);
+  color: var(--color-rfq-ui-textMain);
   letter-spacing: 0;
   text-align: center;
 }
@@ -552,8 +558,8 @@
   justify-content: center;
   height: 22px;
   padding: 2px 8px;
-  background: rgb(206 239 241);
-  border: 1px solid rgb(171 239 198);
+  background: var(--color-rfq-ui-badgeNewBg);
+  border: 1px solid var(--color-rfq-ui-badgeNewBorder);
   border-radius: var(--radius-full);
 }
 
@@ -562,7 +568,7 @@
   font-weight: 500;
   font-size: var(--text-xs);
   line-height: var(--text-xs--line-height);
-  color: rgb(48 54 87);
+  color: var(--color-rfq-ui-textTabActive);
   letter-spacing: 0;
 }
 
@@ -584,18 +590,22 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  width: 353px;
+  width: 100%;
+  max-width: 353px;
   height: 184px;
   padding: 23px 50px 23px 17px;
+  flex: 1;
 }
 
 .checkItemsRight {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  width: 353px;
+  width: 100%;
+  max-width: 353px;
   height: 184px;
   padding: 23px 17px 23px 50px;
+  flex: 1;
 }
 
 /* Line Divider */
@@ -613,7 +623,8 @@
   flex-direction: row;
   align-items: center;
   gap: 12px;
-  width: 320px;
+  width: 100%;
+  max-width: 320px;
   height: 24px;
 }
 
@@ -628,7 +639,7 @@
   font-weight: 400;
   font-size: var(--text-md);
   line-height: var(--text-md--line-height);
-  color: rgb(83 88 98);
+  color: var(--color-rfq-ui-textSupporting);
   letter-spacing: 0;
 }
 
@@ -680,7 +691,7 @@
   font-weight: 600;
   font-size: var(--text-sm);
   line-height: var(--text-sm--line-height);
-  color: rgb(24 29 39);
+  color: var(--color-rfq-ui-textMain);
   letter-spacing: 0;
   text-align: center;
 }
@@ -718,8 +729,8 @@
   justify-content: center;
   flex-shrink: 0;
   height: 24px;
-  width: 118.57px;
-  padding: 3px 0;
+  width: 118.57px; /* Figma 캡슐 폭 고정 */
+  padding: 3px 8px;
   background: var(--color-rfq-ui-badgeInfoCyanBg);
   border: 1px solid var(--color-rfq-ui-badgeInfoCyanBorder);
   border-radius: var(--radius-xs);
@@ -744,8 +755,8 @@
   justify-content: center;
   flex-shrink: 0;
   height: 24px;
-  width: 118.57px;
-  padding: 3px 0;
+  width: 118.57px; /* Figma 캡슐 폭 고정 */
+  padding: 3px 8px;
   background: var(--color-rfq-ui-badgeInfoOrangeBg);
   border: 1px solid var(--color-rfq-ui-badgeInfoOrangeBorder);
   border-radius: var(--radius-xs);
@@ -780,8 +791,8 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background: rgb(255 255 255);
-  border: 1px solid rgb(233 234 235);
+  background: var(--color-rfq-ui-bgWhite);
+  border: 1px solid var(--color-rfq-ui-borderSecondary);
   border-radius: 0; /* Stroke 1이 곡선 없이 보이도록 모서리를 평평하게 유지 */
   overflow: hidden;
 }
@@ -795,8 +806,8 @@
   flex-direction: row;
   width: 100%;
   height: 44px;
-  background: rgb(250 250 250);
-  border-bottom: 1px solid rgb(213 215 218);
+  background: var(--color-rfq-ui-bgGray50);
+  border-bottom: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
 /* 헤더 셀 - Checkbox (109px) */
@@ -807,8 +818,8 @@
   width: 109px;
   height: 44px;
   flex-shrink: 0;
-  background: rgb(250 250 250);
-  border-right: 1px solid rgb(213 215 218);
+  background: var(--color-rfq-ui-bgGray50);
+  border-right: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
 .headerCheckboxWrapper {
@@ -822,8 +833,8 @@
 .headerCheckbox {
   width: 20px;
   height: 20px;
-  background: rgb(255 255 255);
-  border: 1px solid rgb(213 215 218);
+  background: var(--color-rfq-ui-bgWhite);
+  border: 1px solid var(--color-rfq-ui-borderPrimary);
   border-radius: var(--radius-sm);
 }
 
@@ -835,8 +846,8 @@
   width: 300px;
   height: 44px;
   flex-shrink: 0;
-  background: rgb(250 250 250);
-  border-right: 1px solid rgb(213 215 218);
+  background: var(--color-rfq-ui-bgGray50);
+  border-right: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
 /* 헤더 셀 - Origin Code (200px) */
@@ -847,8 +858,8 @@
   width: 200px;
   height: 44px;
   flex-shrink: 0;
-  background: rgb(250 250 250);
-  border-right: 1px solid rgb(213 215 218);
+  background: var(--color-rfq-ui-bgGray50);
+  border-right: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
 /* 헤더 셀 - Destination Name (300px) */
@@ -859,8 +870,8 @@
   width: 300px;
   height: 44px;
   flex-shrink: 0;
-  background: rgb(250 250 250);
-  border-right: 1px solid rgb(213 215 218);
+  background: var(--color-rfq-ui-bgGray50);
+  border-right: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
 /* 헤더 셀 - DEST Code (200px) */
@@ -871,8 +882,8 @@
   width: 200px;
   height: 44px;
   flex-shrink: 0;
-  background: rgb(250 250 250);
-  border-right: 1px solid rgb(213 215 218);
+  background: var(--color-rfq-ui-bgGray50);
+  border-right: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
 /* 헤더 셀 - TYPE/SIZE (200px) */
@@ -883,8 +894,8 @@
   width: 200px;
   height: 44px;
   flex-shrink: 0;
-  background: rgb(250 250 250);
-  border-right: 1px solid rgb(213 215 218);
+  background: var(--color-rfq-ui-bgGray50);
+  border-right: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
 /* 헤더 셀 - Commodity (201px) */
@@ -895,8 +906,8 @@
   width: 201px;
   height: 44px;
   flex-shrink: 0;
-  background: rgb(250 250 250);
-  border-right: 1px solid rgb(213 215 218);
+  background: var(--color-rfq-ui-bgGray50);
+  border-right: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
 /* 헤더 셀 - Actions (116px) */
@@ -907,8 +918,8 @@
   width: 116px;
   height: 44px;
   flex-shrink: 0;
-  background: rgb(250 250 250);
-  border-right: 1px solid rgb(213 215 218);
+  background: var(--color-rfq-ui-bgGray50);
+  border-right: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
 /* 헤더 라벨 텍스트 */
@@ -917,7 +928,7 @@
   font-weight: 600;
   font-size: var(--text-xs);
   line-height: var(--text-xs--line-height);
-  color: rgb(113 118 128);
+  color: var(--color-rfq-ui-textTertiary);
   letter-spacing: 0;
 }
 
@@ -930,7 +941,7 @@
   flex-direction: row;
   width: 100%;
   height: 52px;
-  background: rgb(255 255 255);
+  background: var(--color-rfq-ui-bgWhite);
 }
 
 /* 셀 - Checkbox (109px) */
@@ -942,9 +953,9 @@
   width: 109px;
   height: 52px;
   flex-shrink: 0;
-  background: rgb(255 255 255);
-  border-right: 1px solid rgb(213 215 218);
-  border-bottom: 1px solid rgb(213 215 218);
+  background: var(--color-rfq-ui-bgWhite);
+  border-right: 1px solid var(--color-rfq-ui-borderPrimary);
+  border-bottom: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
 .cellCheckboxWrapper {
@@ -958,8 +969,8 @@
 .cellCheckbox {
   width: 20px;
   height: 20px;
-  background: rgb(255 255 255);
-  border: 1px solid rgb(213 215 218);
+  background: var(--color-rfq-ui-bgWhite);
+  border: 1px solid var(--color-rfq-ui-borderPrimary);
   border-radius: var(--radius-sm);
 }
 
@@ -973,9 +984,9 @@
   height: 52px;
   padding: 0 24px;
   flex-shrink: 0;
-  background: rgb(255 255 255);
-  border-right: 1px solid rgb(213 215 218);
-  border-bottom: 1px solid rgb(213 215 218);
+  background: var(--color-rfq-ui-bgWhite);
+  border-right: 1px solid var(--color-rfq-ui-borderPrimary);
+  border-bottom: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
 /* 셀 - Origin Code (200px) */
@@ -988,9 +999,9 @@
   height: 52px;
   padding: 0 24px;
   flex-shrink: 0;
-  background: rgb(255 255 255);
-  border-right: 1px solid rgb(213 215 218);
-  border-bottom: 1px solid rgb(213 215 218);
+  background: var(--color-rfq-ui-bgWhite);
+  border-right: 1px solid var(--color-rfq-ui-borderPrimary);
+  border-bottom: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
 /* 셀 - Destination Name (300px) */
@@ -1003,9 +1014,9 @@
   height: 52px;
   padding: 0 24px;
   flex-shrink: 0;
-  background: rgb(255 255 255);
-  border-right: 1px solid rgb(213 215 218);
-  border-bottom: 1px solid rgb(213 215 218);
+  background: var(--color-rfq-ui-bgWhite);
+  border-right: 1px solid var(--color-rfq-ui-borderPrimary);
+  border-bottom: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
 /* 셀 - DEST Code (200px) */
@@ -1018,9 +1029,9 @@
   height: 52px;
   padding: 0 24px;
   flex-shrink: 0;
-  background: rgb(255 255 255);
-  border-right: 1px solid rgb(213 215 218);
-  border-bottom: 1px solid rgb(213 215 218);
+  background: var(--color-rfq-ui-bgWhite);
+  border-right: 1px solid var(--color-rfq-ui-borderPrimary);
+  border-bottom: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
 /* 셀 - TYPE/SIZE (200px) */
@@ -1033,9 +1044,9 @@
   height: 52px;
   padding: 0 24px;
   flex-shrink: 0;
-  background: rgb(255 255 255);
-  border-right: 1px solid rgb(213 215 218);
-  border-bottom: 1px solid rgb(213 215 218);
+  background: var(--color-rfq-ui-bgWhite);
+  border-right: 1px solid var(--color-rfq-ui-borderPrimary);
+  border-bottom: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
 /* 셀 - Commodity (201px) */
@@ -1048,9 +1059,9 @@
   height: 52px;
   padding: 0 24px;
   flex-shrink: 0;
-  background: rgb(255 255 255);
-  border-right: 1px solid rgb(213 215 218);
-  border-bottom: 1px solid rgb(213 215 218);
+  background: var(--color-rfq-ui-bgWhite);
+  border-right: 1px solid var(--color-rfq-ui-borderPrimary);
+  border-bottom: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
 /* 셀 - Actions (116px) */
@@ -1061,9 +1072,9 @@
   width: 116px;
   height: 52px;
   flex-shrink: 0;
-  background: rgb(255 255 255);
-  border-right: 1px solid rgb(213 215 218);
-  border-bottom: 1px solid rgb(213 215 218);
+  background: var(--color-rfq-ui-bgWhite);
+  border-right: 1px solid var(--color-rfq-ui-borderPrimary);
+  border-bottom: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
 /* 셀 텍스트 - Primary */
@@ -1085,7 +1096,7 @@
   font-weight: 400;
   font-size: var(--text-sm);
   line-height: var(--text-sm--line-height);
-  color: rgb(83 88 98);
+  color: var(--color-rfq-ui-textSupporting);
   letter-spacing: 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1109,8 +1120,8 @@
   justify-content: center;
   width: 28px;
   height: 28px;
-  background: rgb(255 255 255);
-  border: 1px solid rgb(213 215 218);
+  background: var(--color-rfq-ui-bgWhite);
+  border: 1px solid var(--color-rfq-ui-borderPrimary);
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: all 0.2s ease;
@@ -1118,6 +1129,6 @@
 }
 
 .actionButton:hover {
-  background: rgb(250 250 250);
-  border-color: rgb(181 183 187);
+  background: var(--color-rfq-ui-bgGray50);
+  border-color: var(--color-rfq-ui-borderHover);
 }
