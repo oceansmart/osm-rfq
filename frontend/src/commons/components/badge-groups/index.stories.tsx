@@ -1,11 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs';
 import { BadgeGroup } from './index';
-import {
-  ArrowRight,
-  ChevronRight,
-  Plus,
-  X,
-} from '@/commons/components/icons';
+import { ChevronRight, Plus, X } from '@/commons/components/icons';
 
 const meta: Meta<typeof BadgeGroup> = {
   title: 'Commons/Components/BadgeGroup',

@@ -159,7 +159,7 @@ export const MaxVisibleItems: Story = {
       </div>
 
       <div>
-        <h3 className="text-sm font-semibold mb-3">Max 4 Items (Default) - Click "..." to expand</h3>
+        <h3 className="text-sm font-semibold mb-3">Max 4 Items (Default) - Click &quot;...&quot; to expand</h3>
         <Breadcrumbs maxVisibleItems={4}>
           <Breadcrumbs.Item href="/">Home</Breadcrumbs.Item>
           <Breadcrumbs.Item href="/level1">Level 1</Breadcrumbs.Item>

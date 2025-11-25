@@ -9,7 +9,7 @@
   /* ----------------------------------------------------------------------------
      SPACING TOKENS
      Source: spacing.ts
-     Generated: 2025-11-23T07:12:28.624Z
+     Generated: 2025-11-25T07:00:59.976Z
      ---------------------------------------------------------------------------- */
 
   --spacing-none: 0px;
@@ -459,6 +459,7 @@
   --color-rfq-ui-bgGray50: rgb(250 250 250);
   --color-rfq-ui-bgGray100: rgb(249 250 251);
   --color-rfq-ui-bgGray200: rgb(245 245 245);
+  --color-rfq-ui-bgFilterSection: rgb(254 250 245);
   --color-rfq-ui-buttonPrimary: rgb(25 32 68);
   --color-rfq-ui-buttonPrimaryHover: rgb(20 26 54);
   --color-rfq-ui-badgeNewBg: rgb(206 239 241);
@@ -474,6 +475,10 @@
   --color-rfq-ui-badgeCompletedBg: rgb(236 253 243);
   --color-rfq-ui-badgeCompletedBorder: rgb(171 239 198);
   --color-rfq-ui-badgeCompletedText: rgb(7 148 85);
+  --color-rfq-ui-badgeInfoCyanBg: rgb(206 239 241);
+  --color-rfq-ui-badgeInfoCyanBorder: rgb(206 239 241);
+  --color-rfq-ui-badgeInfoOrangeBg: rgb(255 230 213);
+  --color-rfq-ui-badgeInfoOrangeBorder: rgb(253 234 215);
   --color-rfq-ui-avatarPlaceholderBg: rgb(245 245 245);
   --color-rfq-ui-avatarPlaceholderBorder: rgb(233 234 235);
   --color-rfq-ui-avatarImagePlaceholder: rgb(207 203 220);

@@ -590,6 +590,7 @@ export const rfqUi = {
   bgGray50: '#fafafa',           // rgb(250 250 250) - Table header background
   bgGray100: '#f9fafb',          // rgb(249 250 251) - Hover backgrounds
   bgGray200: '#f5f5f5',          // rgb(245 245 245) - Disabled backgrounds
+  bgFilterSection: '#fefaf5',    // rgb(254 250 245) - Filter section background (orange.25)
 
   // Button Colors
   buttonPrimary: '#192044',      // rgb(25 32 68) - Primary button background
@@ -615,6 +616,12 @@ export const rfqUi = {
   badgeCompletedBg: '#ecfdf3',   // rgb(236 253 243) - COMPLETED background (success.50)
   badgeCompletedBorder: '#abefc6', // rgb(171 239 198) - COMPLETED border (success.200)
   badgeCompletedText: '#079455',   // rgb(7 148 85) - COMPLETED text (success.600)
+
+  // Badge Colors - Container 4 Info Badges
+  badgeInfoCyanBg: '#ceeff1',    // rgb(206 239 241) - Cyan info badge background
+  badgeInfoCyanBorder: '#ceeff1', // rgb(206 239 241) - Cyan info badge border
+  badgeInfoOrangeBg: '#ffe6d5',  // rgb(255 230 213) - Orange info badge background
+  badgeInfoOrangeBorder: '#fdead7', // rgb(253 234 215) - Orange info badge border
 
   // Avatar & User Elements
   avatarPlaceholderBg: '#f5f5f5', // rgb(245 245 245) - Avatar placeholder background

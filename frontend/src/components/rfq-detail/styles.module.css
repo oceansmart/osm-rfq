@@ -10,7 +10,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  background: var(--color-bg-primary);
+  background: var(--color-bg-primary-hover);
 }
 
 /* ============================================================================
@@ -30,6 +30,14 @@
   width: 100%;
   max-width: 1640px;
   height: 16px;
+  background: transparent;
+}
+
+/* 컨테이너 1 하단 여백: 1640 * 20 */
+.gapAfterContainer1 {
+  width: 100%;
+  max-width: 1640px;
+  height: 20px;
   background: transparent;
 }
 
@@ -319,44 +327,797 @@
   max-width: 1640px;
 }
 
-/* 컨테이너 2: 813 * 308 */
+/* 컨테이너 2: 813 * 308 - Basic Information */
 .container2 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   width: 100%;
   max-width: 813px;
   height: 308px;
-  background: var(--color-bg-primary);
-  border: 1px dashed var(--color-border-tertiary);
+  background: transparent;
 }
 
-/* 컨테이너 3: 813 * 308 */
+/* Container 2 Header: 813 * 30 */
+.container2Header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 30px;
+  background: var(--color-rfq-ui-bgWhite);
+  border: none;
+  border-right: 1px solid var(--color-rfq-ui-borderPrimary);
+  border-radius: 0;
+}
+
+.headerContent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  height: 100%;
+  padding: 0 16px;
+}
+
+.headerHeading {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+  color: rgb(24 29 39);
+  letter-spacing: 0;
+  text-align: center;
+}
+
+/* Badge (NEW) */
+.headerBadge {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 22px;
+  padding: 2px 8px 2px 6px;
+  background: var(--color-rfq-ui-badgeNewBg);
+  border: 1px solid var(--color-rfq-ui-badgeNewBorder);
+  border-radius: var(--radius-full);
+}
+
+.badgeIcon {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+.badgeText {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--text-xs);
+  line-height: var(--text-xs--line-height);
+  color: var(--color-rfq-ui-badgeNewText);
+  letter-spacing: 0;
+}
+
+/* Mail Icon Button */
+.headerMailIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.headerMailIcon:hover {
+  opacity: 0.7;
+}
+
+/* Container 2 Body: 813 * 262 */
+.container2Body {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  width: 100%;
+  height: 262px;
+  padding: 16px;
+  background: var(--color-rfq-ui-bgWhite);
+  border: none;
+  border-right: 1px solid var(--color-rfq-ui-borderPrimary);
+  border-radius: 0;
+}
+
+/* Columns */
+.columnLeft,
+.columnRight {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 362px;
+  height: 230px;
+}
+
+/* Input Field */
+.inputField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 320px;
+  height: 66px;
+}
+
+.inputLabelWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 20px;
+}
+
+.inputLabel {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+  color: rgb(65 70 81);
+  letter-spacing: 0;
+}
+
+.inputAsterisk {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+  color: rgb(71 77 105);
+  letter-spacing: 0;
+  margin-left: 2px;
+}
+
+/* Input Box */
+.inputBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 320px;
+  height: 40px;
+  padding: 10px 12px;
+  background: rgb(250 250 250);
+  border: 1px solid var(--color-rfq-ui-borderPrimary);
+  border-radius: var(--radius-xs);
+}
+
+.inputText {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--text-md);
+  line-height: var(--text-md--line-height);
+  color: rgb(113 118 128);
+  letter-spacing: 0;
+}
+
+/* 컨테이너 3: 813 * 308 - Key Requirements */
 .container3 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   width: 100%;
   max-width: 813px;
   height: 308px;
-  background: var(--color-bg-primary);
-  border: 1px dashed var(--color-border-tertiary);
+  background: transparent;
 }
 
-/* 컨테이너 4: 1640 * 102 */
-.container4 {
+/* Container 3 Header: 813 * 30 */
+.container3Header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   width: 100%;
-  max-width: 1640px;
+  height: 30px;
+  background: var(--color-rfq-ui-bgWhite);
+  border: none;
+  border-radius: 0;
+}
+
+.header3Content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  height: 100%;
+  padding: 0 16px;
+}
+
+.header3Heading {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+  color: rgb(24 29 39);
+  letter-spacing: 0;
+  text-align: center;
+}
+
+/* Badge (10 Requirements) */
+.header3Badge {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 22px;
+  padding: 2px 8px;
+  background: rgb(206 239 241);
+  border: 1px solid rgb(171 239 198);
+  border-radius: var(--radius-full);
+}
+
+.badge3Text {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--text-xs);
+  line-height: var(--text-xs--line-height);
+  color: rgb(48 54 87);
+  letter-spacing: 0;
+}
+
+/* Container 3 Body: 813 * 262 */
+.container3Body {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  width: 100%;
+  height: 262px;
+  padding: 16px;
+  background: var(--color-rfq-ui-bgWhite);
+  border: none;
+  border-radius: 0;
+}
+
+/* Check Items Columns */
+.checkItemsLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 353px;
+  height: 184px;
+  padding: 23px 50px 23px 17px;
+}
+
+.checkItemsRight {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 353px;
+  height: 184px;
+  padding: 23px 17px 23px 50px;
+}
+
+/* Line Divider */
+.lineDivider {
+  width: 1px;
+  height: 223px;
+  margin-top: 4px;
+  background: var(--color-rfq-ui-borderPrimary);
+  flex-shrink: 0;
+}
+
+/* Check Item */
+.checkItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  width: 320px;
+  height: 24px;
+}
+
+.checkIcon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.checkText {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--text-md);
+  line-height: var(--text-md--line-height);
+  color: rgb(83 88 98);
+  letter-spacing: 0;
+}
+
+.highlightText {
+  color: var(--color-brand-600);
+  text-decoration: underline;
+}
+
+.highlightText {
+  color: var(--color-brand-600);
+  text-decoration: underline;
+}
+
+/* 컨테이너 4: 1626 * 102 - List of Information to Fill In */
+.container4 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 1626px;
   height: 102px;
-  background: var(--color-bg-primary);
-  border: 1px dashed var(--color-border-tertiary);
+  background: transparent;
+}
+
+/* Container 4 Header: 1626 * 30 */
+.container4Header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 30px;
+  background: var(--color-rfq-ui-bgWhite);
+  border: none;
+  border-radius: 0;
+}
+
+.header4Content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 16px;
+}
+
+.header4Heading {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+  color: rgb(24 29 39);
+  letter-spacing: 0;
+  text-align: center;
+}
+
+/* Container 4 Body: 1624 * 56 */
+.container4Body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 56px;
+  padding: 16px;
+  background: var(--color-rfq-ui-bgWhite);
+  border: none;
+  border-radius: 0;
+}
+
+/* Badge List (Horizontal Scroll Container) */
+.badgeList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  height: 24px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* Cyan Badge */
+.badgeCyan {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 24px;
+  width: 118.57px;
+  padding: 3px 0;
+  background: var(--color-rfq-ui-badgeInfoCyanBg);
+  border: 1px solid var(--color-rfq-ui-badgeInfoCyanBorder);
+  border-radius: var(--radius-xs);
+}
+
+.badgeCyanText {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--text-xs);
+  line-height: var(--text-xs--line-height);
+  color: var(--color-rfq-ui-textLabel);
+  letter-spacing: 0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Orange Badge */
+.badgeOrange {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 24px;
+  width: 118.57px;
+  padding: 3px 0;
+  background: var(--color-rfq-ui-badgeInfoOrangeBg);
+  border: 1px solid var(--color-rfq-ui-badgeInfoOrangeBorder);
+  border-radius: var(--radius-xs);
+}
+
+.badgeOrangeText {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--text-xs);
+  line-height: var(--text-xs--line-height);
+  color: var(--color-rfq-ui-textLabel);
+  letter-spacing: 0;
+  text-align: center;
+  white-space: nowrap;
 }
 
 /* ============================================================================
    테이블 영역
    ============================================================================ */
 
-/* 테이블 영역: 1608 * 369 */
-/* 네비게이션바 기준 좌측 여백: 16px */
+/* 테이블 영역: 1626 * 369 */
 .tableSection {
   width: 100%;
-  max-width: 1608px;
+  max-width: 1626px;
   height: 369px;
-  margin-left: 16px;
-  background: var(--color-bg-primary);
-  border: 1px dashed var(--color-border-tertiary);
+  margin-left: 0;
+}
+
+/* 테이블 컨테이너 */
+.tableContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: rgb(255 255 255);
+  border: 1px solid rgb(233 234 235);
+  border-radius: 0; /* Stroke 1이 곡선 없이 보이도록 모서리를 평평하게 유지 */
+  overflow: hidden;
+}
+
+/* ============================================================================
+   테이블 헤더
+   ============================================================================ */
+
+.tableHeader {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 44px;
+  background: rgb(250 250 250);
+  border-bottom: 1px solid rgb(213 215 218);
+}
+
+/* 헤더 셀 - Checkbox (109px) */
+.tableHeaderCell_Checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 109px;
+  height: 44px;
+  flex-shrink: 0;
+  background: rgb(250 250 250);
+  border-right: 1px solid rgb(213 215 218);
+}
+
+.headerCheckboxWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.headerCheckbox {
+  width: 20px;
+  height: 20px;
+  background: rgb(255 255 255);
+  border: 1px solid rgb(213 215 218);
+  border-radius: var(--radius-sm);
+}
+
+/* 헤더 셀 - Origin Name (300px) */
+.tableHeaderCell_OriginName {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 44px;
+  flex-shrink: 0;
+  background: rgb(250 250 250);
+  border-right: 1px solid rgb(213 215 218);
+}
+
+/* 헤더 셀 - Origin Code (200px) */
+.tableHeaderCell_OriginCode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 44px;
+  flex-shrink: 0;
+  background: rgb(250 250 250);
+  border-right: 1px solid rgb(213 215 218);
+}
+
+/* 헤더 셀 - Destination Name (300px) */
+.tableHeaderCell_DestName {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 44px;
+  flex-shrink: 0;
+  background: rgb(250 250 250);
+  border-right: 1px solid rgb(213 215 218);
+}
+
+/* 헤더 셀 - DEST Code (200px) */
+.tableHeaderCell_DestCode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 44px;
+  flex-shrink: 0;
+  background: rgb(250 250 250);
+  border-right: 1px solid rgb(213 215 218);
+}
+
+/* 헤더 셀 - TYPE/SIZE (200px) */
+.tableHeaderCell_TypeSize {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 44px;
+  flex-shrink: 0;
+  background: rgb(250 250 250);
+  border-right: 1px solid rgb(213 215 218);
+}
+
+/* 헤더 셀 - Commodity (201px) */
+.tableHeaderCell_Commodity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 201px;
+  height: 44px;
+  flex-shrink: 0;
+  background: rgb(250 250 250);
+  border-right: 1px solid rgb(213 215 218);
+}
+
+/* 헤더 셀 - Actions (116px) */
+.tableHeaderCell_Actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 116px;
+  height: 44px;
+  flex-shrink: 0;
+  background: rgb(250 250 250);
+  border-right: 1px solid rgb(213 215 218);
+}
+
+/* 헤더 라벨 텍스트 */
+.headerLabel {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--text-xs);
+  line-height: var(--text-xs--line-height);
+  color: rgb(113 118 128);
+  letter-spacing: 0;
+}
+
+/* ============================================================================
+   테이블 행 (Row)
+   ============================================================================ */
+
+.tableRow {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 52px;
+  background: rgb(255 255 255);
+}
+
+/* 셀 - Checkbox (109px) */
+.tableCell_Checkbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 109px;
+  height: 52px;
+  flex-shrink: 0;
+  background: rgb(255 255 255);
+  border-right: 1px solid rgb(213 215 218);
+  border-bottom: 1px solid rgb(213 215 218);
+}
+
+.cellCheckboxWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.cellCheckbox {
+  width: 20px;
+  height: 20px;
+  background: rgb(255 255 255);
+  border: 1px solid rgb(213 215 218);
+  border-radius: var(--radius-sm);
+}
+
+/* 셀 - Origin Name (300px) */
+.tableCell_OriginName {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  width: 300px;
+  height: 52px;
+  padding: 0 24px;
+  flex-shrink: 0;
+  background: rgb(255 255 255);
+  border-right: 1px solid rgb(213 215 218);
+  border-bottom: 1px solid rgb(213 215 218);
+}
+
+/* 셀 - Origin Code (200px) */
+.tableCell_OriginCode {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  width: 200px;
+  height: 52px;
+  padding: 0 24px;
+  flex-shrink: 0;
+  background: rgb(255 255 255);
+  border-right: 1px solid rgb(213 215 218);
+  border-bottom: 1px solid rgb(213 215 218);
+}
+
+/* 셀 - Destination Name (300px) */
+.tableCell_DestName {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  width: 300px;
+  height: 52px;
+  padding: 0 24px;
+  flex-shrink: 0;
+  background: rgb(255 255 255);
+  border-right: 1px solid rgb(213 215 218);
+  border-bottom: 1px solid rgb(213 215 218);
+}
+
+/* 셀 - DEST Code (200px) */
+.tableCell_DestCode {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  width: 200px;
+  height: 52px;
+  padding: 0 24px;
+  flex-shrink: 0;
+  background: rgb(255 255 255);
+  border-right: 1px solid rgb(213 215 218);
+  border-bottom: 1px solid rgb(213 215 218);
+}
+
+/* 셀 - TYPE/SIZE (200px) */
+.tableCell_TypeSize {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  width: 200px;
+  height: 52px;
+  padding: 0 24px;
+  flex-shrink: 0;
+  background: rgb(255 255 255);
+  border-right: 1px solid rgb(213 215 218);
+  border-bottom: 1px solid rgb(213 215 218);
+}
+
+/* 셀 - Commodity (201px) */
+.tableCell_Commodity {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  width: 201px;
+  height: 52px;
+  padding: 0 24px;
+  flex-shrink: 0;
+  background: rgb(255 255 255);
+  border-right: 1px solid rgb(213 215 218);
+  border-bottom: 1px solid rgb(213 215 218);
+}
+
+/* 셀 - Actions (116px) */
+.tableCell_Actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 116px;
+  height: 52px;
+  flex-shrink: 0;
+  background: rgb(255 255 255);
+  border-right: 1px solid rgb(213 215 218);
+  border-bottom: 1px solid rgb(213 215 218);
+}
+
+/* 셀 텍스트 - Primary */
+.cellTextPrimary {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-text-main);
+  letter-spacing: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 셀 텍스트 - Supporting */
+.cellTextSupporting {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+  color: rgb(83 88 98);
+  letter-spacing: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ============================================================================
+   액션 버튼들
+   ============================================================================ */
+
+.actionButtons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: rgb(255 255 255);
+  border: 1px solid rgb(213 215 218);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.actionButton:hover {
+  background: rgb(250 250 250);
+  border-color: rgb(181 183 187);
 }
