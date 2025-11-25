@@ -1,0 +1,362 @@
+/* ============================================================================
+   RFQ Detail Wireframe Layout
+   - Flexbox 기반 레이아웃
+   - Figma 노드 수치 기반 구현
+   - CSS Modules 사용 (Layout 레이어)
+   ============================================================================ */
+
+.rfqDetailLayout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background: var(--color-bg-primary);
+}
+
+/* ============================================================================
+   GAP 영역들
+   ============================================================================ */
+
+/* 상단 여백: 1640 * 2 */
+.gapTop {
+  width: 100%;
+  max-width: 1640px;
+  height: 2px;
+  background: transparent;
+}
+
+/* 타이틀 하단 여백: 1640 * 16 */
+.gapAfterTitle {
+  width: 100%;
+  max-width: 1640px;
+  height: 16px;
+  background: transparent;
+}
+
+/* 컨테이너 2, 3 하단 여백: 1640 * 16 */
+.gapAfterContainers {
+  width: 100%;
+  max-width: 1640px;
+  height: 16px;
+  background: transparent;
+}
+
+/* 컨테이너 4 하단 여백: 1640 * 16 */
+.gapAfterContainer4 {
+  width: 100%;
+  max-width: 1640px;
+  height: 16px;
+  background: transparent;
+}
+
+/* ============================================================================
+   타이틀 영역
+   ============================================================================ */
+
+/* 타이틀 영역: 1640 * 68 */
+.titleSection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1640px;
+  height: 68px;
+  padding: 0 16px;
+  background: var(--color-bg-primary);
+}
+
+/* 좌측 컨테이너 */
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 458px;
+  height: 32px;
+}
+
+.titleTextWrapper {
+  display: flex;
+  align-items: center;
+  width: 426px;
+  height: 32px;
+  padding-left: 16px;
+}
+
+.titleText {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  color: rgb(24 29 39);
+  letter-spacing: 0;
+}
+
+/* 우측 액션 버튼들 */
+.titleActions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  height: 36px;
+}
+
+/* Primary Button (Generate Template, Request Approval) */
+.primaryButton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 8px 12px;
+  background: rgb(25 32 68);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.primaryButton:hover {
+  background: rgb(20 26 54);
+}
+
+.buttonText {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgb(255 255 255);
+  letter-spacing: 0;
+  padding: 0 2px;
+}
+
+/* Secondary Button (Download) */
+.secondaryButton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 36px;
+  padding: 8px 12px;
+  background: rgb(255 255 255);
+  border: 1px solid rgb(213 215 218);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.secondaryButton:hover {
+  border-color: rgb(181 183 187);
+}
+
+.secondaryButtonText {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgb(65 70 81);
+  letter-spacing: 0;
+  padding: 0 2px;
+}
+
+.excelIcon {
+  width: 20px;
+  height: 20px;
+}
+
+/* ============================================================================
+   컨테이너들
+   ============================================================================ */
+
+/* 컨테이너 1: 1608 * 74 - 검색 필터 바 */
+.container1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 1608px;
+  height: 74px;
+  padding: 17px 16px;
+  background: var(--color-rfq-ui-bgFilterSection);
+}
+
+/* Input Group (각 필터 항목) */
+.inputGroup {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  height: 40px;
+}
+
+/* Label Wrapper */
+.labelWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 20px;
+}
+
+/* Label 텍스트 */
+.label {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+  color: var(--color-rfq-ui-textLabel);
+  letter-spacing: 0;
+}
+
+/* Asterisk (필수 표시) */
+.asterisk {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+  color: var(--color-rfq-ui-textAsterisk);
+  letter-spacing: 0;
+  margin-left: 2px;
+}
+
+/* Dropdown Button */
+.dropdownButton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  height: 40px;
+  padding: 10px 14px;
+  background: var(--color-rfq-ui-bgWhite);
+  border: 1px solid var(--color-rfq-ui-borderPrimary);
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.dropdownButton:hover {
+  border-color: var(--color-rfq-ui-borderHover);
+}
+
+/* Dropdown 텍스트 */
+.dropdownText {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+  color: var(--color-rfq-ui-textLabel);
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+/* Dropdown 아이콘 */
+.dropdownIcon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* File Info */
+.fileInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: auto;
+  height: 42px;
+}
+
+.fileContent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  padding: 1px;
+  background: var(--color-rfq-ui-bgGray50);
+  border-radius: var(--radius-md);
+}
+
+.fileIcon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.fileDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-right: 12px;
+}
+
+.fileName {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+  color: var(--color-rfq-ui-textLabel);
+  letter-spacing: 0;
+}
+
+.fileSize {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+  color: var(--color-rfq-ui-textSupporting);
+  letter-spacing: 0;
+}
+
+/* 컨테이너 2, 3 래퍼 (가로 배치) */
+.containerRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0;
+  width: 100%;
+  max-width: 1640px;
+}
+
+/* 컨테이너 2: 813 * 308 */
+.container2 {
+  width: 100%;
+  max-width: 813px;
+  height: 308px;
+  background: var(--color-bg-primary);
+  border: 1px dashed var(--color-border-tertiary);
+}
+
+/* 컨테이너 3: 813 * 308 */
+.container3 {
+  width: 100%;
+  max-width: 813px;
+  height: 308px;
+  background: var(--color-bg-primary);
+  border: 1px dashed var(--color-border-tertiary);
+}
+
+/* 컨테이너 4: 1640 * 102 */
+.container4 {
+  width: 100%;
+  max-width: 1640px;
+  height: 102px;
+  background: var(--color-bg-primary);
+  border: 1px dashed var(--color-border-tertiary);
+}
+
+/* ============================================================================
+   테이블 영역
+   ============================================================================ */
+
+/* 테이블 영역: 1608 * 369 */
+/* 네비게이션바 기준 좌측 여백: 16px */
+.tableSection {
+  width: 100%;
+  max-width: 1608px;
+  height: 369px;
+  margin-left: 16px;
+  background: var(--color-bg-primary);
+  border: 1px dashed var(--color-border-tertiary);
+}

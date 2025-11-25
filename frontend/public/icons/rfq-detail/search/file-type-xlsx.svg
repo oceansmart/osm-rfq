@@ -1,0 +1,11 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Page Background -->
+  <rect x="4" y="0" width="32" height="40" rx="2" fill="#F9FAFB"/>
+  <path d="M4 0.5H28C28.1212 0.5 28.2375 0.548088 28.3232 0.633789L35.6162 7.92679C35.7019 8.01249 35.75 8.12877 35.75 8.25V36C35.75 37.7949 34.2949 39.25 32.5 39.25H4C2.20507 39.25 0.75 37.7949 0.75 36V4C0.750001 2.20507 2.20508 0.75 4 0.75Z" stroke="#D5D7DA" stroke-width="0.5"/>
+
+  <!-- File Type Badge -->
+  <rect x="1" y="24" width="33" height="16" rx="2" fill="#079455"/>
+
+  <!-- XLSX Text -->
+  <text x="17.5" y="34" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">XLSX</text>
+</svg>
