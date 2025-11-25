@@ -8,6 +8,7 @@ interface RfqDetailLayoutProps {
 
 interface RouteRow {
   id: string;
+  status: 'APPLYED' | 'IN PROGRESS';
   originName: string;
   originNameDetail?: string;
   originCode: string;
@@ -21,6 +22,7 @@ interface RouteRow {
 const mockRoutes: RouteRow[] = [
   {
     id: 'route-1',
+    status: 'APPLYED',
     originName: 'BANGKOKBANGKOKBANGKOKBANGKOK',
     originCode: 'THBKK',
     destinationName: 'OTARUBANGKOKBANGKOKBANGKOK',
@@ -30,6 +32,7 @@ const mockRoutes: RouteRow[] = [
   },
   {
     id: 'route-2',
+    status: 'APPLYED',
     originName: 'BANGKOKBANGKOKBANGKOKBANGKOK',
     originCode: 'THBKK',
     destinationName: 'YOKOHAMABANGKOKBANGKOK',
@@ -39,6 +42,7 @@ const mockRoutes: RouteRow[] = [
   },
   {
     id: 'route-3',
+    status: 'APPLYED',
     originName: 'BANGKOKBANGKOKBANGKOKBANGKOK',
     originCode: 'THBKK',
     destinationName: 'TOKYOBANGKOKBANGKOKBANGKOK',
@@ -48,6 +52,7 @@ const mockRoutes: RouteRow[] = [
   },
   {
     id: 'route-4',
+    status: 'APPLYED',
     originName: 'BANGKOKBANGKOKBANGKOKBANGKOK',
     originCode: 'THBKK',
     destinationName: 'YOKOHAMABANGKOKBANGKOK',
@@ -57,6 +62,7 @@ const mockRoutes: RouteRow[] = [
   },
   {
     id: 'route-5',
+    status: 'IN PROGRESS',
     originName: 'BANGKOKBANGKOKBANGKOKBANGKOK',
     originCode: 'THBKK',
     destinationName: 'YOKOHAMABANGKOKBANGKOK',
@@ -588,6 +594,11 @@ export default function RfqDetailLayout({ children }: RfqDetailLayoutProps) {
               </div>
             </div>
 
+            {/* Status Column */}
+            <div className={styles.tableHeaderCell_Status}>
+              <span className={styles.headerLabel}>Status</span>
+            </div>
+
             {/* Origin Name Column */}
             <div className={styles.tableHeaderCell_OriginName}>
               <span className={styles.headerLabel}>Orign Name</span>
@@ -631,6 +642,19 @@ export default function RfqDetailLayout({ children }: RfqDetailLayoutProps) {
               <div className={styles.tableCell_Checkbox}>
                 <div className={styles.cellCheckboxWrapper}>
                   <div className={styles.cellCheckbox} />
+                </div>
+              </div>
+
+              {/* Status Cell */}
+              <div className={styles.tableCell_Status}>
+                <div
+                  className={
+                    route.status === 'APPLYED'
+                      ? styles.badgeApplyed
+                      : styles.badgeInProgress
+                  }
+                >
+                  <span className={styles.badgeText}>{route.status}</span>
                 </div>
               </div>
 

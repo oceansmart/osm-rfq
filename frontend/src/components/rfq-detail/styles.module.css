@@ -810,12 +810,12 @@
   border-bottom: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
-/* 헤더 셀 - Checkbox (109px) */
+/* 헤더 셀 - Checkbox (65px) */
 .tableHeaderCell_Checkbox {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 109px;
+  width: 65px;
   height: 44px;
   flex-shrink: 0;
   background: var(--color-rfq-ui-bgGray50);
@@ -838,12 +838,24 @@
   border-radius: var(--radius-sm);
 }
 
-/* 헤더 셀 - Origin Name (300px) */
+/* 헤더 셀 - Status (138px) */
+.tableHeaderCell_Status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 138px;
+  height: 44px;
+  flex-shrink: 0;
+  background: var(--color-rfq-ui-bgGray50);
+  border-right: 1px solid var(--color-rfq-ui-borderPrimary);
+}
+
+/* 헤더 셀 - Origin Name (234px) */
 .tableHeaderCell_OriginName {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 300px;
+  width: 234px;
   height: 44px;
   flex-shrink: 0;
   background: var(--color-rfq-ui-bgGray50);
@@ -862,12 +874,12 @@
   border-right: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
-/* 헤더 셀 - Destination Name (300px) */
+/* 헤더 셀 - Destination Name (234px) */
 .tableHeaderCell_DestName {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 300px;
+  width: 234px;
   height: 44px;
   flex-shrink: 0;
   background: var(--color-rfq-ui-bgGray50);
@@ -898,24 +910,24 @@
   border-right: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
-/* 헤더 셀 - Commodity (201px) */
+/* 헤더 셀 - Commodity (237px) */
 .tableHeaderCell_Commodity {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 201px;
+  width: 237px;
   height: 44px;
   flex-shrink: 0;
   background: var(--color-rfq-ui-bgGray50);
   border-right: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
-/* 헤더 셀 - Actions (116px) */
+/* 헤더 셀 - Actions (60px) */
 .tableHeaderCell_Actions {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 116px;
+  width: 60px;
   height: 44px;
   flex-shrink: 0;
   background: var(--color-rfq-ui-bgGray50);
@@ -944,13 +956,13 @@
   background: var(--color-rfq-ui-bgWhite);
 }
 
-/* 셀 - Checkbox (109px) */
+/* 셀 - Checkbox (65px) */
 .tableCell_Checkbox {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 109px;
+  width: 65px;
   height: 52px;
   flex-shrink: 0;
   background: var(--color-rfq-ui-bgWhite);
@@ -974,13 +986,59 @@
   border-radius: var(--radius-sm);
 }
 
-/* 셀 - Origin Name (300px) */
+/* 셀 - Status (138px) */
+.tableCell_Status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 138px;
+  height: 52px;
+  flex-shrink: 0;
+  background: var(--color-rfq-ui-bgWhite);
+  border-right: 1px solid var(--color-rfq-ui-borderPrimary);
+  border-bottom: 1px solid var(--color-rfq-ui-borderPrimary);
+}
+
+/* Status Badges */
+.badgeApplyed {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 22px;
+  padding: 3px 8px;
+  background: #f9dbaf;
+  border: 1px solid #f7b27a;
+  border-radius: 9999px;
+}
+
+.badgeInProgress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 22px;
+  padding: 3px 8px;
+  background: #fafafa;
+  border: 1px solid #e9eaeb;
+  border-radius: 9999px;
+}
+
+.badgeText {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  color: #414651;
+  letter-spacing: 0;
+}
+
+/* 셀 - Origin Name (234px) */
 .tableCell_OriginName {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 2px;
-  width: 300px;
+  width: 234px;
   height: 52px;
   padding: 0 24px;
   flex-shrink: 0;
@@ -1004,13 +1062,13 @@
   border-bottom: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
-/* 셀 - Destination Name (300px) */
+/* 셀 - Destination Name (234px) */
 .tableCell_DestName {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 2px;
-  width: 300px;
+  width: 234px;
   height: 52px;
   padding: 0 24px;
   flex-shrink: 0;
@@ -1049,13 +1107,13 @@
   border-bottom: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
-/* 셀 - Commodity (201px) */
+/* 셀 - Commodity (237px) */
 .tableCell_Commodity {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 2px;
-  width: 201px;
+  width: 237px;
   height: 52px;
   padding: 0 24px;
   flex-shrink: 0;
@@ -1064,12 +1122,12 @@
   border-bottom: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
-/* 셀 - Actions (116px) */
+/* 셀 - Actions (60px) */
 .tableCell_Actions {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 116px;
+  width: 60px;
   height: 52px;
   flex-shrink: 0;
   background: var(--color-rfq-ui-bgWhite);
