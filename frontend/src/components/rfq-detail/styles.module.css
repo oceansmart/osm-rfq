@@ -202,6 +202,45 @@
   height: 40px;
 }
 
+/* Dropdown for Select Component */
+.dropdown {
+  width: auto;
+  height: 40px;
+}
+
+/* Select 컴포넌트의 Trigger Button 스타일 강제 적용 */
+.dropdown button[type="button"] {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-rfq-ui-bgWhite);
+  border: 1px solid var(--color-rfq-ui-borderPrimary);
+  border-radius: var(--radius-xs);
+  padding: 0 var(--spacing-sm);
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Select Trigger Button Hover */
+.dropdown button[type="button"]:hover {
+  border-color: var(--color-rfq-ui-borderHover);
+}
+
+/* Select Trigger 내부 텍스트 스타일 */
+.dropdown button[type="button"] p {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  line-height: var(--text-sm--line-height);
+  color: var(--color-rfq-ui-textLabel);
+}
+
+/* Select Trigger 내부 아이콘 스타일 */
+.dropdown button[type="button"] svg {
+  width: 20px;
+  height: 20px;
+  color: var(--color-rfq-ui-textLabel);
+}
+
 /* Label Wrapper */
 .labelWrapper {
   display: flex;
@@ -231,43 +270,7 @@
   margin-left: 2px;
 }
 
-/* Dropdown Button */
-.dropdownButton {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 4px;
-  height: 40px;
-  padding: 10px 14px;
-  background: var(--color-rfq-ui-bgWhite);
-  border: 1px solid var(--color-rfq-ui-borderPrimary);
-  border-radius: var(--radius-xs);
-  cursor: pointer;
-  transition: border-color 0.2s ease;
-}
-
-.dropdownButton:hover {
-  border-color: var(--color-rfq-ui-borderHover);
-}
-
-/* Dropdown 텍스트 */
-.dropdownText {
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: var(--text-sm);
-  line-height: var(--text-sm--line-height);
-  color: var(--color-rfq-ui-textLabel);
-  letter-spacing: 0;
-  white-space: nowrap;
-}
-
-/* Dropdown 아이콘 */
-.dropdownIcon {
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-}
+/* Old dropdownButton styles removed - now using Select component */
 
 /* File Info */
 .fileInfo {
@@ -810,6 +813,19 @@
   border-bottom: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
+/* Table Component Override: When applied to thead */
+.tableSection thead.tableHeader {
+  display: contents;
+}
+
+.tableSection thead.tableHeader tr {
+  width: 100%;
+  display: flex;
+  height: 44px;
+  background: var(--color-rfq-ui-bgGray50);
+  border-bottom: 1px solid var(--color-rfq-ui-borderPrimary);
+}
+
 /* 헤더 셀 - Checkbox (65px) */
 .tableHeaderCell_Checkbox {
   display: flex;
@@ -954,6 +970,12 @@
   width: 100%;
   height: 44px;
   background: var(--color-rfq-ui-bgWhite);
+  border-bottom: 1px solid var(--color-rfq-ui-borderPrimary);
+}
+
+/* Table Component Override: tbody가 있는 경우 */
+.tableSection tbody {
+  display: contents;
 }
 
 /* 셀 - Checkbox (65px) */
@@ -967,7 +989,6 @@
   flex-shrink: 0;
   background: var(--color-rfq-ui-bgWhite);
   border-right: 1px solid var(--color-rfq-ui-borderPrimary);
-  border-bottom: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
 .cellCheckboxWrapper {
@@ -997,7 +1018,6 @@
   flex-shrink: 0;
   background: var(--color-rfq-ui-bgWhite);
   border-right: 1px solid var(--color-rfq-ui-borderPrimary);
-  border-bottom: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
 /* Status Badges */
@@ -1009,6 +1029,7 @@
   padding: 3px 8px;
   background: #f9dbaf;
   border-radius: 9999px;
+  white-space: nowrap;
 }
 
 .badgeInProgress {
@@ -1019,6 +1040,7 @@
   padding: 3px 8px;
   background: #fafafa;
   border-radius: 9999px;
+  white-space: nowrap;
 }
 
 .badgeText {
@@ -1028,6 +1050,7 @@
   line-height: 18px;
   color: #414651;
   letter-spacing: 0;
+  white-space: nowrap;
 }
 
 /* 셀 - Origin Name (234px) */
@@ -1042,7 +1065,6 @@
   flex-shrink: 0;
   background: var(--color-rfq-ui-bgWhite);
   border-right: 1px solid var(--color-rfq-ui-borderPrimary);
-  border-bottom: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
 /* 셀 - Origin Code (200px) */
@@ -1057,7 +1079,6 @@
   flex-shrink: 0;
   background: var(--color-rfq-ui-bgWhite);
   border-right: 1px solid var(--color-rfq-ui-borderPrimary);
-  border-bottom: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
 /* 셀 - Destination Name (234px) */
@@ -1072,7 +1093,6 @@
   flex-shrink: 0;
   background: var(--color-rfq-ui-bgWhite);
   border-right: 1px solid var(--color-rfq-ui-borderPrimary);
-  border-bottom: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
 /* 셀 - DEST Code (200px) */
@@ -1087,7 +1107,6 @@
   flex-shrink: 0;
   background: var(--color-rfq-ui-bgWhite);
   border-right: 1px solid var(--color-rfq-ui-borderPrimary);
-  border-bottom: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
 /* 셀 - TYPE/SIZE (200px) */
@@ -1102,7 +1121,6 @@
   flex-shrink: 0;
   background: var(--color-rfq-ui-bgWhite);
   border-right: 1px solid var(--color-rfq-ui-borderPrimary);
-  border-bottom: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
 /* 셀 - Commodity (237px) */
@@ -1117,7 +1135,6 @@
   flex-shrink: 0;
   background: var(--color-rfq-ui-bgWhite);
   border-right: 1px solid var(--color-rfq-ui-borderPrimary);
-  border-bottom: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
 /* 셀 - Actions (60px) */
@@ -1130,7 +1147,6 @@
   flex-shrink: 0;
   background: var(--color-rfq-ui-bgWhite);
   border-right: 1px solid var(--color-rfq-ui-borderPrimary);
-  border-bottom: 1px solid var(--color-rfq-ui-borderPrimary);
 }
 
 /* 셀 텍스트 - Primary */
@@ -1187,4 +1203,12 @@
 .actionButton:hover {
   background: var(--color-rfq-ui-bgGray50);
   border-color: var(--color-rfq-ui-borderHover);
+}
+
+.actionIcon {
+  color: var(--color-rfq-ui-textSupporting);
+}
+
+.actionButton:hover .actionIcon {
+  color: var(--color-rfq-ui-textMain);
 }

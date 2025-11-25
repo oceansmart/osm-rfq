@@ -1,5 +1,12 @@
+"use client";
+
 import React from 'react';
 import Image from 'next/image';
+import { Trash01, Edit01, Mail01 } from '@untitledui/icons';
+import { Button } from '@/commons/components/button';
+import { Select, SelectItem } from '@/commons/components/select';
+import { Table } from '@/commons/components/table';
+import { ExcelIcon } from '@/commons/components/icons';
 import styles from './styles.module.css';
 
 interface RfqDetailLayoutProps {
@@ -90,26 +97,23 @@ export default function RfqDetailLayout({ children }: RfqDetailLayoutProps) {
         {/* 우측 액션 버튼들 */}
         <div className={styles.titleActions}>
           {/* Generate Template 버튼 */}
-          <button className={styles.primaryButton}>
-            <span className={styles.buttonText}>Generate Template</span>
-          </button>
+          <Button className={styles.primaryButton}>
+            Generate Template
+          </Button>
 
           {/* Search 버튼 */}
-          <button className={styles.primaryButton}>
-            <span className={styles.buttonText}>Search</span>
-          </button>
+          <Button className={styles.primaryButton}>
+            Search
+          </Button>
 
           {/* Download 버튼 */}
-          <button className={styles.secondaryButton}>
-            <Image
-              src="/icons/rfq-detail/title/ms_excel.svg"
-              alt="Excel"
-              width={20}
-              height={20}
-              className={styles.excelIcon}
-            />
-            <span className={styles.secondaryButtonText}>Download</span>
-          </button>
+          <Button
+            color="secondary"
+            className={styles.secondaryButton}
+            iconLeading={<ExcelIcon size={20} />}
+          >
+            Download
+          </Button>
         </div>
       </div>
 
@@ -124,16 +128,12 @@ export default function RfqDetailLayout({ children }: RfqDetailLayoutProps) {
             <label className={styles.label}>Trade</label>
             <span className={styles.asterisk}>*</span>
           </div>
-          <button className={styles.dropdownButton}>
-            <span className={styles.dropdownText}>TPE</span>
-            <Image
-              src="/icons/rfq-detail/search/chevron-down.svg"
-              alt="Dropdown"
-              width={20}
-              height={20}
-              className={styles.dropdownIcon}
-            />
-          </button>
+          <div className={styles.dropdown}>
+            <Select placeholder="TPE" aria-label="Trade">
+              <SelectItem id="tpe">TPE</SelectItem>
+              <SelectItem id="fpe">FPE</SelectItem>
+            </Select>
+          </div>
         </div>
 
         {/* I/O 드롭다운 */}
@@ -142,16 +142,12 @@ export default function RfqDetailLayout({ children }: RfqDetailLayoutProps) {
             <label className={styles.label}>I/O</label>
             <span className={styles.asterisk}>*</span>
           </div>
-          <button className={styles.dropdownButton}>
-            <span className={styles.dropdownText}>Inbound</span>
-            <Image
-              src="/icons/rfq-detail/search/chevron-down.svg"
-              alt="Dropdown"
-              width={20}
-              height={20}
-              className={styles.dropdownIcon}
-            />
-          </button>
+          <div className={styles.dropdown}>
+            <Select placeholder="Inbound" aria-label="I/O">
+              <SelectItem id="inbound">Inbound</SelectItem>
+              <SelectItem id="outbound">Outbound</SelectItem>
+            </Select>
+          </div>
         </div>
 
         {/* From LOC 드롭다운 */}
@@ -160,16 +156,12 @@ export default function RfqDetailLayout({ children }: RfqDetailLayoutProps) {
             <label className={styles.label}>From LOC</label>
             <span className={styles.asterisk}>*</span>
           </div>
-          <button className={styles.dropdownButton}>
-            <span className={styles.dropdownText}>KRPUS</span>
-            <Image
-              src="/icons/rfq-detail/search/chevron-down.svg"
-              alt="Dropdown"
-              width={20}
-              height={20}
-              className={styles.dropdownIcon}
-            />
-          </button>
+          <div className={styles.dropdown}>
+            <Select placeholder="KRPUS" aria-label="From LOC">
+              <SelectItem id="krpus">KRPUS</SelectItem>
+              <SelectItem id="thbkk">THBKK</SelectItem>
+            </Select>
+          </div>
         </div>
 
         {/* To LOC 드롭다운 */}
@@ -178,16 +170,12 @@ export default function RfqDetailLayout({ children }: RfqDetailLayoutProps) {
             <label className={styles.label}>To LOC</label>
             <span className={styles.asterisk}>*</span>
           </div>
-          <button className={styles.dropdownButton}>
-            <span className={styles.dropdownText}>THBKK</span>
-            <Image
-              src="/icons/rfq-detail/search/chevron-down.svg"
-              alt="Dropdown"
-              width={20}
-              height={20}
-              className={styles.dropdownIcon}
-            />
-          </button>
+          <div className={styles.dropdown}>
+            <Select placeholder="THBKK" aria-label="To LOC">
+              <SelectItem id="thbkk">THBKK</SelectItem>
+              <SelectItem id="krpus">KRPUS</SelectItem>
+            </Select>
+          </div>
         </div>
 
         {/* From Country 드롭다운 */}
@@ -196,16 +184,12 @@ export default function RfqDetailLayout({ children }: RfqDetailLayoutProps) {
             <label className={styles.label}>From  Country</label>
             <span className={styles.asterisk}>*</span>
           </div>
-          <button className={styles.dropdownButton}>
-            <span className={styles.dropdownText}>KR</span>
-            <Image
-              src="/icons/rfq-detail/search/chevron-down.svg"
-              alt="Dropdown"
-              width={20}
-              height={20}
-              className={styles.dropdownIcon}
-            />
-          </button>
+          <div className={styles.dropdown}>
+            <Select placeholder="KR" aria-label="From Country">
+              <SelectItem id="kr">KR</SelectItem>
+              <SelectItem id="th">TH</SelectItem>
+            </Select>
+          </div>
         </div>
 
         {/* To Country 드롭다운 */}
@@ -214,16 +198,12 @@ export default function RfqDetailLayout({ children }: RfqDetailLayoutProps) {
             <label className={styles.label}>To  Country</label>
             <span className={styles.asterisk}>*</span>
           </div>
-          <button className={styles.dropdownButton}>
-            <span className={styles.dropdownText}>KR</span>
-            <Image
-              src="/icons/rfq-detail/search/chevron-down.svg"
-              alt="Dropdown"
-              width={20}
-              height={20}
-              className={styles.dropdownIcon}
-            />
-          </button>
+          <div className={styles.dropdown}>
+            <Select placeholder="KR" aria-label="To Country">
+              <SelectItem id="kr">KR</SelectItem>
+              <SelectItem id="th">TH</SelectItem>
+            </Select>
+          </div>
         </div>
 
         {/* File Info */}
@@ -266,14 +246,12 @@ export default function RfqDetailLayout({ children }: RfqDetailLayoutProps) {
                 />
                 <span className={styles.badgeText}>NEW</span>
               </div>
-              <button className={styles.headerMailIcon}>
-                <Image
-                  src="/icons/rfq-detail/cntr1/mail.svg"
-                  alt="Mail"
-                  width={24}
-                  height={24}
-                />
-              </button>
+              <Button
+                color="tertiary"
+                size="sm"
+                className={styles.headerMailIcon}
+                iconLeading={<Mail01 size={24} />}
+              />
             </div>
           </div>
 
@@ -584,144 +562,136 @@ export default function RfqDetailLayout({ children }: RfqDetailLayoutProps) {
 
       {/* 테이블 영역 */}
       <div className={styles.tableSection}>
-        <div className={styles.tableContainer}>
-          {/* 테이블 헤더 */}
-          <div className={styles.tableHeader}>
+        <Table>
+          {/* Header Row */}
+          <Table.Header className={styles.tableHeader} bordered={false}>
             {/* Checkbox Column */}
-            <div className={styles.tableHeaderCell_Checkbox}>
+            <Table.Head className={styles.tableHeaderCell_Checkbox} isRowHeader>
               <div className={styles.headerCheckboxWrapper}>
                 <div className={styles.headerCheckbox} />
               </div>
-            </div>
+            </Table.Head>
 
             {/* Status Column */}
-            <div className={styles.tableHeaderCell_Status}>
+            <Table.Head className={styles.tableHeaderCell_Status}>
               <span className={styles.headerLabel}>Status</span>
-            </div>
+            </Table.Head>
 
             {/* Origin Name Column */}
-            <div className={styles.tableHeaderCell_OriginName}>
+            <Table.Head className={styles.tableHeaderCell_OriginName}>
               <span className={styles.headerLabel}>Orign Name</span>
-            </div>
+            </Table.Head>
 
             {/* Origin Code Column */}
-            <div className={styles.tableHeaderCell_OriginCode}>
+            <Table.Head className={styles.tableHeaderCell_OriginCode}>
               <span className={styles.headerLabel}>Origin Code</span>
-            </div>
+            </Table.Head>
 
             {/* Destination Name Column */}
-            <div className={styles.tableHeaderCell_DestName}>
+            <Table.Head className={styles.tableHeaderCell_DestName}>
               <span className={styles.headerLabel}>Destination Name</span>
-            </div>
+            </Table.Head>
 
             {/* DEST Code Column */}
-            <div className={styles.tableHeaderCell_DestCode}>
+            <Table.Head className={styles.tableHeaderCell_DestCode}>
               <span className={styles.headerLabel}>DEST Code</span>
-            </div>
+            </Table.Head>
 
             {/* TYPE/SIZE Column */}
-            <div className={styles.tableHeaderCell_TypeSize}>
+            <Table.Head className={styles.tableHeaderCell_TypeSize}>
               <span className={styles.headerLabel}>TYPE/SIZE</span>
-            </div>
+            </Table.Head>
 
             {/* Commodity Column */}
-            <div className={styles.tableHeaderCell_Commodity}>
+            <Table.Head className={styles.tableHeaderCell_Commodity}>
               <span className={styles.headerLabel}>Commodity</span>
-            </div>
+            </Table.Head>
 
-            {/* Empty Column (Actions) */}
-            <div className={styles.tableHeaderCell_Actions}>
+            {/* Actions Column */}
+            <Table.Head className={styles.tableHeaderCell_Actions}>
               <span className={styles.headerLabel}>Actions</span>
-            </div>
-          </div>
+            </Table.Head>
+          </Table.Header>
 
-          {/* 테이블 행들 */}
-          {mockRoutes.map((route) => (
-            <div key={route.id} className={styles.tableRow}>
-              {/* Checkbox Cell */}
-              <div className={styles.tableCell_Checkbox}>
-                <div className={styles.cellCheckboxWrapper}>
-                  <div className={styles.cellCheckbox} />
-                </div>
-              </div>
+          {/* Data Rows */}
+          <Table.Body>
+            {mockRoutes.map((route) => (
+              <Table.Row key={route.id} className={styles.tableRow}>
+                {/* Checkbox Cell */}
+                <Table.Cell className={styles.tableCell_Checkbox}>
+                  <div className={styles.cellCheckboxWrapper}>
+                    <div className={styles.cellCheckbox} />
+                  </div>
+                </Table.Cell>
 
-              {/* Status Cell */}
-              <div className={styles.tableCell_Status}>
-                <div
-                  className={
-                    route.status === 'APPLYED'
-                      ? styles.badgeApplyed
-                      : styles.badgeInProgress
-                  }
-                >
-                  <span className={styles.badgeText}>{route.status}</span>
-                </div>
-              </div>
+                {/* Status Cell */}
+                <Table.Cell className={styles.tableCell_Status}>
+                  <div
+                    className={
+                      route.status === 'APPLYED'
+                        ? styles.badgeApplyed
+                        : styles.badgeInProgress
+                    }
+                  >
+                    <span className={styles.badgeText}>{route.status}</span>
+                  </div>
+                </Table.Cell>
 
-              {/* Origin Name Cell */}
-              <div className={styles.tableCell_OriginName}>
-                <span className={styles.cellTextSupporting}>
-                  {route.originName}
-                </span>
-              </div>
+                {/* Origin Name Cell */}
+                <Table.Cell className={styles.tableCell_OriginName}>
+                  <span className={styles.cellTextSupporting}>
+                    {route.originName}
+                  </span>
+                </Table.Cell>
 
-              {/* Origin Code Cell */}
-              <div className={styles.tableCell_OriginCode}>
-                <span className={styles.cellTextSupporting}>
-                  {route.originCode}
-                </span>
-              </div>
+                {/* Origin Code Cell */}
+                <Table.Cell className={styles.tableCell_OriginCode}>
+                  <span className={styles.cellTextSupporting}>
+                    {route.originCode}
+                  </span>
+                </Table.Cell>
 
-              {/* Destination Name Cell */}
-              <div className={styles.tableCell_DestName}>
-                <span className={styles.cellTextSupporting}>
-                  {route.destinationName}
-                </span>
-              </div>
+                {/* Destination Name Cell */}
+                <Table.Cell className={styles.tableCell_DestName}>
+                  <span className={styles.cellTextSupporting}>
+                    {route.destinationName}
+                  </span>
+                </Table.Cell>
 
-              {/* DEST Code Cell */}
-              <div className={styles.tableCell_DestCode}>
-                <span className={styles.cellTextSupporting}>
-                  {route.destCode}
-                </span>
-              </div>
+                {/* DEST Code Cell */}
+                <Table.Cell className={styles.tableCell_DestCode}>
+                  <span className={styles.cellTextSupporting}>
+                    {route.destCode}
+                  </span>
+                </Table.Cell>
 
-              {/* TYPE/SIZE Cell */}
-              <div className={styles.tableCell_TypeSize}>
-                <span className={styles.cellTextSupporting}>
-                  {route.typeSize}
-                </span>
-              </div>
+                {/* TYPE/SIZE Cell */}
+                <Table.Cell className={styles.tableCell_TypeSize}>
+                  <span className={styles.cellTextSupporting}>
+                    {route.typeSize}
+                  </span>
+                </Table.Cell>
 
-              {/* Commodity Cell */}
-              <div className={styles.tableCell_Commodity}>
-                <span className={styles.cellTextSupporting}>{route.commodity}</span>
-              </div>
+                {/* Commodity Cell */}
+                <Table.Cell className={styles.tableCell_Commodity}>
+                  <span className={styles.cellTextSupporting}>{route.commodity}</span>
+                </Table.Cell>
 
-              {/* Actions Cell */}
-              <div className={styles.tableCell_Actions}>
-                <div className={styles.actionButtons}>
-                  <button className={styles.actionButton}>
-                    <Image
-                      src="/icons/rfq-detail/table/trash-01.svg"
-                      alt="Delete"
-                      width={16}
-                      height={16}
-                    />
-                  </button>
-                  <button className={styles.actionButton}>
-                    <Image
-                      src="/icons/rfq-detail/table/edit-01.svg"
-                      alt="Edit"
-                      width={16}
-                      height={16}
-                    />
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+                {/* Actions Cell */}
+                <Table.Cell className={styles.tableCell_Actions}>
+                  <div className={styles.actionButtons}>
+                    <button className={styles.actionButton}>
+                      <Trash01 size={16} className={styles.actionIcon} />
+                    </button>
+                    <button className={styles.actionButton}>
+                      <Edit01 size={16} className={styles.actionIcon} />
+                    </button>
+                  </div>
+                </Table.Cell>
+              </Table.Row>
+            ))}
+          </Table.Body>
+        </Table>
       </div>
 
       {/* children 콘텐츠 */}
