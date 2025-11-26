@@ -175,7 +175,7 @@ function Container8() {
         </div>
         <div className={styles.toggleWrapper}>
           <div className={styles.toggleBase}>
-            <div className={styles.toggleButton}></div>
+            <div className={styles.toggleButton} />
           </div>
           <div className={styles.currencyWrapper}>
             <span className={styles.currencyText}>USD</span>

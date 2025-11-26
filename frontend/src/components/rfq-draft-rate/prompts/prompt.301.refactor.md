@@ -37,9 +37,9 @@
 | *예: Table div* | `@/commons/components/table` | *`use client` 추가, 접근성 속성* |
 | *[추가 항목...]* | *[컴포넌트 경로...]* | *...* |
 
-body > div > div > main > div > div.styles_container1__w7_nV > div.styles_inputSection___kQU_ > button
+body > div > div > main > div > div.styles_mainContent__g9et2 > div.styles_rightColumn__1FU7r > div.styles_container8__PNib7 > div.styles_container8Header__v3YOa > div.styles_toggleWrapper__OFpWd > div.styles_toggleBase__JnRcO
 -> 
-/Users/kimjongwook/project/osm-rfq/frontend/src/commons/components/button
+/Users/kimjongwook/project/osm-rfq/frontend/src/commons/components/toggle
 
 
 
