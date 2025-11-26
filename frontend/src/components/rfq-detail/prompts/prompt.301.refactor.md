@@ -36,20 +36,10 @@
 | *예: Pagination div* | `@/commons/components/pagination` | *HTML 구조 변경, 스타일 매핑* |
 | *예: Table div* | `@/commons/components/table` | *`use client` 추가, 접근성 속성* |
 | *[추가 항목...]* | *[컴포넌트 경로...]* | *...* |
+ 
 
-body > div > div > main > div > div.styles_container1__IYEtz > div:nth-child(1) > button ->  frontend/src/commons/components/select
-
-body > div > div > main > div > div.styles_container1__IYEtz > div:nth-child(2) > button-> frontend/src/commons/components/select
-
-body > div > div > main > div > div.styles_container1__IYEtz > div:nth-child(3) > button-> frontend/src/commons/components/select
-
-body > div > div > main > div > div.styles_container1__IYEtz > div:nth-child(4) > button > span -> frontend/src/commons/components/select
-
-body > div > div > main > div > div.styles_container1__IYEtz > div:nth-child(5) > button -> frontend/src/commons/components/select
-
-body > div > div > main > div > div.styles_container1__IYEtz > div:nth-child(6) > button > span -> frontend/src/commons/components/select
-
-
+body > div > div > main > div > div.styles_tableSection__4io4R -> 
+/Users/kimjongwook/project/osm-rfq/frontend/src/commons/components/table
 
 
 
