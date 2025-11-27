@@ -1,9 +1,9 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-4xl);
+  gap: var(--spacing-xl);
   width: 100%;
-  padding: var(--spacing-3xl);
+  padding: var(--spacing-xl);
   background-color: var(--color-white);
 }
 
@@ -38,7 +38,7 @@
 .leftColumn {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-3xl);
+  gap: var(--spacing-xl);
   flex: 1;
 }
 
@@ -106,7 +106,7 @@
   padding: var(--spacing-lg) var(--spacing-xl);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: var(--spacing-md);
   font-family: var(--font-body);
   font-size: var(--text-sm);
@@ -123,6 +123,7 @@
   font-weight: 600;
   font-size: var(--text-xs);
   height: 44px;
+  justify-content: center;
 }
 
 .cellContent {
@@ -178,7 +179,7 @@
 .inputWrapper {
   display: flex;
   align-items: center;
-  padding: var(--spacing-md) var(--spacing-lg);
+  padding: 10px 14px;
   border: 1px solid var(--color-gray-light-300);
   border-radius: var(--radius-md);
   background-color: var(--color-white);
@@ -248,9 +249,9 @@
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing-lg);
   padding: var(--spacing-xl);
+  padding-top: var(--spacing-xl);
   border: 1px solid var(--color-gray-light-300);
   border-radius: var(--radius-lg);
-  margin-top: var(--spacing-xl);
 }
 
 .checkItem {
@@ -268,7 +269,7 @@
 /* Footer Actions */
 .footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   padding-top: var(--spacing-xl);
   border-top: 1px solid var(--color-gray-light-200);

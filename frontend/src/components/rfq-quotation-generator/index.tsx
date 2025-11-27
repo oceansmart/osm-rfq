@@ -65,7 +65,6 @@ export const RFQQuotationGenerator = () => {
                   <Image src={`${ICON_PATH}/Group.svg`} alt="Icon" width={20} height={20} />
                   <div className={styles.inputInner}>
                     <span className={styles.inputText}>Asahi Glasss- Standard Templete</span>
-                    <span className={styles.supportingText}>@olivia</span>
                   </div>
                   <Image src={`${ICON_PATH}/File Format Dropdown Icon.svg`} alt="Dropdown" width={20} height={20} />
                 </div>
@@ -78,7 +77,6 @@ export const RFQQuotationGenerator = () => {
                   <Image src={`${ICON_PATH}/File Format Icon.svg`} alt="Icon" width={20} height={20} />
                   <div className={styles.inputInner}>
                     <span className={styles.inputText}>Excel(.xlsx)</span>
-                    <span className={styles.supportingText}>UTC−08:00</span>
                   </div>
                   <Image src={`${ICON_PATH}/File Format Dropdown Icon.svg`} alt="Dropdown" width={20} height={20} />
                 </div>
@@ -145,16 +143,6 @@ export const RFQQuotationGenerator = () => {
               </div>
             ))}
           </div>
-
-          {/* Footer */}
-          <div className={styles.footer}>
-            <button className={`${styles.button} ${styles.buttonGhost}`}>Learn more</button>
-            <div className={styles.buttonGroup}>
-              <button className={`${styles.button} ${styles.buttonGhost}`}>Tertiary</button>
-              <button className={`${styles.button} ${styles.buttonSecondary}`}>Cancel</button>
-              <button className={`${styles.button} ${styles.buttonPrimary}`}>Generate</button>
-            </div>
-          </div>
         </div>
 
         {/* Right Column: Generated Files */}
@@ -165,14 +153,21 @@ export const RFQQuotationGenerator = () => {
           </div>
           
           <div className={styles.fileItem}>
-             <Image src={`${ICON_PATH}/Page.svg`} alt="File" width={40} height={40} />
+             <Image src={`${ICON_PATH}/file-type-xlsx.svg`} alt="File" width={40} height={40} />
              <div className={styles.fileInfo}>
                 <span className={styles.fileName}>Asahi Glass.pdf</span>
                 <span className={styles.fileSize}>200 KB</span>
              </div>
           </div>
         </div>
+      </div>
 
+      {/* Footer */}
+      <div className={styles.footer}>
+        <div className={styles.buttonGroup}>
+          <button className={`${styles.button} ${styles.buttonSecondary}`}>Cancel</button>
+          <button className={`${styles.button} ${styles.buttonPrimary}`}>Generate</button>
+        </div>
       </div>
     </div>
   );
