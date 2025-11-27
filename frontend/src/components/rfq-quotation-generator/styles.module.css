@@ -166,6 +166,25 @@
   width: 442px;
 }
 
+/* Select Component Wrapper */
+.selectWrapper {
+  width: 100%;
+}
+
+/* Override Select component border color to match Figma design */
+.selectWrapper button {
+  border: 1px solid var(--color-gray-light-300) !important;
+  box-shadow: var(--shadow-xs) !important;
+}
+
+.selectWrapper button:focus,
+.selectWrapper button[data-focused="true"],
+.selectWrapper button[data-hovered="true"] {
+  border: 1px solid var(--color-gray-light-300) !important;
+  box-shadow: var(--shadow-xs) !important;
+  outline: none !important;
+}
+
 .label {
   font-family: var(--font-body);
   font-size: var(--text-sm);
@@ -280,31 +299,37 @@
   gap: var(--spacing-md);
 }
 
-.button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--spacing-md) var(--spacing-xl);
-  border-radius: var(--radius-md);
-  font-weight: 600;
-  font-size: var(--text-sm);
-  cursor: pointer;
+/* Button Component Override to match original design */
+.buttonOverride {
+  padding: var(--spacing-md) var(--spacing-xl) !important;
+  font-weight: 600 !important;
+  font-size: var(--text-sm) !important;
 }
 
-.buttonGhost {
-  color: var(--color-gray-light-600);
-  background: transparent;
-}
-
-.buttonSecondary {
-  background-color: var(--color-white);
-  border: 1px solid var(--color-gray-light-300);
-  color: var(--color-gray-light-700);
-}
-
+/* Primary button explicit colors - Figma Design: #474d69 */
 .buttonPrimary {
-  background-color: var(--color-gray-blue-800);
-  color: var(--color-white);
+  background-color: rgb(71 77 105) !important;
+  color: rgb(255 255 255) !important;
+  box-shadow: var(--shadow-xs) !important;
+  border-radius: 8px !important;
+}
+
+.buttonPrimary:hover {
+  background-color: rgb(59 65 89) !important; /* Darker shade for hover */
+}
+
+/* Secondary button explicit colors - Figma Design */
+.buttonSecondary {
+  background-color: rgb(255 255 255) !important; /* #ffffff */
+  color: rgb(65 70 81) !important; /* #414651 */
+  border: 1px solid rgb(213 215 218) !important; /* #d5d7da */
+  box-shadow: var(--shadow-xs) !important;
+  border-radius: 8px !important;
+}
+
+.buttonSecondary:hover {
+  background-color: rgb(250 250 250) !important; /* Slight gray on hover */
+  color: rgb(65 70 81) !important;
 }
 
 /* Generated Files Item */

@@ -1,7 +1,12 @@
+"use client";
+
 import React from 'react';
 import Image from 'next/image';
 import styles from './styles.module.css';
 import { MOCK_MAPPING_ITEMS } from './mocks';
+import { Select } from '@/commons/components/select';
+import { Button } from '@/commons/components/button';
+import { FileCode02 } from '@untitledui/icons';
 
 const ICON_PATH = '/icons/rfq-quotation-generator';
 
@@ -59,28 +64,31 @@ export const RFQQuotationGenerator = () => {
             </div>
             <div className={styles.inputsRow}>
               <div className={styles.inputGroup} style={{ flex: 1 }}>
-                <label className={styles.label}>
-                  Select Template <span className={styles.asterisk}>*</span>
-                </label>
-                <div className={styles.inputWrapper}>
-                  <Image src={`${ICON_PATH}/Group.svg`} alt="Icon" width={20} height={20} />
-                  <div className={styles.inputInner}>
-                    <span className={styles.inputText}>Asahi Glasss- Standard Templete</span>
-                  </div>
-                  <Image src={`${ICON_PATH}/File Format Dropdown Icon.svg`} alt="Dropdown" width={20} height={20} />
-                </div>
+                <Select
+                  label="Select Template"
+                  placeholder="Select template"
+                  isRequired
+                  size="md"
+                  className={styles.selectWrapper}
+                  defaultSelectedKey="1"
+                >
+                  <Select.Item id="1" label="Asahi Glasss- Standard Templete" icon={FileCode02} />
+                  <Select.Item id="2" label="Generic Template" icon={FileCode02} />
+                </Select>
               </div>
               <div className={`${styles.inputGroup} ${styles.inputGroupFixed}`}>
-                <label className={styles.label}>
-                  File Format <span className={styles.asterisk}>*</span>
-                </label>
-                <div className={styles.inputWrapper}>
-                  <Image src={`${ICON_PATH}/File Format Icon.svg`} alt="Icon" width={20} height={20} />
-                  <div className={styles.inputInner}>
-                    <span className={styles.inputText}>Excel(.xlsx)</span>
-                  </div>
-                  <Image src={`${ICON_PATH}/File Format Dropdown Icon.svg`} alt="Dropdown" width={20} height={20} />
-                </div>
+                <Select
+                  label="File Format"
+                  placeholder="Select format"
+                  isRequired
+                  size="md"
+                  className={styles.selectWrapper}
+                  defaultSelectedKey="xlsx"
+                >
+                  <Select.Item id="xlsx" label="Excel(.xlsx)" icon={FileCode02} />
+                  <Select.Item id="csv" label="CSV(.csv)" icon={FileCode02} />
+                  <Select.Item id="pdf" label="PDF(.pdf)" icon={FileCode02} />
+                </Select>
               </div>
             </div>
           </section>
@@ -159,8 +167,12 @@ export const RFQQuotationGenerator = () => {
       {/* Footer */}
       <div className={styles.footer}>
         <div className={styles.buttonGroup}>
-          <button className={`${styles.button} ${styles.buttonSecondary}`}>Cancel</button>
-          <button className={`${styles.button} ${styles.buttonPrimary}`}>Generate</button>
+          <Button color="secondary" size="md" className={`${styles.buttonOverride} ${styles.buttonSecondary}`}>
+            Cancel
+          </Button>
+          <Button color="primary" size="md" className={`${styles.buttonOverride} ${styles.buttonPrimary}`}>
+            Generate
+          </Button>
         </div>
       </div>
     </div>
