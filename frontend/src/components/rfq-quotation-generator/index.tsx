@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from './styles.module.css';
+import { MOCK_MAPPING_ITEMS } from './mocks';
 
 const ICON_PATH = '/icons/rfq-quotation-generator';
 
@@ -102,25 +103,18 @@ export const RFQQuotationGenerator = () => {
                 <div className={`${styles.tableCell} ${styles.headerCell} ${styles.colSystem}`}>System Field</div>
                 <div className={`${styles.tableCell} ${styles.headerCell} ${styles.colStatus}`}>Status</div>
               </div>
-              {[
-                { cust: 'Orig (POL)', sys: 'Origin Port', field: 'Origin Port' },
-                { cust: 'DEST (POD)', sys: 'Destination Port', field: 'Destination Port' },
-                { cust: 'OFRT', sys: 'Ocean Freight', field: 'Ocean Freight' },
-                { cust: 'BAF/FAF', sys: 'BAF', field: 'BAF' },
-                { cust: 'DTHC (POD)', sys: 'THC Destination', field: 'THC Destination' },
-                { cust: 'ETHC (POL)', sys: 'THC Origin', field: 'THC Origin' },
-              ].map((row, idx) => (
-                <div key={idx} className={styles.tableRow}>
+              {MOCK_MAPPING_ITEMS.map((item) => (
+                <div key={item.id} className={styles.tableRow}>
                   <div className={`${styles.tableCell} ${styles.colCustomer}`}>
-                    <span className={styles.cellTextSupport}>{row.cust}</span>
+                    <span className={styles.cellTextSupport}>{item.customerColumn}</span>
                   </div>
                   <div className={`${styles.tableCell} ${styles.colSystem}`}>
-                    <span className={styles.cellTextSupport}>{row.sys}</span>
+                    <span className={styles.cellTextSupport}>{item.systemField}</span>
                   </div>
                   <div className={`${styles.tableCell} ${styles.colStatus}`}>
                     <div className={styles.badge}>
                       <Image src={`${ICON_PATH}/check-circle.svg`} alt="Check" width={12} height={12} />
-                      Mapped
+                      {item.status}
                     </div>
                   </div>
                 </div>

@@ -21,9 +21,9 @@
 ## 조건-대상
 
 - **구현될 TSX 파일경로**: 
-   `frontend/src/components/rfq-draft-rate/index.tsx`
+   `frontend/src/components/rfq-quotation-generator/index.tsx`
 - **구현될 CSS 파일경로**: 
-    `frontend/src/components/rfq-draft-rate/styles.module.css`
+    `frontend/src/components/rfq-quotation-generator/styles.module.css`
 
 ---
 
@@ -37,9 +37,14 @@
 | *예: Table div* | `@/commons/components/table` | *`use client` 추가, 접근성 속성* |
 | *[추가 항목...]* | *[컴포넌트 경로...]* | *...* |
 
-body > div > div > main > div > div.styles_mainContent__g9et2 > div.styles_rightColumn__1FU7r > div.styles_container8__PNib7 > div.styles_container8Header__v3YOa > div.styles_toggleWrapper__OFpWd > div.styles_toggleBase__JnRcO
+body > div > div > main > div > div.styles_contentWrapper__lUr_0 > div.styles_leftColumn__OGdHB > section:nth-child(2) > div.styles_inputsRow__CISUo > div:nth-child(1) > div
 -> 
-/Users/kimjongwook/project/osm-rfq/frontend/src/commons/components/toggle
+/Users/kimjongwook/project/osm-rfq/frontend/src/commons/components/toggle/Users/kimjongwook/project/osm-rfq/frontend/src/commons/components/select
+
+body > div > div > main > div > div.styles_contentWrapper__lUr_0 > div.styles_leftColumn__OGdHB > section:nth-child(2) > div.styles_inputsRow__CISUo > div.styles_inputGroup__G0kt_.styles_inputGroupFixed__unFei > div
+->
+/Users/kimjongwook/project/osm-rfq/frontend/src/commons/components/toggle/Users/kimjongwook/project/osm-rfq/frontend/src/commons/components/select
+
 
 
 
